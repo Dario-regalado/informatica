@@ -1,18 +1,17 @@
 #include <iostream>
+#include <cmath>
 #include <iomanip>
 
 int main() {
-    int primer_año{0};
-    int segundo_año{0};
 
-    std::cin >> primer_año >> segundo_año;
-    if (primer_año > segundo_año){
-        return 1;
-        if (primer_año < 1800 && segundo_año > 9999){
-            return 2;
-        }
-        
+    double polinomio{0}, numeroX{0}, total{0.0};
+    int coefficient{0};
+    std::cin >> numeroX;
+    while (std::cin >> polinomio) {
+        total = (polinomio * pow(numeroX,coefficient)) + total;
+        coefficient++;
     }
-    
+    std::cout << std::fixed << std::setprecision(4) << total << std::endl;
+
     return 0;
 }

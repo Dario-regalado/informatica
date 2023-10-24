@@ -1,12 +1,10 @@
 #include <iostream>
 
-bool comprobacion(int condicion1, int condicion2) {
-    // bool result_of_valor1_valor2{condicion1 == condicion2};
-
+int comprobacion(int condicion1, int condicion2, std::string& result) {
     if (condicion1 == condicion2) {
-        std::cout << "true";
+        result = "true";
     } else{
-        std::cout << "false";
+        result = "false";
     }
     return 0;
 }
@@ -17,7 +15,7 @@ int main() {
    
    std::cout << "introduzca dos valores: " << std::endl;
    std::cin >> valor1 >> valor2;
-    bool result_of_valor1_valor2{valor1 == valor2};
+    std::string result_of_valor1_valor2{0};
    std::cout << valor1 << " + " << valor2 << " = " << valor1 + valor2 << std::endl;
 
    std::cout << valor1 << " - " << valor2 << " = " << valor1 - valor2 << std::endl;
@@ -28,7 +26,9 @@ int main() {
 
    std::cout << valor1 << " % " << valor2 << " = " << valor1 % valor2 << std::endl;
 
-   std::cout << valor1 << " == " << valor2 << " = " << result_of_valor1_valor2 /* comprobacion(valor1, valor2) */ << std::endl;
+   comprobacion(valor1, valor2, result_of_valor1_valor2);
+
+   std::cout << valor1 << " == " << valor2 << " = " << result_of_valor1_valor2 << std::endl;
    return 0;
 }
 
