@@ -1,12 +1,12 @@
 #include <iostream>
 
-int comprobacion(int condicion1, int condicion2, std::string& result) {
+void comprobacion(int condicion1, int condicion2, std::string& result) {
     if (condicion1 == condicion2) {
         result = "true";
     } else{
         result = "false";
     }
-    return 0;
+    return;
 }
 
 int main() {
