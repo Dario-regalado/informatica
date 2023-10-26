@@ -9,7 +9,7 @@ int generateTRE (int N){
       lado_a = 2 * N + 1;
       lado_b = 2 * N * (N + 1);
       lado_c = lado_b + 1;
-    } else {
+    } else if (lado_a % 2 == 0){
       lado_a = 2 - N;
       lado_b = N * N - 1;
       lado_c = N * N + 1;
