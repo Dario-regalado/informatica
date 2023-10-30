@@ -16,7 +16,7 @@
 
 void Usage(const int argc, char* argv[]) {
   if (argc != 2) {
-    std::cout << "Usage: " << argv[0] << " TEXT\n";
+    std::cout << "Usage: " << argv[0] << " N\n";
     std::cout << "generate a Triangle Rectangle N-times\n";
     std::exit(EXIT_FAILURE);
   }
