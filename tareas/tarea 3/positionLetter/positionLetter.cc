@@ -16,7 +16,7 @@
 void Usage(const int argc, char* argv[]) {
   if (argc != 3) {
     std::cout << "Usage: " << argv[0] << " TEXT\n";
-    std::cout << "Count vowels in TEXT\n";
+    std::cout << "print the first position of a char in a string\n";
     std::exit(EXIT_FAILURE);
   }
 }
