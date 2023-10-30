@@ -11,8 +11,7 @@
   * @see https://jutge.org/problems/P48107
   */
 
-#include <iostream>
-#include <string>
+#include "funciones.h"
 
 int countVowels (const std::string& string1){
   int count{0};

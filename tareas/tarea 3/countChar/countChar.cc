@@ -14,7 +14,15 @@
 #include <iostream>
 #include "funciones.h"
 
-int main(){
+void Usage(const int argc, char* argv[]) {
+  if (argc != 2) {
+    std::cout << "Usage: " << argv[0] << " TEXT\n";
+    std::cout << "Count vowels in TEXT\n";
+    std::exit(EXIT_FAILURE);
+  }
+}
+
+int main(const int argc, char* argv[]){
   std::string string1{0};
   std::cout << "introduzca la palabra a analizar: ";
   std::getline(std::cin, string1);
