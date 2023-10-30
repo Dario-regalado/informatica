@@ -4,9 +4,8 @@
   * Grado en Ingeniería Informática
   * Informática Básica 2023-2024
   *
-  * @file 
   * @author Dario Regalado Gonzalez alu0101640150@ull.edu.es
-  * @date 
+  * @date 29 Oct 2023
   * @brief 
   * @bug There are no known bugs
   * @see https://jutge.org/problems/P48107
