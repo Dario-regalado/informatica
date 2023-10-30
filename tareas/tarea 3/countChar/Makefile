@@ -1,13 +1,16 @@
-CXX = g++
+CXX =	g++
+CFLAGS = -std=c++17 -Wall
+LDFLAGS =
 
-countChar: countChar.cc funciones.cc
-	$(CXX) countChar.o funciones.o
-funciones.o: funciones.cc
-	$(CXX) funciones.cc -o funciones.o
-countChar.o: countChar.cc
-	$(CXX) countChar.cc -o countChar.o
+countChar:  countChar.o funciones.o
+	$(CXX)  countChar.o	funciones.o -o countChar 
+
+funciones.o:	funciones.cc
+	$(CXX)	funciones.cc	-c	
+
+countChar.o:	countChar.cc
+	$(CXX)  countChar.cc	-c
 
 clean:
-	rm *.o -rf
-.PHONY:
-clean 
+	rm -f	*.o countChar 	
+.PHONY: clean
