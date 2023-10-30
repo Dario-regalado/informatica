@@ -1,22 +1,28 @@
-#include <iostream>
-#include <string>
+/**
+  * Universidad de La Laguna
+  * Escuela Superior de Ingeniería y Tecnología
+  * Grado en Ingeniería Informática
+  * Informática Básica 2023-2024
+  *
+  * @author Dario Regalado Gonzalez alu0101640150@ull.edu.es
+  * @date 29 Oct 2023
+  * @brief print the first position of a char in a string
+  * @bug There are no known bugs
+  */
 
-int letterPosition (const std::string& string1, char letra){
-  for (int i = 0; i < string1.length(); i++ ){
-    if (string1[i] == letra){
-      return i;
-    }
+#include <iostream>
+#include "funciones.h"
+
+void Usage(const int argc, char* argv[]) {
+  if (argc != 3) {
+    std::cout << "Usage: " << argv[0] << " TEXT\n";
+    std::cout << "Count vowels in TEXT\n";
+    std::exit(EXIT_FAILURE);
   }
-  return -1;
 }
 
-int main(){
-  std::string string_char{0};
-  char character{0};
-  std::cout << "introduzca la palabra a analizar: ";
-  std::cin >> string_char;
-  std::cout << "introduzca la letra: ";
-  std::cin >> character;
-  std::cout << letterPosition(string_char, character) << std::endl;
+int main(const int argc, char* argv[]){
+  Usage(argc, argv);
+  std::cout << letterPosition(std::string(argv[1]), char(argv[2][0])) << std::endl;
   return 0;
 }

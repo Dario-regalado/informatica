@@ -6,7 +6,7 @@
   *
   * @author Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date 29 Oct 2023
-  * @brief 
+  * @brief count the vowels in a string
   * @bug There are no known bugs
   * @see https://jutge.org/problems/P48107
   */

@@ -6,7 +6,7 @@
   *
   * @author Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date 29 Oct 2023
-  * @brief 
+  * @brief count the vowels in a string
   * @bug There are no known bugs
   * @see https://jutge.org/problems/P48107
   */
@@ -23,9 +23,7 @@ void Usage(const int argc, char* argv[]) {
 }
 
 int main(const int argc, char* argv[]){
-  std::string string1{0};
-  std::cout << "introduzca la palabra a analizar: ";
-  std::getline(std::cin, string1);
-  std::cout << "el numero de vocales es; " << countVowels(string1) << std::endl;
+  Usage(argc, argv);
+  std::cout << "el numero de vocales es; " << countVowels(std::string(argv[1])) << std::endl;
   return 0;
 }

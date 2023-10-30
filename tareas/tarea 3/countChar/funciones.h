@@ -1,3 +1,3 @@
 #include <iostream>
 
-int countVowels (const std::string& string1);
+int countVowels (const std::string& imput);
