@@ -2,15 +2,15 @@ CXX =	g++
 CFLAGS = -std=c++17 -Wall
 LDFLAGS =
 
-countChar:  countChar.o funciones.o
-	$(CXX)  countChar.o	funciones.o -o countChar 
+binomialCoeficient:  binomialCoeficient.o funciones.o
+	$(CXX)  binomialCoeficient.o	funciones.o -o binomialCoeficient 
 
 funciones.o:	funciones.cc
 	$(CXX)	funciones.cc	-c	
 
-countChar.o:	countChar.cc
-	$(CXX)  countChar.cc	-c
+binomialCoeficient.o:	binomialCoeficient.cc
+	$(CXX)  binomialCoeficient.cc	-c
 
 clean:
-	rm -f	*.o countChar 	
+	rm -f	*.o binomialCoeficient 	
 .PHONY: clean
