@@ -10,8 +10,6 @@
   * @bug There are no known bugs
   * @see https://jutge.org/problems/P48107
   */
-
-#include <iostream>
 #include "funciones.h"
 
 void Usage(const int argc, char* argv[]) {
@@ -26,4 +24,5 @@ int main(const int argc, char* argv[]){
   Usage(argc, argv);
   std::cout << "el numero de vocales es; " << countVowels(std::string(argv[1])) << std::endl;
   return 0;
+
 }
