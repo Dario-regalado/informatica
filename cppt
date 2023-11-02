@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ $# != 1 ]; then
+  echo "Usage: $(basename $0) PROJECT_NAME"
+  echo "Create a C++ project with PROJECT_NAME"
+  exit 1
+fi
+
+cp ~/.cppt/* $PWD
+
+mv template.cc "$1.cc"
+sed -i "4s/.*/MAIN = $1/" Makefile
+sed -i "8s/.*/  * @date $(date +'%b %d %Y')/" "$1.cc"
+

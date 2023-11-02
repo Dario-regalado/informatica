@@ -1,11 +1,10 @@
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall
-LDLIBS = -lstdc++ 
-MAIN = decimal_to_binary
+LDLIBS = -lstdc++
+MAIN = bin
 DEPS = $(MAIN).o
-DEPS2 = $(MAIN)_func.o
 
-$(MAIN): $(DEPS) $(DEPS2)
+$(MAIN): $(DEPS)
 
 clean:
 	rm *.o $(MAIN)
