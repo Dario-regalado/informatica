@@ -11,8 +11,7 @@ int main() {
     std::cout << "ingrese exponente " << std::endl;
     std::cin >> potencia;
 
-    for (int i = 0; i < potencia; i++)
-    {
+    for (int i = 0; i < potencia; i++) {
         result = result * numero;
     }
     std::cout << result << std::endl;
