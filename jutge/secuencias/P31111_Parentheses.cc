@@ -12,16 +12,19 @@ int main() {
       open_paren++;
     } else if (parentheses[i] == ')'){
       closed_paren++;
-    } 
-    if (open_paren < closed_paren){
+    }    
+  } 
+  /*if (open_paren < closed_paren){
       break;
-    }
-    
-  }
-  if (open_paren == closed_paren){
-      std::cout << "yes" << std::endl;
+    }*/
+  if (parentheses.back() == '('){
+    std::cout << "no" << std::endl;
   } else{
-      std::cout << "no" << std::endl;
+    if (open_paren == closed_paren){
+        std::cout << "yes" << std::endl;
+    } else{
+        std::cout << "no" << std::endl;
+    }
   }
   return 0;
 }
