@@ -12,5 +12,5 @@ positionLetter.o:	positionLetter.cc
 	$(CXX)  positionLetter.cc	-c
 
 clean:
-	rm -f	*.o countChar 	
+	rm -f	*.o positionLetter 	
 .PHONY: clean
