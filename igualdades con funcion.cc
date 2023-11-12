@@ -29,6 +29,12 @@ int main() {
    comprobacion(valor1, valor2, result_of_valor1_valor2);
 
    std::cout << valor1 << " == " << valor2 << " = " << result_of_valor1_valor2 << std::endl;
+   /* if (valor1 == valor2) {
+        std::cout << "true\n";
+    } else {
+        std::cout << "false" << std::endl;
+    }
+    */
    return 0;
 }
 
