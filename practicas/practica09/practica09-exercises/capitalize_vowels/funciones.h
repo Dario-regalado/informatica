@@ -12,4 +12,9 @@
   */
 
 #pragma once
+#include <iostream>
+#include <string>
+#include <cstdlib>
 
+using std::string;
+  string CapitalizeVowels(const string& imput1);

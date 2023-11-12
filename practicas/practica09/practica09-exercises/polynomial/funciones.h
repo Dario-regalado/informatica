@@ -12,4 +12,8 @@
   */
 
 #pragma once
+#include <iostream>
+#include <cstdlib>
+#include <vector>
 
+int FuncionRara (const std::vector<int>& coefficients, int value);

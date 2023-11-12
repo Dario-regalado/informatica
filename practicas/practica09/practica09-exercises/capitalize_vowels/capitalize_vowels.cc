@@ -6,13 +6,11 @@
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date Nov 12 2023
-  * @brief 
+  * @brief capitalize vowels and lowercase consonants
   * @bug There are no known bugs
   * @see
   */
 
-#include <iostream>
-#include <cstdlib>
 #include "funciones.h"
 
 /** Shows correct usage of the program. 
@@ -24,13 +22,15 @@
   */
 void Usage(const int argc, char* argv[]) {
   if (argc != 2) {
-    std::cerr << "Usage: " << argv[0] << " TEXT\n";
-    std::cerr << "DESCRIPTION\n";
+    std::cerr << "Usage: " << argv[0] << " must be a string\n";
+    std::cerr << "capitalize vowels and lowercase consonants\n";
     std::exit(EXIT_FAILURE);
   }
 }
 
 int main(const int argc, char *argv[]) {
   Usage(argc, argv);
+  string imput_word{argv[1]};
+  std::cout << CapitalizeVowels(imput_word) << std::endl;
   return 0;
 }

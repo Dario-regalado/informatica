@@ -12,4 +12,9 @@
   */
 
 #pragma once
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+//using std::vector;
 
+int ScalarProduct(std::vector<int> imput_vector1, std::vector<int> imput_vector2);

@@ -6,13 +6,12 @@
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date Nov 12 2023
-  * @brief 
+  * @brief calcule el valor del polinomio correspondiente en el valor dado
   * @bug There are no known bugs
   * @see
   */
 
-#include <iostream>
-#include <cstdlib>
+
 #include "funciones.h"
 
 /** Shows correct usage of the program. 
@@ -24,13 +23,20 @@
   */
 void Usage(const int argc, char* argv[]) {
   if (argc != 2) {
-    std::cerr << "Usage: " << argv[0] << " TEXT\n";
-    std::cerr << "DESCRIPTION\n";
+    std::cerr << "Usage: " << argv[0] << " introduce a number\n";
+    std::cerr << "calcule el valor del polinomio correspondiente en el valor dado\n";
     std::exit(EXIT_FAILURE);
   }
 }
 
 int main(const int argc, char *argv[]) {
   Usage(argc, argv);
+  int value{std::stoi(argv[1])};
+  std::vector<int> coefficient;
+  while (true) {
+    std::cin >> coefficient;
+  }
+  
+  //std::cout << FuncionRara();
   return 0;
 }

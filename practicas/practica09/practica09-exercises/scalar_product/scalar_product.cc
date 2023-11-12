@@ -4,15 +4,14 @@
   * Grado en Ingeniería Informática
   * Informática Básica 2023-2024
   *
-  * @author NAME EMAIL
+  * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date Nov 12 2023
-  * @brief DESCRIPTION
+  * @brief scalar product of two imput vectors
   * @bug There are no known bugs
   * @see
   */
 
-#include <iostream>
-#include <cstdlib>
+
 #include "funciones.h"
 
 /** Shows correct usage of the program. 
@@ -23,14 +22,16 @@
   * @param[in] argv Array of arguments
   */
 void Usage(const int argc, char* argv[]) {
-  if (argc != 2) {
+  if (argc != 3) {
     std::cerr << "Usage: " << argv[0] << " TEXT\n";
-    std::cerr << "DESCRIPTION\n";
+    std::cerr << "scalar product of two imput vectors\n";
     std::exit(EXIT_FAILURE);
   }
 }
 
 int main(const int argc, char *argv[]) {
   Usage(argc, argv);
+  std::vector vector1
+  std::cout << ScalarProduct(vector1, vector2);
   return 0;
 }
