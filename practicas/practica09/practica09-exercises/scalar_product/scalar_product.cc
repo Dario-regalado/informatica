@@ -34,20 +34,16 @@ int main(const int argc, char *argv[]) {
   std::vector<int> vector1{}, vector2{};
   int numero_imputs{((argc - 1) / 2)};
   if (argc % 2 == 1) {
-    for (int i{1}; i <= (argc - 1) / 2; ++i) {
+    for (int i{1}; i <= numero_imputs; ++i) {
       vector1.emplace_back(std::stoi(argv[i]));
-      if (i == numero_imputs) {
-        break;
-      }
+      std::cout << argv[i];
     }  
-    for (int i = numero_imputs; i >= 1; --i) {
+    std::cout << std::endl;
+    for (int i = numero_imputs + 1; i <= argc - 1; ++i) {
       vector2.emplace_back(std::stoi(argv[i]));
-      if (i == numero_imputs) {
-        break;
-      }
-      
+      std::cout << argv[i];
     }
-    
+    std::cout << std::endl;
   }
   std::cout << ScalarProduct(vector1, vector2);
   return 0;
