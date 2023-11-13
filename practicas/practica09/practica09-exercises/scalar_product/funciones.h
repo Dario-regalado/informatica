@@ -17,4 +17,4 @@
 #include <vector>
 //using std::vector;
 
-int ScalarProduct(std::vector<int> imput_vector1, std::vector<int> imput_vector2);
+int ScalarProduct(const std::vector<int>& imput_vector1, const std::vector<int>& imput_vector2);
