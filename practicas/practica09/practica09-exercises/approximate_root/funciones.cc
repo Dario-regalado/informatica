@@ -13,3 +13,22 @@
 
 #include "funciones.h"
 
+double RaizCuadrada(double number) {
+  constexpr double epsilon{1e-4};
+  double delta{1.0};
+  double root{1.0};
+
+  while (fabs(root * root - number) > epsilon) {
+    if (delta > 0) {
+      while (root * root < number) {
+        root += delta;
+      }
+    } else {
+      while (root * root > number) {
+        root += delta;
+      }
+    }
+    delta *= -0.5;
+  }
+  return root;
+}

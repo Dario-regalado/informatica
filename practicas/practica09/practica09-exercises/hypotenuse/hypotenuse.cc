@@ -14,7 +14,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "funciones.h"
-
+ 
 /** Shows correct usage of the program. 
   * If the program wasn't run correctly, prints the
   * help message.

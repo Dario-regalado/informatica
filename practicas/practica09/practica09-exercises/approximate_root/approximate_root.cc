@@ -11,8 +11,7 @@
   * @see
   */
 
-#include <iostream>
-#include <cstdlib>
+
 #include "funciones.h"
 
 /** Shows correct usage of the program. 
@@ -29,8 +28,10 @@ void Usage(const int argc, char* argv[]) {
     std::exit(EXIT_FAILURE);
   }
 }
-
+ 
 int main(const int argc, char *argv[]) {
-  Usage(argc, argv);
+  Usage(argc, argv); 
+  const int number{std::stoi(argv[1])};
+  std::cout << RaizCuadrada(number) << std::endl;
   return 0;
 }

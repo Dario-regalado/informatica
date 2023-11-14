@@ -11,5 +11,9 @@
   * @see
   */
 
+#include <iostream>
+#include <cstdlib>
+#include <cmath>
 #pragma once
 
+double RaizCuadrada(double root);
