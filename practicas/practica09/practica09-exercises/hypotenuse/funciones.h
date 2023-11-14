@@ -12,5 +12,8 @@
   */
 
 #pragma once
+#include <iostream>
+#include <cmath>
+#include <cstdlib>
 
- 
+double RaizCuadrada(int number, int number2); 

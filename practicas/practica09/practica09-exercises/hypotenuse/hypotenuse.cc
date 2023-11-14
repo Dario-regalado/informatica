@@ -11,8 +11,6 @@
   * @see
   */
 
-#include <iostream>
-#include <cstdlib>
 #include "funciones.h"
  
 /** Shows correct usage of the program. 
@@ -23,7 +21,7 @@
   * @param[in] argv Array of arguments
   */
 void Usage(const int argc, char* argv[]) {
-  if (argc != 2) {
+  if (argc != 3) {
     std::cerr << "Usage: " << argv[0] << " TEXT\n";
     std::cerr << "DESCRIPTION\n";
     std::exit(EXIT_FAILURE);
@@ -32,5 +30,6 @@ void Usage(const int argc, char* argv[]) {
 
 int main(const int argc, char *argv[]) {
   Usage(argc, argv);
+  std::cout << RaizCuadrada(std::stoi(argv[1]), std::stoi(argv[2])) << std::endl;
   return 0;
 }
