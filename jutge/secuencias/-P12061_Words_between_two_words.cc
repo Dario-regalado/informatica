@@ -6,9 +6,10 @@ int main() {
   std::vector<std::string> input_word{};
   std::string emplace_input{};
   int result{0};
-
-  while (std::cin >> emplace_input) {
-    input_word.emplace_back(emplace_input);
+  getline(std::cin, emplace_input);
+  for (int i{0}; i < emplace_input.length(); ++i) {
+    input_word.emplace_back(emplace_input[i]);
+    std::cout << emplace_input << std::endl;
   }
   int start, end;
   for (int i{0}; i < input_word.size(); ++i) {
@@ -20,6 +21,7 @@ int main() {
     }
     
     result = end - start;
-  }  
+  } 
+  std::cout << result << std::endl; 
   return result;
 }
