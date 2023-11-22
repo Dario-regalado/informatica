@@ -11,8 +11,7 @@
   * @see
   */
 
-#include <iostream>
-#include <cstdlib>
+
 #include "dependencies.h"
 
 /** Shows correct usage of the program. 
@@ -23,7 +22,7 @@
   * @param[in] argv Array of arguments
   */
 void Usage(const int argc, char* argv[]) {
-  if (argc != 2) {
+  if (argc != 4) {
     std::cerr << "Usage: " << argv[0] << " TEXT\n";
     std::cerr << "DESCRIPTION\n";
     std::exit(EXIT_FAILURE);
@@ -32,5 +31,16 @@ void Usage(const int argc, char* argv[]) {
 
 int main(const int argc, char *argv[]) {
   Usage(argc, argv);
+  int size{std::stoi(argv[1])};
+  double lower{std::stod(argv[2])};
+  double upper{std::stod(argv[3])};
+  std::vector<double> my_vector = GenerateVector(size, lower, upper);
+  for (int i{0}; i < my_vector.size(); ++i) {
+    std::cout << my_vector[i] << " ";
+  }
+  std::cout << std::endl;
+  std::cout << "Max number of the vector is: " << MaxNumber(my_vector) << std::endl;
+  std::cout << "Min number of the vector is: " << MinNumber(my_vector) << std::endl;
+  std::cout << "Promedium number of the vector is: " << PromediumNumber(my_vector) << std::endl;
   return 0;
 }

@@ -12,4 +12,10 @@
   */
 
 #pragma once
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+#include <random>
 
+std::vector<double> CreateVector(const std::string& vector);
+std::vector<double> ConcatenateVector (const std::vector<double>& vector1, const std::vector<double>& vector2);

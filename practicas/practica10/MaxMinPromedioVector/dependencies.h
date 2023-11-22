@@ -12,4 +12,12 @@
   */
 
 #pragma once
+#include <iostream>
+#include <cstdlib>
+#include <vector>
+#include <random>
 
+std::vector<double> GenerateVector(const int size, const double lower, const double upper);
+double MaxNumber(const std::vector<double>& my_vector);
+double MinNumber(const std::vector<double>& my_vector);
+double PromediumNumber(const std::vector<double>& my_vector);
