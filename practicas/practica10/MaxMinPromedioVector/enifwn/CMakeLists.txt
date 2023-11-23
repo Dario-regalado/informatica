@@ -12,9 +12,7 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build)
 include_directories(${PROJECT_SOURCE_DIR})
 
 add_executable(proj
-   dependencies.cc 
-   dependencies.h
-   GenerateVector.cc 
+    
     )
 
 target_compile_features(proj PRIVATE cxx_std_17)

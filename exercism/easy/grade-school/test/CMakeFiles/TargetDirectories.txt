@@ -1,0 +1,4 @@
+/home/usuario/IB-mio/exercism/easy/grade-school/test/CMakeFiles/rebuild_cache.dir
+/home/usuario/IB-mio/exercism/easy/grade-school/test/CMakeFiles/test_grade-school.dir
+/home/usuario/IB-mio/exercism/easy/grade-school/test/CMakeFiles/edit_cache.dir
+/home/usuario/IB-mio/exercism/easy/grade-school/test/CMakeFiles/grade-school.dir

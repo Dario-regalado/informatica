@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/usuario/IB-mio/practicas/practica10/GenerateVector/GenerateVector.cc
+dependencies.h
+/home/usuario/IB-mio/practicas/practica10/GenerateVector/dependencies.h
+vector
+-
+
+/home/usuario/IB-mio/practicas/practica10/GenerateVector/dependencies.cc
+dependencies.h
+/home/usuario/IB-mio/practicas/practica10/GenerateVector/dependencies.h
+
+/home/usuario/IB-mio/practicas/practica10/GenerateVector/dependencies.h
+iostream
+-
+vector
+-
+random
+-
+cstdlib
+-
+

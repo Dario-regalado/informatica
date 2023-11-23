@@ -4,7 +4,7 @@
 namespace space_age {
   class space_age{
    public:
-    space_age(double seconds) {time_ = seconds;};
+    space_age(double seconds) {time_ = seconds;}
     double seconds() const;
     double on_mercury() const;
     double on_venus() const;
