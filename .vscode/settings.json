@@ -49,5 +49,6 @@
         "iomanip": "cpp",
         "sstream": "cpp",
         "cstdarg": "cpp"
-    }
+    },
+    "cmake.sourceDirectory": "C:/Users/Equipo/Desktop/informatica/1º de grado/1º cuatri/IB/pruebas/exercism/easy/grade-school"
 }
