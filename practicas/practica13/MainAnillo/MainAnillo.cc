@@ -39,5 +39,6 @@ int main(const int argc, char *argv[]) {
   std::cout << anillo1 << std::endl;
   std::cin >> anilo_sumador;
   std::cout << anillo1 + 5 << std::endl;
+
   return 0;
 }

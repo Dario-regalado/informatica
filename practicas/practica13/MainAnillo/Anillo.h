@@ -43,7 +43,7 @@ class Anillo {
    * @return int 
    */
   int GetRadioExterior() const {return radio_exterior_;}
-  
+
   friend std::istream& operator>>(std::istream& in, Anillo& nuevo_anillo);
 
  private:
