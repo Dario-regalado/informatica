@@ -1,0 +1,3 @@
+/home/usuario/practica13/ib-2023-2024-p13-oop-Dario-regalado/clase-practica/MainAnillo/build/CMakeFiles/rebuild_cache.dir
+/home/usuario/practica13/ib-2023-2024-p13-oop-Dario-regalado/clase-practica/MainAnillo/build/CMakeFiles/edit_cache.dir
+/home/usuario/practica13/ib-2023-2024-p13-oop-Dario-regalado/clase-practica/MainAnillo/build/CMakeFiles/MainAnillo.dir

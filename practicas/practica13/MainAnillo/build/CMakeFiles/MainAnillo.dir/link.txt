@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/MainAnillo.dir/Anillo.cc.o CMakeFiles/MainAnillo.dir/MainAnillo.cc.o  -o MainAnillo 
