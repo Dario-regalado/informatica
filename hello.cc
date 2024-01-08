@@ -1,17 +1,12 @@
-
-#include <iostream> // std::cout, std::endl
-
-
-double MyFunc(int x = 7) {
-  return 4.5;
+#include <iostream>
+void Sum(int value_a, int& value_b, int& value_c) {
+value_a = value_b + value_c;
+value_b = value_a + value_c;
+value_c = value_a + value_b;
 }
-
-std::string SayHello(const std::string& to_whom = "World ") {
- return "Hello " + to_whom + "!";
-}
-
 int main() {
-  std::cout << SayHello() << std::endl;
-  std::cout << SayHello("Students") << std::endl;
-  return 0;
+int first{2}, second{3};
+Sum(first, second, second);
+std::cout << first << " " << second;
+return 0;
 }
