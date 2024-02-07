@@ -1,6 +1,4 @@
 .data
-.text
-main:
 if:
     blt    $s0,$s1,if_2
     b      if_fin
@@ -9,5 +7,6 @@ if_2:
     b      if_fin
 if_then:
     b      $s3
-    syscall
 if_fin:
+.text
+main:
