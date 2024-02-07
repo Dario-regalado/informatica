@@ -9,5 +9,5 @@ if_2:
     b      if_fin
 if_then:
     b      $s3
-    syscall
+    move   $s0,$s1
 if_fin:
