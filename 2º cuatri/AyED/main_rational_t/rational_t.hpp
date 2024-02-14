@@ -11,7 +11,6 @@
   * @see
   */
 
-
 #pragma once
 
 #include <iostream>
@@ -50,5 +49,6 @@ class RationalT {
   void Read(std::istream& = std::cin);
   
  private:
-  int num_, den_;
+  int num_; //Atributos privados de la clase
+  int den_; //Atributos privados de la clase
 };
