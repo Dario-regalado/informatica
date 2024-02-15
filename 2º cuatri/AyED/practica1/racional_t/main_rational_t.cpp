@@ -55,6 +55,11 @@ int main()
   
   cout << "a / b: ";
   a.divide(b).write();
+
+
+  // PRACTICA MODIFICADA
+  cout << "a - 1: ";
+  a.SubUnity().write();
   
   return 0;
 }

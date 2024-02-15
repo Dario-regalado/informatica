@@ -121,6 +121,13 @@ rational_t::divide(const rational_t& r)
 }
 
 
+// PRACTICA MODIFICADA
+// substract a unity to the rational
+rational_t rational_t::SubUnity() {
+  return rational_t((num_ - den_), den_);
+}
+
+
 
 // E/S
 
@@ -142,3 +149,4 @@ rational_t::read(istream& is)
   is >> den_;
   assert(den_ != 0);
 }
+
