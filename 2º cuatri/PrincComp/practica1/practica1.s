@@ -16,7 +16,7 @@
 #}
 
 
-# Uso de los rgistros:
+# Uso de los registros:
 # $s0 <- x
 # $s1 <- es_primo
 # $s2 <- i
