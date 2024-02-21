@@ -84,7 +84,7 @@ do_while:
 #         std::cin >> error;
 li $v0, 7       # syscall para leer un número de punto flotante
 syscall
-mov.s $f20, $f0  # Mueve el valor leído a $f20
+mov.d $f20, $f0  # Mueve el valor leído a $f20
 
 
 
@@ -94,7 +94,7 @@ mov.s $f20, $f0  # Mueve el valor leído a $f20
 	bc1t	dentro_if 
 
 	li.d $f6, 1.0
-	c.le.d $f20, $f6
+	c.lt.d $f20, $f6
 	bc1f dentro_if
 
 #         else break;
@@ -148,10 +148,9 @@ while_fin:
 	la $a0, cadnt
 	syscall
 
-	li $v0, 5
-	cvt.w.d $f26, $f26
-	mfc1 	$t0, $f26
-	move $a0, $t0
+	li $v0, 1
+	cvt.w.d $f4, $f26
+	mfc1 	$a0, $f4
 	syscall
 
 #     std::cout << "\nPR1: Fin del programa.\n";
