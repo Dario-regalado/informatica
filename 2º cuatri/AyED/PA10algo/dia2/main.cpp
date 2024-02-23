@@ -34,7 +34,7 @@ int main() {
   }
 
 //calcula el modulo del vector no multiplos
-  int modulo=0;
+  double modulo=0;
   for (int i = 0; i < n; i++)  {
     modulo += no_multiplos[i] * no_multiplos[i];
   }
