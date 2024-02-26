@@ -44,6 +44,8 @@ public:
   void write(ostream& = cout) const;
   void read(istream& = cin);
 
+  T* filas() const;
+
 private:
   int m_, n_; // m_ filas y n_ columnas
   vector_t<T> v_;
@@ -193,4 +195,33 @@ matrix_t<T>::multiply(const matrix_t<T>& A, const matrix_t<T>& B)
       }
     }
   }
+}
+/*
+template <class T>
+T*
+matrix_t<T>::filas() const {
+  T* vector_fila = new T[get_m()];
+  for (int i = 1; i <= get_m(); i += 2) {
+    for (int j = 1; j <= get_n(); j++) {
+      vector_fila[j - 1] += at(i,j);
+    }
+  }
+  return vector_fila;
+}
+
+*/
+template <class T>
+T*
+matrix_t<T>::filas() const {
+  T* vector_fila = new T[get_m()];
+  int k{0};
+  for (int i = 1; i <= get_m(); i += 2) {
+    T suma{0};
+    for (int j = 1; j <= get_n(); j++) {
+      suma += at(i,j);
+    }
+    vector_fila[k] = suma;
+    ++k;
+  }
+  return vector_fila;
 }

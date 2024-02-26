@@ -23,8 +23,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
   rational_t a(1, 2), b(3);
 
   // FASE I
@@ -55,15 +54,24 @@ int main()
   
   cout << "Producto escalar de vector_t<rational_t>: " << scal_prod(x, y) << endl << endl;
   
-  
   // FASE III
-  matrix_t<double> A, B, C;
+  matrix_t<double> A, B, C, D;
   A.read(), A.write();
   B.read(), B.write();
+  D.read();
   
   C.multiply(A, B);
   cout << "Multiplicación de matrices A y B: " << endl;
   C.write();
+
+  cout << "suma de las filas pares de D: " << endl;
+  D.write();
+
+  for (int i = 0; i < D.get_n(); i++) {
+    cout << D.filas()[i] << " ";
+  }
+  cout << endl;
+
   
   return 0;
 }
