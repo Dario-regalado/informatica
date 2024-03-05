@@ -70,7 +70,7 @@ sparse_vector_t::sparse_vector_t(const int n) : pv_(n), nz_(0), n_(n) {}
 sparse_vector_t::sparse_vector_t(const vector_t<double>& v, 
                                  const double eps) : pv_(), nz_(0), n_(0) 
 {
-  for (size_t i = 0; i < v.get_size(); i++) {
+  for (int i = 0; i < v.get_size(); i++) {
     if (fabs(v[i]) > eps) {
       pv_[i].set(v[i], i);
       nz_++;
