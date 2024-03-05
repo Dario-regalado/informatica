@@ -68,18 +68,25 @@ sparse_vector_t::sparse_vector_t(const int n) : pv_(n), nz_(0), n_(n) {}
 
 // FASE II
 sparse_vector_t::sparse_vector_t(const vector_t<double>& v, 
-                                 const double eps) : pv_(), nz_(0), n_(0) 
+                                 const double eps) : pv_(), nz_(0), n_(v.get_size()) 
 {
-  for (size_t i = 0; i < v.get_size(); i++) {
-    if (fabs(v[i]) > eps) {
-      pv_[i].set(v[i], i);
+  for (int i{0}; i < v.get_size(); ++i) {
+    if (fabs(v[i]) > eps)
+      nz_++;
+  }
+  pv_.resize(nz_);
+  nz_ = 0;
+
+  for (int i = 0; i < v.get_size(); i++) {
+    if (fabs(v.at(i)) > eps) {
+      pv_[nz_].set(double(v.get_val(i)), i);
       nz_++;
     }
   }
 }
 
 // constructor de copia
-sparse_vector_t::sparse_vector_t(const sparse_vector_t& w) : pv_(NULL), nz_(0), n_(0)  {
+sparse_vector_t::sparse_vector_t(const sparse_vector_t& w) : pv_(), nz_(0), n_(0)  {
   *this = w;  // se invoca directamente al operator=
 }
 
