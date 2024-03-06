@@ -84,7 +84,7 @@ double Polynomial::Eval(const double x) const {
   double result{0.0};
   for (int i = 0; i < get_size(); i++) {
     if (IsNotZero(at(i))) {
-      result += pow(at(i)*x, i);
+      result += at(i)*pow(x, i);
     }
   }
   
@@ -94,8 +94,20 @@ double Polynomial::Eval(const double x) const {
 // Comparación si son iguales dos polinomios representados por vectores densos
 bool Polynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  assert((get_size() == pol.get_size()));
+  int nz1{0};
   for (int i = 0; i < get_size(); i++) {
+    if (IsNotZero(at(i)))
+    nz1++;
+  }
+  int nz2{0};
+  for (int i = 0; i < pol.get_size(); i++) {
+    if (IsNotZero(pol.at(i)))
+      nz2++;
+  }
+  if (nz1 != nz2)
+    differents = true;
+
+  for (int i = 0; i < std::min(get_size(), pol.get_size()); i++) {
     if (fabs(at(i) - pol.at(i)) > eps)
       differents = true;
   }
@@ -134,7 +146,7 @@ std::ostream& operator<<(std::ostream& os, const SparsePolynomial& p) {
 double SparsePolynomial::Eval(const double x) const {
   double result{0.0};
   for (int i = 0; i < get_nz(); i++) {
-    result += pow(x*at(i).get_val(), at(i).get_inx());
+    result += pow(x, at(i).get_inx()) * at(i).get_val();
   }
   
   return result;
@@ -144,9 +156,11 @@ double SparsePolynomial::Eval(const double x) const {
 bool SparsePolynomial::IsEqual(const SparsePolynomial& spol,
 			                         const double eps) const {
   bool differents = false;
-  assert((get_nz() == spol.get_nz()));
-  for (int i = 0; i < get_nz(); i++) {
-    if (fabs(at(i).get_val() - spol.at(i).get_val()) > eps && at(i).get_inx() != spol.at(i).get_inx())
+  if ((get_nz() != spol.get_nz())) 
+    differents = true;
+
+  for (int i = 0; i < std::min(get_nz(), spol.get_nz()); i++) {
+    if (fabs(at(i).get_val() - spol.at(i).get_val()) > eps || at(i).get_inx() != spol.at(i).get_inx())
       differents = true;
   }
   return !differents;
@@ -161,15 +175,16 @@ bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
     if (IsNotZero(pol.at(i)))
       nz++;
   }
-  assert(nz == get_nz());
-  assert(pol.get_size() == get_n());
-  int nz{0};
+  if (nz != get_nz())
+    differents = true;
 
-  for (int i = 0; i < pol.get_size(); i++) {
+  nz = 0;
+  for (int i = 0; i < std::min(pol.get_size(), get_nz()); i++) {
     if (IsNotZero(pol.at(i))) {
-      if (fabs(at(i).get_val() - pol.at(i)) > eps 
-          && at(i).get_inx() != i)
+      if (fabs(at(nz).get_val() - pol.at(i)) > eps || at(nz).get_inx() != i) {
           differents = true;
+      }
+      nz++;
     }
   }
   
