@@ -82,14 +82,24 @@ std::ostream& operator<<(std::ostream& os, const Polynomial& p) {
 // Evaluación de un polinomio representado por vector denso
 double Polynomial::Eval(const double x) const {
   double result{0.0};
-  // poner el código aquí
+  for (int i = 0; i < get_size(); i++) {
+    if (IsNotZero(at(i))) {
+      result += pow(at(i)*x, i);
+    }
+  }
+  
   return result;
 }
 
 // Comparación si son iguales dos polinomios representados por vectores densos
 bool Polynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  assert((get_size() == pol.get_size()));
+  for (int i = 0; i < get_size(); i++) {
+    if (fabs(at(i) - pol.at(i)) > eps)
+      differents = true;
+  }
+  
   return !differents;
 }
 
@@ -123,15 +133,22 @@ std::ostream& operator<<(std::ostream& os, const SparsePolynomial& p) {
 // Evaluación de un polinomio representado por vector disperso
 double SparsePolynomial::Eval(const double x) const {
   double result{0.0};
-  // poner el código aquí
+  for (int i = 0; i < get_nz(); i++) {
+    result += pow(x*at(i).get_val(), at(i).get_inx());
+  }
+  
   return result;
 }
 
 // Comparación si son iguales dos polinomios representados por vectores dispersos
-bool SparsePolynomial::IsEqual(const SparsePolynomial& spol
-			       , const double eps) const {
+bool SparsePolynomial::IsEqual(const SparsePolynomial& spol,
+			                         const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  assert((get_nz() == spol.get_nz()));
+  for (int i = 0; i < get_nz(); i++) {
+    if (fabs(at(i).get_val() - spol.at(i).get_val()) > eps && at(i).get_inx() != spol.at(i).get_inx())
+      differents = true;
+  }
   return !differents;
 }
 
@@ -139,7 +156,23 @@ bool SparsePolynomial::IsEqual(const SparsePolynomial& spol
 // vector disperso y vector denso
 bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   bool differents = false;
-  // poner el código aquí
+  int nz{0};
+  for (int i = 0; i < pol.get_size(); i++) {
+    if (IsNotZero(pol.at(i)))
+      nz++;
+  }
+  assert(nz == get_nz());
+  assert(pol.get_size() == get_n());
+  int nz{0};
+
+  for (int i = 0; i < pol.get_size(); i++) {
+    if (IsNotZero(pol.at(i))) {
+      if (fabs(at(i).get_val() - pol.at(i)) > eps 
+          && at(i).get_inx() != i)
+          differents = true;
+    }
+  }
+  
   return !differents;
 }
 
