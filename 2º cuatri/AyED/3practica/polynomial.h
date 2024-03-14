@@ -55,6 +55,10 @@ class SparsePolynomial : public sparse_vector_t {
   double Eval(const double) const;
   bool IsEqual(const SparsePolynomial&, const double = EPS) const;
   bool IsEqual(const Polynomial&, const double = EPS) const;
+
+  //modificacion
+  void WriteConsecutives(const double = EPS) const;
+
 };
 
 // E/S
@@ -189,6 +193,27 @@ bool SparsePolynomial::IsEqual(const Polynomial& pol, const double eps) const {
   }
   
   return !differents;
+}
+
+// modificacion
+void SparsePolynomial::WriteConsecutives(const double) const {
+  bool repeticiones = false; // variable para comprobar la repeticion en la impresion de los monomios consecutivos
+
+  for (int i = 1; i < get_nz(); i++) {
+    if (at(i - 1).get_inx() != at(i).get_inx() - 1)
+      repeticiones = false; // si los indices de los grados son distintos, no hay repeticiones de monomios consecutivos
+
+    // comprobamos los grados consecutivos, e imprimimos
+    if (at(i - 1).get_inx() == at(i).get_inx() - 1) {
+      if (repeticiones == true) {
+        std::cout << at(i).get_val() << ", ";
+        repeticiones = 0;
+      } else {
+        std::cout << at(i - 1).get_val() << ", " << at(i).get_val() << ", ";
+        repeticiones = true;
+      }
+    }
+  }
 }
 
 

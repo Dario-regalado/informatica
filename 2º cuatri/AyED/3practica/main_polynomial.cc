@@ -90,5 +90,11 @@ int main()
   cout << "sp3 == p2? " << (sp3.IsEqual(p2) ? "true" : "false") << endl;
   cout << endl;
 
+
+  //modificacion
+  cout << endl << endl;
+  cout << "los monomios consecutivos de sp1 son: "; sp1.WriteConsecutives(); cout << endl;
+  cout << "los monomios consecutivos de sp2 son: "; sp2.WriteConsecutives(); cout << endl;
+  cout << "los monomios consecutivos de sp3 son: "; sp3.WriteConsecutives(); cout << endl;
   return 0;
 }
