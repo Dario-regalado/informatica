@@ -98,17 +98,31 @@ unsigned GRAFO::Es_dirigido()
 
 void GRAFO::Info_Grafo()
 {
-
+    cout << "numero de nodos: " << n << endl;
+    cout << "numero de arcos: " << m << endl;
+    cout << "el grafo es " << (dirigido ? "dirigido" : "no dirigido") << endl;
 }
 
 void Mostrar_Lista(vector<LA_nodo> L)
 {
-
+    for (int i{0}; i < L.size(); i++) {
+        cout << i << ": ";
+        for (int j{0}; j < L[i].size(); j++) {
+            cout << "[" << L[i][j].j << ", " << L[i][j].c << "] ";
+    }   
+    cout << '\n';
+  }
 }
 
 void GRAFO :: Mostrar_Listas (int l)
 {
-
+    if (l == 1)
+        Mostrar_Lista(LS);
+    else if (l == -1)
+        Mostrar_Lista(LP);
+    else
+        Mostrar_Lista(A);
+    
 }
 
 void GRAFO::Mostrar_Matriz() //Muestra la matriz de adyacencia, tanto los nodos adyacentes como sus costes
