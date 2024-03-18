@@ -1,7 +1,7 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
-// VERSION: 2.0
+// AUTOR: Dario Regalado Gonzalez
+// FECHA: 18 marzo 2024
+// EMAIL: alu0101640150@ull.edu.es
+// VERSION: 3.1
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 4
 // ESTILO: Google C++ Style Guide
@@ -50,8 +50,16 @@ bool IsNotZero(const double val, const double eps = EPS) {
 // FASE II
 // constructor
 SllPolynomial::SllPolynomial(const vector_t<double>& v, const double eps) {
-  // poner el código aquí
-  
+  SllPolyNode* aux = get_head();
+  for (int i = 0; i < v.get_size(); i++) {
+    if (fabs(v.at(i)) > eps) {
+      pair_double_t temp(v[i], i);
+      SllPolyNode nuevo_nodo;
+      nuevo_nodo.set_data(temp);
+      aux = aux->get_next();
+      nuevo_nodo.set_next(aux);
+    }
+  }
 }
 
 

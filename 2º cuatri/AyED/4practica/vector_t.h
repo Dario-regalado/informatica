@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Dario Regalado Gonzalez
+// FECHA: 18 marzo 2024
+// EMAIL: alu0101640150@ull.edu.es
 // VERSION: 3.1
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 4
