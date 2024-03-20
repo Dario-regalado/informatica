@@ -9,24 +9,41 @@
 #include <string.h>
 #include "grafo.h"
 
+char getch();
+void pressanykey();
+void clrscr();
+
 
 void menu (unsigned dirigido, char &opcion)
 //Expresion del menu de opciones segun sea un grafo dirigido o no dirigido
 {
-    cout << "Optimiza!cion en Grafos, 2021-2022 NOMBRE DEL ESTUDIANTE" << endl;
+    cout << "Optimiza!cion en Grafos, 2023-2024 DarÃ­o Regalado GonzÃ¡lez" << endl;
     cout << "c. [c]argar grafo desde fichero" << endl;
     if (dirigido == 0) //Grafo no dirigido
             {
             cout << "i. Mostrar [i]nformacion basica del grafo" << endl;
             cout << "a. Mostrar la lista de [a]dyacencia del grafo" << endl;
-	    //Aquí se añaden más opciones al menú del grafo no dirigido
+            cout << "y. Mostrar la matriz de ad[y]acencia del grafo" << endl;
+            cout << "m. Realizar un recorrido en a[m]plitud del grafo desde un nodo" << endl;
+            cout << "r. Realizar un recorrido en p[rJofundidad del grafo desde un nodo" << endl;
+            cout << "o. Mostrar c[o]mponentes conexas del grafo" << endl;
+            cout << "k. Mostrar Ã¡rbol generador minimo coste, [k]ruskal" << endl;
+            cout << "p. Mostrar Ã¡rbol generador minimo coste, [p]rim" << endl;
+	    //Aquï¿½ se aï¿½aden mï¿½s opciones al menï¿½ del grafo no dirigido
             }
     else
             {
             cout << "i. Mostrar [i]nformacion basica del grafo" << endl;
             cout << "s. Mostrar la lista de [s]ucesores del grafo" << endl;
-            cout << "p. Mostrar la lista de [p]redecesores del grafo" << endl;
-	    //Aquí se añaden más opciones al menú del grafo dirigido
+            cout << "e. Mostrar la lista de [p]redecesores del grafo" << endl;
+            cout << "y. Mostrar la matriz de ad[y]acencia del grafo" << endl;
+            cout << "m. Realizar un recorrido en a[m]plitud del grafo desde un nodo porsucesores" << endl;
+            cout << "r. Realizar un recorrido en p[r]ofundidad del grafo desde un nodo plor sucesores" << endl;
+            cout << "d. Caminos mÃ­nimos: [d]ijkstra" << endl;
+            cout << "v. Caminos mÃ­nimos: Comparamos Dijkstra [v]s BellmanFordEnd" << endl;
+            cout << "f. Caminos mÃ­nimos: [f]loyd-warshall" << endl;
+
+	    //Aquï¿½ se aï¿½aden mï¿½s opciones al menï¿½ del grafo dirigido" << endl;
             };
     cout << "q. Finalizar el programa" << endl;
     cout << "Introduce la letra de la accion a ejecutar  > ";
@@ -34,7 +51,7 @@ void menu (unsigned dirigido, char &opcion)
 };
 
 
-// El principal es simplemente un gestor de menu, diferenciando acciones para dirigido y para no dirigido, y un menú inicial si no hay un grafo cargado
+// El principal es simplemente un gestor de menu, diferenciando acciones para dirigido y para no dirigido, y un menï¿½ inicial si no hay un grafo cargado
 int main(int argc, char *argv[])
 {
     int error_apertura;
@@ -93,7 +110,69 @@ int main(int argc, char *argv[])
                     clrscr();
                     break;
 
-		 //Situar aquí el resto de opciones del menú
+                case 's' :
+                    clrscr();
+		    cout << "lista de sucesores del grafo " << nombrefichero << endl;
+                    G.Mostrar_Listas(1);
+                    pressanykey();
+                    clrscr();
+                    break;
+
+                case 'e' :
+                    clrscr();
+		    cout << "lista de predecesores del grafo " << nombrefichero << endl;
+                    G.Mostrar_Listas(-1);
+                    pressanykey();
+                    clrscr();
+                    break;
+
+                case 'y' :
+                    clrscr();
+		    cout << "Matriz de adyacencia del grafo " << nombrefichero << endl;
+                    G.Mostrar_Listas(0);
+                    pressanykey();
+                    clrscr();
+                    break;
+
+                case 'm' :
+                    clrscr();
+		    cout << "Grafo cargado desde " << nombrefichero << endl;
+                    G.RecorridoAmplitud();
+                    pressanykey();
+                    clrscr();
+                    break;
+
+                case 'r' :
+                    clrscr();
+		    cout << "Recorrido en p[rJofundidad del grafo " << nombrefichero << endl;
+                    G.RecorridoProfundidad();
+                    pressanykey();
+                    clrscr();
+                    break;
+
+                case 'o' :
+                    clrscr();
+		    cout << "Grafo cargado desde " << nombrefichero << endl;
+                    G.Info_Grafo();
+                    pressanykey();
+                    clrscr();
+                    break;
+
+                case 'k' :
+                    clrscr();
+		    cout << "Grafo cargado desde " << nombrefichero << endl;
+                    G.Info_Grafo();
+                    pressanykey();
+                    clrscr();
+                    break;
+                case 'p' :
+                    clrscr();
+		    cout << "Grafo cargado desde " << nombrefichero << endl;
+                    G.Info_Grafo();
+                    pressanykey();
+                    clrscr();
+                    break;
+		 //Situar aquï¿½ el resto de opciones del menï¿½
             }
     }
     while (opcion != 'q');
@@ -101,3 +180,64 @@ int main(int argc, char *argv[])
     cout << "Fin del programa" << endl;
 	return(0);
 };
+
+
+
+
+#ifdef _WIN32
+    #include <conio.h>
+#else
+    #include <unistd.h>
+    #include <termios.h>
+    char getch() {
+        char buf = 0;
+        struct termios old = {0};
+        if (tcgetattr(0, &old) < 0)
+            perror("tcsetattr()");
+        old.c_lflag &= ~ICANON;
+        old.c_lflag &= ~ECHO;
+        old.c_cc[VMIN] = 1;
+        old.c_cc[VTIME] = 0;
+        if (tcsetattr(0, TCSANOW, &old) < 0)
+            perror("tcsetattr ICANON");
+        if (read(0, &buf, 1) < 0)
+            perror("read()");
+        old.c_lflag |= ICANON;
+        old.c_lflag |= ECHO;
+        if (tcsetattr(0, TCSADRAIN, &old) < 0)
+            perror ("tcsetattr ~ICANON");
+        return (buf);
+    }
+#endif
+
+void pressanykey() {
+    std::cout << "Presiona cualquier tecla para continuar...";
+    getch();
+    std::cout << "\n";
+}
+
+#ifdef _WIN32
+    #include <windows.h>
+    void clrscr() {
+        COORD topLeft  = { 0, 0 };
+        HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+        CONSOLE_SCREEN_BUFFER_INFO screen;
+        DWORD written;
+
+        GetConsoleScreenBufferInfo(console, &screen);
+        FillConsoleOutputCharacterA(
+            console, ' ', screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+        );
+        FillConsoleOutputAttribute(
+            console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE,
+            screen.dwSize.X * screen.dwSize.Y, topLeft, &written
+        );
+        SetConsoleCursorPosition(console, topLeft);
+    }
+#else
+    #include <stdio.h>
+    void clrscr() {
+        printf("\033[H\033[J");
+    }
+#endif
+

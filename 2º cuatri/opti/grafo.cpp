@@ -159,14 +159,31 @@ void GRAFO::RecorridoProfundidad()
     //definimos las variable del nodo inicial
     unsigned i;
     //solicitamos por pantalla el nodo inicial i
-    cout << "soliicitud del nodo inicial: " << endl;
+    cout << "Vamos a construir un recorrido en profundidad\n";
+    cout << "Elija nodo de partida? [1- " << n << "]: ";
     //almacenamos el valor en el nodo inicial i
     cin >> (unsigned&)i;
 
     //realizamos el recorrido en profundidad
     dfs_num(i-1, LS, visitado, prenum, prenum_ind, postnum, postnum_ind);
+    
     //imprimir los vectores
-
+    cout << "Orden de visita de los nodos en preorden\n";
+    for (unsigned k = 0; k < prenum.size(); k++) {
+        if (k != prenum.size() -1){
+            cout << "[" << prenum[k] << "] -> ";
+        } else
+        cout << "[" << prenum[k] << "]";
+    }
+    cout << "Orden de visita de los nodos en postorden\n";
+    for (unsigned y = 0; y < postnum.size(); y++) {
+        if (y != postnum.size() -1){
+            cout << "[" << postnum[y] << "] -> ";
+        } else
+        cout << "[" << postnum[y] << "]";
+    }
+    cout << "Presione una tecla para continuar . . . ";
+    
 }
 
 void GRAFO::bfs_num(	unsigned i, //nodo desde el que realizamos el recorrido en amplitud
@@ -211,18 +228,30 @@ void GRAFO::bfs_num(	unsigned i, //nodo desde el que realizamos el recorrido en 
 
 void GRAFO::RecorridoAmplitud() //Construye un recorrido en amplitud desde un nodo inicial
 {
-    //definimos los vectores perd y d
+    //definimos los vectores pred y d
     vector<unsigned> pred;
     vector<unsigned> d;
     //definimos la variable del nodo inicial i
     unsigned i;
     //solicitamos por pantalla el nodo inicial
-    cout << "dame el nodo inicial: " << endl;
+    cout << "Vamo a construir un recorrido en amplitud" << endl;
+    cout << "Elije nodo de partida? [1- " << n << "]: ";
     cin >> (unsigned&)i;
+    cout << "Nodo inicial: " << i << endl << endl;
     //realizamos el recorrido en amplitud
     bfs_num(i-1, LS, pred, d);
 
     //imprimir por pantalla la informacion
+    cout << "Nodos según distancia al nodo inicial en número de aristas" << endl;
+    for (int b = 0; b < d.size(); b++)
+    {
+        cout << "Distancia " << b << " aristas: ";
+        for (int c = 0; c < d.size(); c++) {
+            cout << d[c] << " ";
+        }
+         
+    }
+    
 
 }
 
