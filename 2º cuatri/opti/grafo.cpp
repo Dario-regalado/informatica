@@ -13,7 +13,6 @@ void GRAFO :: destroy()
 	for (unsigned i=0; i< n; i++)
     {
 		LS[i].clear();
-		A[i].clear();
 		if (dirigido == 1)
         {
             LP[i].clear();
@@ -21,7 +20,6 @@ void GRAFO :: destroy()
 	}
 	LS.clear();
 	LP.clear();
-	A.clear();
 
 }
 
@@ -120,9 +118,6 @@ void GRAFO :: Mostrar_Listas (int l)
         Mostrar_Lista(LS);
     else if (l == -1)
         Mostrar_Lista(LP);
-    else
-        Mostrar_Lista(A);
-    
 }
 
 void GRAFO::Mostrar_Matriz() //Muestra la matriz de adyacencia, tanto los nodos adyacentes como sus costes
