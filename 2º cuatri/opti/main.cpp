@@ -23,12 +23,8 @@ void menu (unsigned dirigido, char &opcion)
             {
             cout << "i. Mostrar [i]nformacion basica del grafo" << endl;
             cout << "a. Mostrar la lista de [a]dyacencia del grafo" << endl;
-            cout << "y. Mostrar la matriz de ad[y]acencia del grafo" << endl;
             cout << "m. Realizar un recorrido en a[m]plitud del grafo desde un nodo" << endl;
             cout << "r. Realizar un recorrido en p[rJofundidad del grafo desde un nodo" << endl;
-            cout << "o. Mostrar c[o]mponentes conexas del grafo" << endl;
-            cout << "k. Mostrar árbol generador minimo coste, [k]ruskal" << endl;
-            cout << "p. Mostrar árbol generador minimo coste, [p]rim" << endl;
 	    //Aqu� se a�aden m�s opciones al men� del grafo no dirigido
             }
     else
@@ -36,12 +32,9 @@ void menu (unsigned dirigido, char &opcion)
             cout << "i. Mostrar [i]nformacion basica del grafo" << endl;
             cout << "s. Mostrar la lista de [s]ucesores del grafo" << endl;
             cout << "e. Mostrar la lista de [p]redecesores del grafo" << endl;
-            cout << "y. Mostrar la matriz de ad[y]acencia del grafo" << endl;
             cout << "m. Realizar un recorrido en a[m]plitud del grafo desde un nodo porsucesores" << endl;
             cout << "r. Realizar un recorrido en p[r]ofundidad del grafo desde un nodo plor sucesores" << endl;
-            cout << "d. Caminos mínimos: [d]ijkstra" << endl;
-            cout << "v. Caminos mínimos: Comparamos Dijkstra [v]s BellmanFordEnd" << endl;
-            cout << "f. Caminos mínimos: [f]loyd-warshall" << endl;
+
 
 	    //Aqu� se a�aden m�s opciones al men� del grafo dirigido" << endl;
             };
@@ -126,14 +119,6 @@ int main(int argc, char *argv[])
                     clrscr();
                     break;
 
-                case 'y' :
-                    clrscr();
-		    cout << "Matriz de adyacencia del grafo " << nombrefichero << endl;
-                    G.Mostrar_Listas(0);
-                    pressanykey();
-                    clrscr();
-                    break;
-
                 case 'm' :
                     clrscr();
 		    cout << "Grafo cargado desde " << nombrefichero << endl;
@@ -149,30 +134,6 @@ int main(int argc, char *argv[])
                     pressanykey();
                     clrscr();
                     break;
-
-                case 'o' :
-                    clrscr();
-		    cout << "Grafo cargado desde " << nombrefichero << endl;
-                    G.Info_Grafo();
-                    pressanykey();
-                    clrscr();
-                    break;
-
-                case 'k' :
-                    clrscr();
-		    cout << "Grafo cargado desde " << nombrefichero << endl;
-                    G.Info_Grafo();
-                    pressanykey();
-                    clrscr();
-                    break;
-                case 'p' :
-                    clrscr();
-		    cout << "Grafo cargado desde " << nombrefichero << endl;
-                    G.Info_Grafo();
-                    pressanykey();
-                    clrscr();
-                    break;
-		 //Situar aqu� el resto de opciones del men�
             }
     }
     while (opcion != 'q');

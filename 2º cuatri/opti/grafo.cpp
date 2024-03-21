@@ -125,8 +125,9 @@ void GRAFO::Mostrar_Matriz() //Muestra la matriz de adyacencia, tanto los nodos 
 
 }
 
-void GRAFO::dfs_num(unsigned i, vector<LA_nodo>  L, vector<bool> &visitado, vector<unsigned> &prenum, 
-                    unsigned &prenum_ind, vector<unsigned> &postnum, unsigned &postnum_ind) //Recorrido en profundidad recursivo con recorridos enum y postnum
+void GRAFO::dfs_num(unsigned i, vector<LA_nodo>  L, vector<bool> &visitado, 
+                    vector<unsigned> &prenum, unsigned &prenum_ind, 
+                    vector<unsigned> &postnum, unsigned &postnum_ind) //Recorrido en profundidad recursivo con recorridos enum y postnum
 {
 	visitado[i] = true;
     prenum[prenum_ind++]=i;//asignamos el orden de visita prenum que corresponde el nodo i
@@ -147,17 +148,17 @@ void GRAFO::RecorridoProfundidad()
     vector<unsigned> prenum;
     prenum.resize(n, 0);
     vector<unsigned> postnum;
-    prenum.resize(n, 0);
+    postnum.resize(n, 0);
     // inicialiczamos los index
-    unsigned prenum_ind;
-    unsigned postnum_ind;
+    unsigned prenum_ind = 0;
+    unsigned postnum_ind = 0;
     //definimos las variable del nodo inicial
     unsigned i;
     //solicitamos por pantalla el nodo inicial i
     cout << "Vamos a construir un recorrido en profundidad\n";
     cout << "Elija nodo de partida? [1- " << n << "]: ";
     //almacenamos el valor en el nodo inicial i
-    cin >> (unsigned&)i;
+    cin >> i;
 
     //realizamos el recorrido en profundidad
     dfs_num(i-1, LS, visitado, prenum, prenum_ind, postnum, postnum_ind);
@@ -170,14 +171,14 @@ void GRAFO::RecorridoProfundidad()
         } else
         cout << "[" << prenum[k] << "]";
     }
-    cout << "Orden de visita de los nodos en postorden\n";
-    for (unsigned y = 0; y < postnum.size(); y++) {
-        if (y != postnum.size() -1){
-            cout << "[" << postnum[y] << "] -> ";
+    cout << "\nOrden de visita de los nodos en postorden\n";
+    for (unsigned k = 0; k < postnum.size(); k++) {
+        if (k != postnum.size() -1){
+            cout << "[" << postnum[k] << "] -> ";
         } else
-        cout << "[" << postnum[y] << "]";
+        cout << "[" << postnum[k] << "]";
     }
-    cout << "Presione una tecla para continuar . . . ";
+    cout << "\nPresione una tecla para continuar . . . \n";
     
 }
 
@@ -229,31 +230,32 @@ void GRAFO::RecorridoAmplitud() //Construye un recorrido en amplitud desde un no
     //definimos la variable del nodo inicial i
     unsigned i;
     //solicitamos por pantalla el nodo inicial
-    cout << "Vamo a construir un recorrido en amplitud" << endl;
-    cout << "Elije nodo de partida? [1- " << n << "]: ";
+    cout << "Vamos a construir un recorrido en amplitud" << endl;
+    cout << "Elije nodo de partida? [1 - " << n << "]: ";
     cin >> (unsigned&)i;
-    cout << "Nodo inicial: " << i << endl << endl;
+    cout << "Nodo inicial: " << i << endl;
     //realizamos el recorrido en amplitud
     bfs_num(i-1, LS, pred, d);
 
     //imprimir por pantalla la informacion
-    cout << "Nodos según distancia al nodo inicial en número de aristas" << endl;
-    for (int b = 0; b < d.size(); b++)
+    cout << "\nNodos según distancia al nodo inicial en número de aristas";
+    for (unsigned k = 0; k <= d.back(); k++)
     {
-        cout << "Distancia " << b << " aristas: ";
-        for (int c = 0; c < d.size(); c++) {
-            cout << d[c] << " ";
+        cout << "\nDistancia " << k << " aristas:";
+        for (unsigned c = 0; c < d.size(); c++) {
+            if (d[c] == k) {
+                cout << " " << c+1;
+            }
         }
-         
     }
-    
-
+    cout << "\nRamas de conexion en el recorrido";
+    for (unsigned k = 0; k < pred.size(); k++)
+    {
+        cout << "\n" << k+1;
+        unsigned j = k;
+        while (j != pred[j]) {
+            cout << " - " << pred[j]+1;
+            j = pred[j];
+        }
+    }
 }
-
-
-
-
-
-
-
-
