@@ -38,6 +38,9 @@ template<class T> class stack_v_t {
   // E/S
   std::ostream& write(std::ostream& = std::cout) const;
 
+  //modificacion
+  void swap();
+
  private:
   vector_t<T> v_;
   int         top_;
@@ -76,5 +79,14 @@ template<class T> std::ostream& stack_v_t<T>::write(std::ostream& os) const {
   return os;
 }
 
+template <class T>
+void stack_v_t<T>::swap() {
+  T temp = top();
+  pop();
+  T temp2 = top();
+  pop();
+  push(temp);
+  push(temp2);
+}
 
 #endif  // STACKV_H_

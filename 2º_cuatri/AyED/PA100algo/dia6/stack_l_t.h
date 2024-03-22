@@ -36,6 +36,8 @@ template<class T> class stack_l_t {
 
   //modificacion
   void swap();
+  stack_l_t<T> invert_stack();
+  stack_l_t<T> eliminar_impar();
 
 private:
   dll_t<T> l_;
@@ -83,6 +85,28 @@ void stack_l_t<T>::swap() {
   push(temp);
   push(temp2);
 }
+
+template <class T>
+stack_l_t<T> stack_l_t<T>::invert_stack() {
+  stack_l_t<T> pila_nueva;
+  while (!empty()) {
+    pila_nueva.push(top());
+    pop();
+  }
+  return pila_nueva;
+}
+
+template <class T>
+stack_l_t<T> stack_l_t<T>::eliminar_impar() {
+  stack_l_t<T> pila_aux ;
+  while (!empty()) {
+    pop(); 
+    pila_aux.push(top());
+    pop();
+  }
+  return pila_aux;
+}
+
 
 
 

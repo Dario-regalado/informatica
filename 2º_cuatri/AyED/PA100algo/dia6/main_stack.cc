@@ -42,11 +42,22 @@ int main(void) {
   }
   cout << endl;
 
+	pila_lista.swap();
+  pila_lista.write();
+
+  stack_l_t<char> pila_invertida = pila_lista.invert_stack();
+  pila_invertida.write();
+
+  stack_l_t<char> pila_impar = pila_invertida.eliminar_impar();
+  pila_impar.write();
+
+/*
   while (!pila_lista.empty()) {
     pila_lista.pop();
     pila_lista.write();
     cout << endl;
   }
-	
+*/
+
   return 0;
 }
