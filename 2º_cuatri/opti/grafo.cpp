@@ -141,43 +141,29 @@ void GRAFO::dfs_num(unsigned i, vector<LA_nodo>  L, vector<bool> &visitado,
 
 void GRAFO::RecorridoProfundidad()
 {
-    //definimos e inicializamos el vector de visita de los nodos
     vector<bool> visitado;
-    visitado.resize(n, false);
-    // definimos e inicializamos elos vectores de prenum y postnum
-    vector<unsigned> prenum;
-    prenum.resize(n, 0);
-    vector<unsigned> postnum;
-    postnum.resize(n, 0);
-    // inicialiczamos los index
-    unsigned prenum_ind = 0;
-    unsigned postnum_ind = 0;
-    //definimos las variable del nodo inicial
-    unsigned i;
-    //solicitamos por pantalla el nodo inicial i
-    cout << "Vamos a construir un recorrido en profundidad\n";
-    cout << "Elija nodo de partida? [1- " << n << "]: ";
-    //almacenamos el valor en el nodo inicial i
-    cin >> i;
+  vector<unsigned> prenum;
+  vector<unsigned> postnum;
+  unsigned prenum_ind{0};
+  unsigned postnum_ind{0};
 
-    //realizamos el recorrido en profundidad
-    dfs_num(i-1, LS, visitado, prenum, prenum_ind, postnum, postnum_ind);
-    
-    //imprimir los vectores
-    cout << "Orden de visita de los nodos en preorden\n";
-    for (unsigned k = 0; k < prenum.size(); k++) {
-        if (k != prenum.size() -1){
-            cout << "[" << prenum[k] << "] -> ";
-        } else
-        cout << "[" << prenum[k] << "]";
-    }
-    cout << "\nOrden de visita de los nodos en postorden\n";
-    for (unsigned k = 0; k < postnum.size(); k++) {
-        if (k != postnum.size() -1){
-            cout << "[" << postnum[k] << "] -> ";
-        } else
-        cout << "[" << postnum[k] << "]";
-    }
+  visitado.resize(n, false);
+  prenum.resize(n, 0);
+  postnum.resize(n, 0);
+
+  unsigned i;
+  cout << "Recorrido de Profundidad\n";
+  do {
+    cout << "El valor del nodo inicial [1-" << n << "]: ";
+    cin >> i;
+  } while (i == 0 || i > n);
+
+  dfs_num(i - 1, LS, visitado, prenum, prenum_ind, postnum, postnum_ind);
+  cout << "Orden de visita de los nodos en preorden\n ";
+  Mostrar_Lista(prenum, visitado);
+  cout << "Orden de visita de los nodos en postorden\n ";
+  Mostrar_Lista(postnum, visitado);
+}
     cout << "\nPresione una tecla para continuar . . . \n";
     
 }
