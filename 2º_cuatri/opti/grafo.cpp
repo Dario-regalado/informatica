@@ -101,23 +101,28 @@ void GRAFO::Info_Grafo()
     cout << "el grafo es " << (dirigido ? "dirigido" : "no dirigido") << endl;
 }
 
-void Mostrar_Lista(vector<LA_nodo> L)
-{
-    for (int i{0}; i < L.size(); i++) {
-        cout << i << ": ";
-        for (int j{0}; j < L[i].size(); j++) {
-            cout << "[" << L[i][j].j << ", " << L[i][j].c << "] ";
-    }   
-    cout << '\n';
+void Mostrar_Lista(const vector<unsigned> &L, const vector<bool> &visitado) {
+  ulong num_visited{0};
+  for (const auto &visited : visitado) {
+    if (visited) {
+      num_visited++;
+    }
   }
+  for (ulong i{0}; i < num_visited; i++) {
+    if (i + 1 == num_visited)
+      cout << "[" << L[i] + 1 << "]";
+    else
+      cout << "[" << L[i] + 1 << "] -> ";
+  }
+  cout << '\n';
 }
 
-void GRAFO :: Mostrar_Listas (int l)
-{
-    if (l == 1)
-        Mostrar_Lista(LS);
-    else if (l == -1)
-        Mostrar_Lista(LP);
+void GRAFO::Mostrar_Listas(int l) {
+  if (l == 1) {
+    Mostrar_Lista(LS);
+  } else if (l == -1) {
+    Mostrar_Lista(LP);
+  }
 }
 
 void GRAFO::Mostrar_Matriz() //Muestra la matriz de adyacencia, tanto los nodos adyacentes como sus costes
@@ -163,7 +168,6 @@ void GRAFO::RecorridoProfundidad()
   Mostrar_Lista(prenum, visitado);
   cout << "Orden de visita de los nodos en postorden\n ";
   Mostrar_Lista(postnum, visitado);
-}
     cout << "\nPresione una tecla para continuar . . . \n";
     
 }
