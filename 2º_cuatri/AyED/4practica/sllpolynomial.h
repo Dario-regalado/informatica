@@ -129,44 +129,6 @@ bool SllPolynomial::IsEqual(const SllPolynomial& sllpol,
 
 // FASE IV
 // Generar nuevo polinomio suma del polinomio invocante mas otro polinomio
-/*
-void SllPolynomial::Sum(const SllPolynomial& sllpol,
-			SllPolynomial& sllpolsum,
-			const double eps) {
-  SllPolyNode *aux1 = get_head();
-  SllPolyNode *aux2 = sllpol.get_head();
-  SllPolyNode *aux3 = sllpolsum.get_head();
-
-  while (aux1 != NULL && aux2 != NULL) {
-    if (aux1->get_data().get_inx() == aux2->get_data().get_inx()) {
-      double acumulacion = aux1->get_data().get_val() + aux2->get_data().get_val();
-      pair_double_t temp(acumulacion, aux1->get_data().get_inx());
-      SllPolyNode *nuevo_nodo = new SllPolyNode (temp);
-      sllpolsum.insert_after(aux3, nuevo_nodo);
-      aux3 = nuevo_nodo;
-      aux1 = aux1->get_next();
-      aux2 = aux2->get_next();
-    } else {
-      if (aux1->get_data().get_inx() < aux2->get_data().get_inx()) {
-        double acumulacion = aux1->get_data().get_val();
-        pair_double_t temp(acumulacion, aux1->get_data().get_inx());
-        SllPolyNode *nuevo_nodo = new SllPolyNode (temp);
-        sllpolsum.insert_after(aux3, nuevo_nodo);
-        aux3 = nuevo_nodo;
-        aux1 = aux1->get_next();
-      } else {
-        double acumulacion = aux2->get_data().get_val();
-        pair_double_t temp(acumulacion, aux2->get_data().get_inx());
-        SllPolyNode *nuevo_nodo = new SllPolyNode (temp);
-        sllpolsum.insert_after(aux3, nuevo_nodo);
-        aux3 = nuevo_nodo;
-        aux2 = aux2->get_next();
-      }
-    }
-  }
-  
-}
-*/
 void SllPolynomial::Sum(const SllPolynomial& sllpol,
 			SllPolynomial& sllpolsum,
 			const double eps) {

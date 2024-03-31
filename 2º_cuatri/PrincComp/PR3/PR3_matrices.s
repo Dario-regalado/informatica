@@ -222,7 +222,7 @@ change_elto:
 # a0 -> mat
 # a1 -> indF
 # a2 -> indC
-# a3 -> valor
+# f12 -> valor
 
 	lw $t1, nCol($a0)	#   int numCol = mat->nCol;
 #   mat->elementos[indF * numCol + indC] = valor;
@@ -230,9 +230,9 @@ change_elto:
 	add $t0, $t0, $a2
 	mul $t0, $t0, sizeF
 	
-	lw $t5, elementos($a0)
+	la $t5, elementos($a0)
 	add $t5, $t0, $t5
-	sw $a3, 0($t5)
+	swc1 $f12, 0($t5)
 
 	jr $ra
 change_elto_fin:
@@ -240,10 +240,10 @@ change_elto_fin:
 # void swap(float* e1, float* e2) {
 swap:
 # Carga los valores de punto flotante de las direcciones de memoria
-  lwc1 $f0, 0($a0)  # temp1 = *e1
-  lwc1 $f1, 0($a1)  # temp2 = *e2
-  swc1 $f1, 0($a0)  # *e1 = temp2
-  swc1 $f0, 0($a1)  # *e2 = temp1
+  lwc1 $f4, 0($a0)  # temp1 = *e1
+  lwc1 $f5, 0($a1)  # temp2 = *e2
+  swc1 $f5, 0($a0)  # *e1 = temp2
+  swc1 $f4, 0($a1)  # *e2 = temp1
 
 	jr $ra
 swap_fin:
@@ -258,14 +258,14 @@ intercambia:
 
 	lw $t0, nCol($a0)	#   int numCol = mat->nCol;
 	lw $t1, nFil($a0) #   int numFil = mat->nFil;
-	lw $t2, elementos($a0) #   float* datos = mat->elementos;
+	la $t2, elementos($a0) #   float* datos = mat->elementos;
 #   float* e1 = &datos[indF * numCol + indC];
 	mul $t3, $a1, $t0
 	add $t3, $t3, $a2
 	mul $t3, $t3, sizeF
 
 	add $t3, $t2, $t3
-	lw $a0, 0($t3)
+	move $a0, $t3
 
 #   float* e2 = &datos[(numFil - indF - 1) * numCol + (numCol - indC - 1)];
 	sub $t3, $t1, $a1
@@ -277,7 +277,7 @@ intercambia:
 	mul $t3, $t3, sizeF
 
 	add $t3, $t3, $t2
-	lw $a1, 0($t3)
+	move $a1, $t3
 
 #   swap(e1, e2);
 	addi $sp, -4
@@ -294,14 +294,14 @@ intercambia_fin:
 find_min:
 	lw $t0, nCol($a0) #   int numCol = mat->nCol;
 	lw $t1, nFil($a0) #   int numFil = mat->nFil;
-	lw $t2, elementos($a0) #   float* datos = mat->elementos;
+	la $t2, elementos($a0) #   float* datos = mat->elementos;
 
 	l.s $f4, infinito	#   float min = infinito;
 	li $t3, -1	#   int fmin = -1;
 	li $t4, -1	#   int cmin = -1;
 
-	li $t5, 0 # f = 0
 #   for(int f = 0; f < numFil; f++) {
+	li $t5, 0 # f = 0
 bucle1_for_find_min:
 	bge $t5, $t1, bucle1_for_find_min_fin
 
@@ -311,12 +311,7 @@ bucle2_for_find_min:
 	bge $t6, $t0, bucle2_for_find_min_fin
 
 #       float valor = datos[f * numCol + c];
-	mul $t7, $t5, $t0
-	add $t7, $t7, $t6
-	mul $t7, $t7, sizeF
-	add $t7, $t2, $t7
-	lwc1 $f6, 0($t7)
-
+	l.s $f6, 0($t2)
 #       if (valor < min) {
 if_find_min:
 	c.lt.s $f6, $f4
@@ -329,6 +324,7 @@ if_find_min:
 if_find_min_fin:
 
 #     }
+	add $t2, sizeF
 	addi $t6, 1
 	b bucle2_for_find_min
 bucle2_for_find_min_fin:
@@ -338,28 +334,41 @@ bucle2_for_find_min_fin:
 bucle1_for_find_min_fin:
 
 #   return {min, fmin, cmin};
-	swc1 $f4, 0($a1)  # Guarda 'min' en la dirección de memoria apuntada por $a1
-  sw $t3, 0($a2)    # Guarda 'fmin' en la dirección de memoria apuntada por $a2
-  sw $t4, 0($a3)    # Guarda 'cmin' en la dirección de memoria apuntada por $a3
+	mov.s $f0, $f4  # Guarda 'min' en la dirección de memoria apuntada por $a0
+  move $v0, $t3    # Guarda 'fmin' en la dirección de memoria apuntada por $a1
+  move $v1, $t4    # Guarda 'cmin' en la dirección de memoria apuntada por $a2
 # }
 	jr $ra
 find_min_fin:
 
-main:
-	la $a0, mat1
-	jal find_min
-
-	li $v0, 10
-	syscall
 
 
 # int main() {
+main:
+
+	# s0 -> matTrabajo
+	# s1 -> opcion
+	# s2 -> matT
+	# s3 -> indFil
+	# s4 -> indCol
+	# f20 -> valorMin;
+	# s6 -> filaMin;
+	# s7 -> columnaMin;
+
 #   std::cout << std::fixed << std::setprecision(8);  // Ignorar
 #   std::cout << "\nComienza programa manejo matrices con funciones\n";
-# 
-#   structMat* matTrabajo = &mat1;
+	li $v0, 4
+	la $a0, str_titulo
+	syscall
+
+	la $s0, mat1	#   structMat* matTrabajo = &mat1;
 #   while(true) {
+while_true:
+
 #     print_mat(matTrabajo);
+	move $a0, $s0
+	jal	print_mat
+
 #     std::cout <<
 #     "(0) Terminar el programa\n"
 #     "(1) Cambiar la matriz de trabajo\n"
@@ -367,91 +376,269 @@ main:
 #     "(4) Intercambiar un elemento con su opuesto\n"
 #     "(7) Encontrar el minimo\n"
 #     "\nIntroduce opción elegida: ";
-# 
+	li $v0, 4
+	la $a0, str_menu
+	syscall
 #     int opcion;
 #     std::cin >> opcion;
-# 
-# 
+	li $v0, 5
+	syscall
+	move $s1, $v0
+
 #     if(opcion == 0) {
 #       break;
 #     }
-# 
+	li $t0, 0
+	beq $s1, $t0, while_true_fin
+
 #     // Opción 1 ////////////////////////////////////////////////////////////
 #     if(opcion == 1) {
+opcion_1:
+	li $t0, 1
+	bne $s1, $t0, opcion_3_4
 #       std::cout << "\nElije la matriz de trabajo (1..6): ";
+	li $v0, 4
+	la $a0, str_elijeMat
+	syscall
 #       int matT;
 #       std::cin >> matT;
+	li $v0, 5
+	syscall
+	move $s2, $v0
 #       if (matT == 1) {
 #         matTrabajo = &mat1;
 #         continue;  // volvemos al principio del bucle
 #       }
+case_mat_1:
+	li $t0, 1
+	bne $s2, $t0, case_mat_2
+	la $s0, mat1
+	b while_true
+
 #       if (matT == 2) {
 #         matTrabajo = &mat2;
 #         continue;  // volvemos al principio del bucle
 #       }
+case_mat_2:
+	li $t0, 2
+	bne $s2, $t0, case_mat_3
+	la $s0, mat2
+	b while_true
+
 #       if (matT == 3) {
 #         matTrabajo = &mat3;
 #         continue;  // volvemos al principio del bucle
 #       }
+case_mat_3:
+	li $t0, 3
+	bne $s2, $t0, case_mat_4
+	la $s0, mat3
+	b while_true
+
 #       if (matT == 4) {
 #         matTrabajo = &mat4;
 #         continue;  // volvemos al principio del bucle
 #       }
+case_mat_4:
+	li $t0, 4
+	bne $s2, $t0, case_mat_5
+	la $s0, mat4
+	b while_true
+
 #       if (matT == 5) {
 #         matTrabajo = &mat5;
 #         continue;  // volvemos al principio del bucle
 #       }
+case_mat_5:
+	li $t0, 5
+	bne $s2, $t0, case_mat_6
+	la $s0, mat5
+	b while_true
+
 #       if (matT == 6) {
 #         matTrabajo = &mat6;
 #         continue;  // volvemos al principio del bucle
 #       }
+case_mat_6:
+	li $t0, 6
+	bne $s2, $t0, case_mat_incorrecta
+	la $s0, mat6
+	b while_true
+
 #       std::cout << "Numero de matriz de trabajo incorrecto\n";
 #       continue;  // volvemos al principio del bucle
 #     }
-# 
+	li $v0, 4
+	la $a0, str_numMatMal
+	syscall
+	b while_true
+
+case_mat_incorrecta:
+	li $v0, 4
+	la $a0, str_numMatMal
+	syscall
+
+	b while_true
+
+
 #     // Opción 3  y  4 //////////////////////////////////////////////////////////
 #     if(opcion == 3 || opcion == 4) {
+opcion_3_4:
+	li $t0, 3
+	beq $s1, $t0, comienzo_codigo
+	li $t1, 4
+	bne $s1, $t1, opcion_7 
+
+comienzo_codigo:
 #       std::cout << "\nIndice de fila: ";
+	li $v0, 4
+	la $a0, str_indFila
+	syscall
+
 #       int indFil;
 #       std::cin >> indFil;
+	li $v0, 5
+	syscall
+	move $s3, $v0
+
 #       if ((indFil < 0) || (indFil >= matTrabajo->nFil)) {
+	bltz $s3, if_fila
+	lw $t0, nFil($s0)
+	bge $s3, $t0, if_fila
+	b if_fila_fin
+
 #         std::cerr << "Error: dimension incorrecta.  Numero de fila incorrecto\n";
 #         continue;  // volvemos al principio del bucle
 #       }
+if_fila:
+	li $v0, 4
+	la $a0, str_errorFil
+	syscall
+	b while_true
+
+if_fila_fin:
+
 #       std::cout << "Indice de columna: ";
 #       int indCol;
 #       std::cin >> indCol;
+	li $v0, 4
+	la $a0, str_indCol
+	syscall
+	li $v0, 5
+	syscall
+	move $s4, $v0
+
 #       if ((indCol < 0) || (indCol >= matTrabajo->nCol)){
 #         std::cerr << "Error: dimension incorrecta.  Numero de columna incorrecto\n";
 #         continue;  // volvemos al principio del bucle
 #       }
-# 
+	bltz $s4, if_col
+	lw $t0, nCol($s0)
+	bge $s4, $t0, if_col
+	b if_col_fin
+
+if_col:
+
+	li $v0, 4
+	la $a0, str_errorCol
+	syscall
+	b while_true
+
+if_col_fin:
+	li $t0, 4
+	beq $s1, $t0, opcion_4
 #       if (opcion == 3) {
 #         std::cout << "Nuevo valor para el elemento: ";
+	li $v0, 4
+	la $a0, str_nuevoValor
+	syscall
+
 #         float valor;
 #         std::cin >> valor;
 #         change_elto(matTrabajo, indFil, indCol, valor);
+	li $v0, 6
+	syscall
+	move $a0, $s0
+	move $a1, $s3
+	move $a2, $s4
+	mov.s $f12, $f0
+	jal change_elto
+
 #       }
+	b while_true
+
 #       if(opcion == 4) {
+opcion_4:
 #         intercambia(matTrabajo, indFil, indCol);
-#       }
-# 
+
+
+	move $a0, $s0
+	move $a1, $s3
+	move $a2, $s4
+	jal intercambia
+
 #       continue;
-#     }
-# 
+	b while_true
 #     // Opción 7 ////////////////////////////////////////////////////////////
+opcion_7:
+	li $t0, 7
+	bne $s1, $t0, opcion_incorrecta 
 #     if(opcion == 7) {
+
 #       float valorMin;
 #       int filaMin;
 #       int columnaMin;
 #       std::tie(valorMin, filaMin, columnaMin) = find_min(matTrabajo);
 #       std::cout << "\nEl valor minimo esta en (" << filaMin << ','
 #         << columnaMin <<") con valor " << valorMin;
+	move $a0, $s0
+	jal find_min
+
+	mov.s $f20, $f0 #       float valorMin; 
+	move $s6, $v0 #       int filaMin;
+	move $s7, $v1 #       int columnaMin;
+
+	li $v0, 4
+	la $a0, str_valMin
+	syscall
+
+	li $v0, 1
+	move $a0, $s6
+	syscall
+
+	li $v0, 11
+	la $a0, ','
+	syscall
+
+	li $v0, 1
+	move $a0, $s7
+	syscall
+
+	li $v0, 4
+	la $a0, str_conValor
+	syscall
+
+	li $v0, 2
+	mov.s $f12, $f20
+	syscall
+
 #       continue;
 #     }
-# 
+	b while_true
 #     // Opción Incorrecta ///////////////////////////////////////////////////////
+opcion_incorrecta:
 #     std::cout << "Error: opcion incorrecta\n";
-#   }
+	li $v0, 4
+	la $a0, str_errorOpc
+	syscall
+
+	b while_true
+while_true_fin:
+
 #   std::cout << "\nTermina el programa\n";
+	li $v0, 4
+	la $a0, str_termina
+	syscall
+	li $v0, 10
+	syscall
 # }
