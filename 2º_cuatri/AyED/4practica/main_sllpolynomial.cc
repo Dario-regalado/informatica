@@ -72,5 +72,10 @@ int main()
   sllp2.Sum(sllp3, sllpsum23);
   cout << "sllp2 + sllp3= " << sllpsum23;
 
+  //modificacion
+  cout << endl;
+  cout << "el mayor grado del polinomio sllpsum12 es: " << sllpsum12.max_degree() << endl;
+  cout << "el mayor grado del polinomio sllpsum23 es: " << sllpsum23.max_degree() << endl;
+
   return 0;
 }

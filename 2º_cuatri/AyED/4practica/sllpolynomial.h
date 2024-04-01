@@ -40,6 +40,9 @@ class SllPolynomial : public sll_t<pair_double_t> {
   double Eval(const double) const;
   bool IsEqual(const SllPolynomial&, const double = EPS) const;
   void Sum(const SllPolynomial&, SllPolynomial&, const double = EPS);
+
+  //modificacion
+  int max_degree();
 };
 
 
@@ -153,18 +156,34 @@ void SllPolynomial::Sum(const SllPolynomial& sllpol,
       inx = aux2->get_data().get_inx();
       aux2 = aux2->get_next();
     }
+    
     if (fabs(acumulacion) > eps) {
       pair_double_t temp(acumulacion, inx);
       SllPolyNode *nuevo_nodo = new SllPolyNode (temp);
       if (aux3 == NULL) {
         sllpolsum.push_front(nuevo_nodo);
-        aux3 = sllpolsum.get_head();
+        aux3 = nuevo_nodo;
       } else {
         sllpolsum.insert_after(aux3, nuevo_nodo);
         aux3 = nuevo_nodo;
       }
     }
   }
+}
+
+//modificacion
+
+int SllPolynomial::max_degree(){
+  SllPolyNode *aux = get_head();
+  int inx{0};
+
+  while (aux != NULL) {
+    if (aux->get_data().get_inx() > inx) {
+      inx = aux->get_data().get_inx();
+    }
+    aux = aux->get_next();
+  }
+  return inx;
 }
 
 
