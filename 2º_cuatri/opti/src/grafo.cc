@@ -102,15 +102,9 @@ void Mostrar_Lista(const vector<LA_nodo> &L) {
   }
 }
 
-void Mostrar_Lista(const vector<unsigned> &L, const vector<bool> &visitado) {
-  ulong num_visited{0};
-  for (const auto &visited : visitado) {
-    if (visited) {
-      num_visited++;
-    }
-  }
-  for (ulong i{0}; i < num_visited; i++) {
-    if (i + 1 == num_visited)
+void Mostrar_Lista(const vector<unsigned> &L, const ulong size) {
+  for (ulong i{0}; i < size; i++) {
+    if (i + 1 == size)
       cout << "[" << L[i] + 1 << "]";
     else
       cout << "[" << L[i] + 1 << "] -> ";
@@ -163,9 +157,9 @@ void GRAFO::RecorridoProfundidad() {
 
   dfs_num(i - 1, LS, visitado, prenum, prenum_ind, postnum, postnum_ind);
   cout << "Orden de visita de los nodos en preorden\n ";
-  Mostrar_Lista(prenum, visitado);
+  Mostrar_Lista(prenum, prenum_ind);
   cout << "Orden de visita de los nodos en postorden\n ";
-  Mostrar_Lista(postnum, visitado);
+  Mostrar_Lista(postnum, postnum_ind);
 }
 
 void GRAFO::bfs_num(	unsigned i, //nodo desde el que realizamos el recorrido en amplitud
@@ -224,7 +218,7 @@ void GRAFO::RecorridoAmplitud() {
   cout << "\nNodos según distancia al nodo inicial en número de aristas\n";
   unsigned max_distance{*std::max_element(d.begin(), d.end())};
   for (ulong i{0}; i <= max_distance; i++) {
-    cout << "Distancia " << i << " aristas: ";
+    cout << "Distancia " << i << " aristas";
     // Recorro cada elemento de la lista de distancias y compruebo si la distancia coincide, y si lo es, imprimo el nodo
     for (ulong j{0}; j < d.size(); j++) {
       if (i == d[j] && visitado[j]) {
