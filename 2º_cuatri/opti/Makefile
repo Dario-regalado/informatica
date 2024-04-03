@@ -3,7 +3,7 @@ CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -MD
 BUILDDIR := build
 SRCDIR := src
-BIN := bin
+BIN := main
 LIBS :=
 
 # Don't modify
