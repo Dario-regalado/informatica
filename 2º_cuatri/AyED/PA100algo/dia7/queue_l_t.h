@@ -35,6 +35,11 @@ template <class T> class queue_l_t {
   const T& front(void) const;
   const T& back(void) const;
 
+  void mov_2_elemments();
+  void multiplicate (int n);
+  queue_l_t<T> RemoveImpar();
+  void move(int n);
+
   // E/S
   std::ostream& write(std::ostream& os = std::cout) const;
 };
@@ -87,5 +92,61 @@ template<class T> std::ostream& operator<<(std::ostream& os,
   return os;
 }
 
+template <class T>
+void 
+queue_l_t<T>::mov_2_elemments(void){
+	for (int i = 0; i < 2; i++) {	
+	T first = front();
+	push(first);
+	pop();
+	}
+}
+
+template <class T>
+void
+queue_l_t<T>::multiplicate(int n) {
+  int tamaño = size();
+  for (int i = 0; i < tamaño; i++) {
+    T first = front();
+    for (int i = 0; i < n; i++) {
+      push(first);
+    }
+    pop();
+  }
+}
+
+
+template <class T>
+queue_l_t<T>
+queue_l_t<T>::RemoveImpar(){
+  queue_l_t<T> cola_retorno;
+  while (!empty())
+  {
+  pop();
+  cola_retorno.push(front());
+  pop();
+  }
+  return cola_retorno;
+}
+
+template <class T>
+void
+queue_l_t<T>::move(int n) {
+  queue_l_t<T> first, second;
+  for (int i = 0; i < n; i++) {
+    first.push(front());
+    pop();
+  }
+  first.write();
+  std::cout << '\n';
+
+  while (!empty()){
+    second.push(front());
+    pop();
+  }
+  second.write();
+  std::cout << '\n';
+
+}
 
 #endif  // QUEUE_H_

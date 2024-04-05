@@ -23,12 +23,6 @@ int main(void)
 
 	cout << endl;
 
-	while (!cola_vector.empty())
-	{
-		cola_vector.pop();
-		cout << cola_vector;
-	}
-
 	queue_l_t<char> cola_lista;
 
 	for (int i = 0; i < 10; i++)
@@ -37,13 +31,22 @@ int main(void)
 		cout << cola_lista;
 	}
 
+
+	cola_lista.move(5);
+	cola_lista.write();
+	
+
+
+
+
+
 	cout << endl;
 
-	while (!cola_lista.empty())
-	{
-		cola_lista.pop();
-		cout << cola_lista;
-	}
-
-	return 0;
+	//while (!cola_lista.empty())
+	//{
+	//	cola_lista.pop();
+	//	cout << cola_lista;
+	//}
+//
+	//return 0;
 }

@@ -35,6 +35,9 @@ public:
 	const T& back(void) const;
 
 	void write(ostream& os = cout) const;
+
+	void mov_2_elemments(void);
+	void multiplicate(int n);
 	
 private:
 	round_vector_t<T> v_;
@@ -131,3 +134,26 @@ operator<<(ostream& os, const queue_v_t<T>& q)
 	return os;
 }
 
+template <class T>
+void 
+queue_v_t<T>::mov_2_elemments(void){
+	for (int i = 0; i < 2; i++) {	
+	T first = front();
+	push(first);
+	pop();
+	}
+}
+
+
+template <class T>
+void
+queue_v_t<T>::multiplicate(int n) {
+  int tamaño = size();
+  for (int i = 0; i < tamaño; i++) {
+    T first = front();
+    for (int i = 0; i < n; i++) {
+      push(first);
+    }
+    pop();
+  }
+}
