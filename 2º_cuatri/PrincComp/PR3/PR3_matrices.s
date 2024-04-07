@@ -132,12 +132,13 @@ str_matTiene:	.asciiz	"\n\nLa matriz tiene dimension "
 # void print_mat(structMat* mat) {
 print_mat:
 # store the values in the stack
-	addi $sp, -20
+	addi $sp, -24
 	sw $s0, 0($sp)
 	sw $s1, 4($sp)
 	sw $s2, 8($sp)
 	sw $s3, 12($sp)
 	sw $s4, 16($sp)
+	sw $ra, 20($sp)
 
 	# s0 -> nfil
 	# s1 -> ncol
@@ -210,7 +211,8 @@ fin_bucle1_print_mat:
 	lw $s2, 8($sp)
 	lw $s3, 12($sp)
 	lw $s4, 16($sp)
-	addi $sp, 20
+	lw $ra, 20($sp)
+	addi $sp, 24
 
 	jr $ra
 print_mat_fin:
