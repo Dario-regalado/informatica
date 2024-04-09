@@ -59,17 +59,20 @@ template<class T> const int rpn_t<T>::evaluate(queue_l_t<char>& q) {
 }
 
 template<class T> void rpn_t<T>::operate_(const char c) {
-  assert(c == '+' || c == '-' || c == '*' || c == '/');
+  assert(c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == 'r' || c == 'l' || c == 'c');
   
   // poner código
-  std::cout << "   Sacamos de la pila un operando: " << a << std::endl;
   int a = stack_.top();
   stack_.pop();
+  std::cout << "   Sacamos de la pila un operando: " << a << std::endl;
 
   // poner código
-  std::cout << "   Sacamos de la pila otro operando: " << b << std::endl;
-  int b = stack_.top();
-  stack_.pop();
+  int b{0}; 
+  if (!stack_.empty()) {
+    b = stack_.top();
+    stack_.pop();
+    std::cout << "   Sacamos de la pila otro operando: " << b << std::endl;
+  }
 
   int resultado;
   switch (c) {
@@ -85,6 +88,18 @@ template<class T> void rpn_t<T>::operate_(const char c) {
       break;
     case '/':
       resultado = b / a;
+      break;
+    case '^':
+      resultado = pow(a,b);
+      break;
+    case 'r':
+      resultado = sqrt(a);
+      break;
+    case 'l':
+      resultado = log10(a) / log10(2);
+      break;
+    case 'c':
+      resultado = a * a;
       break;
   }
 
