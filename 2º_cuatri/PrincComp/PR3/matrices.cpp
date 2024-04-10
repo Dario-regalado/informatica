@@ -126,6 +126,23 @@ std::tuple<float, int, int> find_min(structMat* mat) {
   return {min, fmin, cmin};
 }
 
+void sort_row(structMat* mat, int indF) {
+  int nFil = mat->nFil;
+  int nCol = mat->nCol;
+  float* elem = mat->elementos;
+  float* e1;
+  float* e2;
+  for(int i = 0; i < nCol-1 ; i++) {
+    for(int j = 0; j < nCol-1-i; j++) {
+      if ( elem[indF*nCol + j] > elem[indF*nCol + j+1] ) {
+        e1 = &elem[indF*nCol+j];
+        e2 = &elem[indF*nCol+j+1];
+        swap(e1,e2);
+      }
+    }
+  }
+}
+
 int main() {
   std::cout << std::fixed << std::setprecision(8);  // Ignorar
   std::cout << "\nComienza programa manejo matrices con funciones\n";
@@ -136,6 +153,7 @@ int main() {
     std::cout <<
     "(0) Terminar el programa\n"
     "(1) Cambiar la matriz de trabajo\n"
+    "(2) Ordena la fila\n"
     "(3) Cambiar el valor de un elemento\n"
     "(4) Intercambiar un elemento con su opuesto\n"
     "(7) Encontrar el minimo\n"
@@ -181,7 +199,13 @@ int main() {
       std::cout << "Numero de matriz de trabajo incorrecto\n";
       continue;  // volvemos al principio del bucle
     }
-
+    if (opcion == 2) {
+      std::cout << "indique la fila que quiere ordenar\n";
+      int indF;
+      std::cin >> indF;
+      sort_row(matTrabajo, indF); 
+      continue;
+    }
     // Opción 3  y  4 //////////////////////////////////////////////////////////
     if(opcion == 3 || opcion == 4) {
       std::cout << "\nIndice de fila: ";

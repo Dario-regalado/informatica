@@ -106,6 +106,7 @@ infinito:	.word	0x7F800000
 str_titulo:	.asciiz	"\nComienza programa manejo matrices con funciones\n"
 str_menu:	.ascii	"(0) Terminar el programa\n"
 		.ascii	"(1) Cambiar la matriz de trabajo\n"
+		.ascii "(2) Ordena la fila\n"
 		.ascii	"(3) Cambiar el valor de un elemento\n"
 		.ascii	"(4) Intercambiar un elemento con su opuesto\n"
 		.ascii	"(7) Encontrar el minimo\n"
@@ -121,6 +122,7 @@ str_indCol:	.asciiz	"Indice de columna: "
 str_nuevoValor:	.asciiz	"Nuevo valor para el elemento: "
 str_valMin:	.asciiz	"\nEl valor minimo esta en ("
 str_conValor:	.asciiz	") con valor "
+str_sortfila: .asciiz "Indique la fila que quiere ordena\n"
 
 str_matTiene:	.asciiz	"\n\nLa matriz tiene dimension "
 
@@ -152,9 +154,9 @@ sort_row:
 	# $a0 -> mat
 
 
-	li $s0, nFil($a0) #  int nFil = mat->nFil;
-	li $s1, nCol($a0) #  int nCol = mat->nCol;
-	li $s2, elemento($a0) #  float* elem = mat->elementos;
+	lw $s0, nFil($a0) #  int nFil = mat->nFil;
+	lw $s1, nCol($a0) #  int nCol = mat->nCol;
+	la $s2, elementos($a0) #  float* elem = mat->elementos;
 	move $s7, $a1
 
 #  for(int i = 0; i < nCol-1 ; i++) {
@@ -171,16 +173,16 @@ for_2_sort_row:
 	bge $s4, $s6, for_2_sort_row_fin
 
 	mul $t7, $s7, $s1
-	sub $t7, $t7, $s4
+	add $t7, $t7, $s4
 	mul $t7, $t7, sizeF
 
 	add $t7, $t7, $s2
-	lwc1 $f4, 0($t7) # elem[indF*nCol + j]
-	lwc1 $f5, sizeF($t7) # elem[indF*nCol + j+1]
+	lwc1 $f6, 0($t7) # elem[indF*nCol + j]
+	lwc1 $f7, sizeF($t7) # elem[indF*nCol + j+1]
 
 #  	  if ( elem[indF*nCol + j] > elem[indF*nCol + j+1] ) {
 if_sort_row:
-	c.le.s $f4, $f5
+	c.le.s $f6, $f7
 	bc1t if_sort_row_fin
 #  	    e1 = &elem[indF*nCol+j];
 	move $a0, $t7
@@ -193,11 +195,11 @@ if_sort_row:
 #  	  }
 if_sort_row_fin:
 #    }
-	addi $t4, 1
+	addi $s4, 1
 	b for_2_sort_row
 for_2_sort_row_fin:
 #  }
-	addi $t3, 1
+	addi $s3, 1
 	b for_1_sort_row
 for_1_sort_row_fin:
 #}
@@ -212,8 +214,9 @@ for_1_sort_row_fin:
 	lw $s7, 28($sp)
 	lw $ra, 32($sp)
 	addi $sp, 36
-sort_row_fin:
 
+	jr $ra
+sort_row_fin:
 
 
 
@@ -462,6 +465,7 @@ while_true:
 #     std::cout <<
 #     "(0) Terminar el programa\n"
 #     "(1) Cambiar la matriz de trabajo\n"
+#  		"(2) Ordena la fila\n"
 #     "(3) Cambiar el valor de un elemento\n"
 #     "(4) Intercambiar un elemento con su opuesto\n"
 #     "(7) Encontrar el minimo\n"
@@ -485,7 +489,7 @@ while_true:
 #     if(opcion == 1) {
 opcion_1:
 	li $t0, 1
-	bne $s1, $t0, opcion_3_4
+	bne $s1, $t0, opcion_2
 #       std::cout << "\nElije la matriz de trabajo (1..6): ";
 	li $v0, 4
 	la $a0, str_elijeMat
@@ -570,7 +574,20 @@ case_mat_incorrecta:
 
 	b while_true
 
+opcion_2:
+	li $t0, 2
+	bne $s1, $t0, opcion_3_4
 
+	li $v0, 4
+	la $a0, str_sortfila
+	syscall
+	li $v0, 5
+	syscall
+	move $a1, $v0
+	move $a0, $s0
+	jal sort_row
+
+	b while_true
 #     // Opción 3  y  4 //////////////////////////////////////////////////////////
 #     if(opcion == 3 || opcion == 4) {
 opcion_3_4:
