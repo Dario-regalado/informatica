@@ -28,6 +28,11 @@ typedef struct
   int      c; // atributo para expresar los costes, pesos, las longitudes, las inversiones, etc...
 } ElementoLista;
 
+typedef struct {
+  unsigned extremo1, extremo2;
+  int peso;
+} AristaPesada;
+
 // definicion del tipo de una lista de adyacencia de un nodo
 typedef vector<ElementoLista> LA_nodo;
 
@@ -42,6 +47,7 @@ class GRAFO {
   void build (char nombrefichero[85], int &errorapertura); //Crea LS, A y LP en su caso, desde la lectura del fichero
   void dfs_num(unsigned i, vector<LA_nodo>  L, vector<bool> &visitado, vector<unsigned> &prenum, unsigned &prenum_ind, vector<unsigned> &postnum, unsigned &postnum_ind); //Recorrido en profundidad recursivo con recorridos enum y postnum
   void bfs_num(unsigned i, vector<LA_nodo>  L, vector<bool> &visitado, vector<unsigned> &pred, vector<unsigned> &d); //Recorrido en amplitud con calculo de pred y d
+  void Kruskal();
  public:
   GRAFO(char nombrefichero[], int &errorapertura);
   void actualizar (char nombrefichero[], int &errorapertura);
@@ -51,7 +57,7 @@ class GRAFO {
   void Mostrar_Matriz(); //Muestra la matriz de adyacencia: nodos y costes
   void RecorridoProfundidad(); //Construye un recorrido en profundidad desde un nodo inicial
   void RecorridoAmplitud(); //Construye un recorrido en amplitud desde un nodo inicial
-  // ~GRAFO(); //Destructor del objeto grafo
+  ~GRAFO(); //Destructor del objeto grafo
 };
 
 #endif
