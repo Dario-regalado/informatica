@@ -66,10 +66,10 @@ void GRAFO::build(char nombrefichero[85], int &errorapertura) {
   }
 }
 
-// GRAFO::~GRAFO()
-// {
-// // destroy();
-// }
+GRAFO::~GRAFO()
+{
+  destroy();
+}
 
 GRAFO::GRAFO(char nombrefichero[85], int &errorapertura) {
   build (nombrefichero, errorapertura);
