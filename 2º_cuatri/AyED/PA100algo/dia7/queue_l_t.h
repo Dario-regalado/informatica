@@ -37,8 +37,12 @@ template <class T> class queue_l_t {
 
   void mov_2_elemments();
   void multiplicate (int n);
-  queue_l_t<T> RemoveImpar();
+  //queue_l_t<T> RemoveImpar();
+  void RemoveImpar();
   void move(int n);
+  void Fusion(const queue_l_t<T>& c1);
+
+  void invertir();
 
   // E/S
   std::ostream& write(std::ostream& os = std::cout) const;
@@ -115,7 +119,7 @@ queue_l_t<T>::multiplicate(int n) {
   }
 }
 
-
+/*
 template <class T>
 queue_l_t<T>
 queue_l_t<T>::RemoveImpar(){
@@ -127,6 +131,22 @@ queue_l_t<T>::RemoveImpar(){
   pop();
   }
   return cola_retorno;
+}
+*/
+template <class T>
+void
+queue_l_t<T>::RemoveImpar(){
+  queue_l_t<T> cola_retorno;
+  while (!empty())
+  {
+  cola_retorno.push(front());
+  pop();
+  pop();
+  }
+  while(!cola_retorno.empty()) {
+    push(cola_retorno.front());
+    cola_retorno.pop();
+  }
 }
 
 template <class T>
@@ -148,5 +168,45 @@ queue_l_t<T>::move(int n) {
   std::cout << '\n';
 
 }
+
+template <class T>
+void queue_l_t<T>::invertir() {
+  queue_l_t<T> temp;
+  while(!empty()) {
+    temp.push(front());
+    pop();
+  }
+  while(!temp.empty()) {
+    push(temp.back());
+    temp.pop();
+  }
+}
+
+template <class T>
+void Fusion(const queue_l_t<T>& c1){
+  queue_l_t<T> temp;
+  while (true) {
+    if (!empty() && !c1.empty()) {
+      temp.push(front());
+      temp.push(c1.front());
+      pop();
+      c1.pop();
+    } else if (empty()) {
+      temp.push(c1.front());
+      c1.pop();
+    } else {
+      temp.push(front());
+      pop();
+    }
+    if (empty() && c1.empty())
+      break;
+  }
+  while (!temp.empty()){
+    push(temp.front());
+    temp.pop();
+  }
+  
+}
+
 
 #endif  // QUEUE_H_

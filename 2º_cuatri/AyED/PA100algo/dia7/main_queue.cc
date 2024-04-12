@@ -30,9 +30,16 @@ int main(void)
 		cola_lista.push('a' + i);
 		cout << cola_lista;
 	}
+	queue_l_t<char> cola1;
+	for (int i = 0; i < 10; i++)
+	{
+		cola1.push('1' + i);
+		cout << cola1;
+	}
 
-
-	cola_lista.move(5);
+	cout << endl;
+	cola_lista.write();
+	cola_lista.Fusion(cola1);
 	cola_lista.write();
 	
 

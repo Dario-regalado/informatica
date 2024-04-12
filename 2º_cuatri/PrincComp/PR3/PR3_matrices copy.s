@@ -123,7 +123,6 @@ str_nuevoValor:	.asciiz	"Nuevo valor para el elemento: "
 str_valMin:	.asciiz	"\nEl valor minimo esta en ("
 str_conValor:	.asciiz	") con valor "
 str_sortfila: .asciiz "Indique la fila que quiere ordena\n"
-
 str_matTiene:	.asciiz	"\n\nLa matriz tiene dimension "
 
 
