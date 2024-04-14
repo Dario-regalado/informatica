@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "files.associations": {
         "iostream": "cpp",
         "array": "cpp",
@@ -69,4 +70,15 @@
     },
     "cmake.sourceDirectory": "C:/Users/Equipo/Desktop/informatica/1º de grado/1º cuatri/IB/pruebas/exercism/easy/grade-school",
     "files.autoSave": "onWindowChange"
+=======
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/*.o": true,
+		"**/*.exe": true,
+	}
+>>>>>>> 80b309e56fe7f0733c5a42e92deb54a7a6f9db9c
 }
