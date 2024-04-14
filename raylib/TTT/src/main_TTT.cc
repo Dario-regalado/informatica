@@ -17,8 +17,8 @@ int main() {
   SetTargetFPS(30);
   Grid grid;
   grid.Print();
-  Texture2D ekis(LoadTexture("TTT/ekis.png"), );
-  Texture2D circ("");
+  Texture2D ekis(LoadTexture("TTT/ekis.png"));
+  Texture2D circ(LoadTexture("TTT/circ.png"));
 
   while(!WindowShouldClose()) {
     BeginDrawing();
