@@ -1,25 +1,39 @@
 #include "block.h"
 
-Block::Block(int row, int col, char b) {
-  if (b == 'x')
-    image = LoadImage("resources/ekis.png");
-  else
-    image = LoadImage("resources/circ.png");
-  texture = (LoadTextureFromImage(image));
+/**
+ * @brief Construct a new Block:: Block object
+ * 
+ * @param row 
+ * @param col 
+ * @param image 
+ */
+Block::Block(int row, int col, Texture2D image) {
+  texture = image;
   posicion.SetPosition(row, col);
-  Draw();
 }
 
+/**
+ * @brief Construct a new Block:: Block object
+ * 
+ */
+Block::Block() {}
+
+/**
+ * @brief 
+ * 
+ */
 void Block::Draw() {
   DrawTexture(texture, posicion.GetRow()*100, posicion.GetCol()*100, BLACK);
 }
 
-void Block::SetParameters(int row, int col, char b) {
-  if (b == 'x')
-    image = LoadImage("resources/ekis.png");
-  else
-    image = LoadImage("resources/circ.png");
-  texture = (LoadTextureFromImage(image));
+/**
+ * @brief 
+ * 
+ * @param row 
+ * @param col 
+ * @param image 
+ */
+void Block::SetParameters(int row, int col, Texture2D image) {
+  texture = image;
   posicion.SetPosition(row, col);
-  Draw();
 }

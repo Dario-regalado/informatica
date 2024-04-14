@@ -8,7 +8,9 @@
  * @copyright Copyright (c) 2024
  * 
  */
+#pragma once
 #include "raylib.h"
+#include "block.h"
 
 class Grid {
  public:  
@@ -17,7 +19,7 @@ class Grid {
   bool grid[3][3];
   void Draw();
   void Print();
-  void CelPressed(char);
+  void CelPressed(Texture2D);
 
  private:
   int numRows;

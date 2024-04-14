@@ -1,8 +1,11 @@
 #include <iostream>
 #include "Grid.h"
-#include "block.h"
 
 
+/**
+ * @brief Construct a new Grid:: Grid object
+ * 
+ */
 Grid::Grid() {
   numRows = 3;
   numCols = 3;
@@ -11,6 +14,10 @@ Grid::Grid() {
 
 }
 
+/**
+ * @brief 
+ * 
+ */
 void Grid::Initialize() {
   for (int row = 0; row < numRows; row++)
   {
@@ -21,6 +28,10 @@ void Grid::Initialize() {
   }
 }
 
+/**
+ * @brief 
+ * 
+ */
 void Grid::Draw() {
   for (int row = 0; row < numRows; row++)
   {
@@ -32,20 +43,26 @@ void Grid::Draw() {
 }
 
 
-void Grid::CelPressed(char b) {
+/**
+ * @brief 
+ * 
+ * @param image 
+ */
+void Grid::CelPressed(Texture2D image) {
   if (IsMouseButtonPressed(1)) {
     int x = GetMouseX();
     int y = GetMouseY();
     grid[x][y] = 1;
     Block bloq;
-    if (b == 'x') {
-      bloq.SetParameters(x, y, b);
-    } else {
-      bloq.SetParameters(x, y, b);
+    bloq.SetParameters(x, y, image);
+    bloq.Draw();
     }
   }
-}
 
+/**
+ * @brief 
+ * 
+ */
 void Grid::Print() {
   for (int row = 0; row < numRows; row++) {
     for (int col = 0; col < numCols; col++) {

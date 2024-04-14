@@ -4,12 +4,12 @@
 
 class Block {
  public:
-  Block(int, int, char);
+  Block(int, int, Texture2D);
   Block();
   void Draw();
-  void SetParameters(int row, int col, char b);
+  void SetParameters(int, int, Texture2D);
+  
  private:
-  Image image;
   Position posicion;
   Texture2D texture;
 };

@@ -18,17 +18,17 @@ int main() {
   Grid grid;
   grid.Print();
   Texture2D ekis(LoadTexture("TTT/ekis.png"));
-  Texture2D circ(LoadTexture("TTT/circ.png"));
+  Texture2D circ(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/circ.png"));
 
   while(!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(WHITE);
-    grid.Draw();
     for (int i = 0; i < 9; i++)
     {
-      grid.CelPressed('x');
-      grid.CelPressed('c');
+      grid.CelPressed(ekis);
+      grid.CelPressed(circ);
     }
+    
     
     EndDrawing();
   }
