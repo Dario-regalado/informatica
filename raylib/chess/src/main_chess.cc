@@ -8,18 +8,17 @@
  * @copyright Copyright (c) 2024
  * 
  */
-#pragma once
-#include <iostream>
-#include <raylib.h>
+
+#include "raylib.h"
+  //const Color dark{255, 255, 255, 255};
 
 int main() {
-  Color dark = {255, 255, 255, 255};
-  InitWindow(300, 300, "raylib chess");
+  InitWindow(900, 900, "raylib chess");
   SetTargetFPS(60);
   while (!WindowShouldClose())
   {
     BeginDrawing();
-    ClearBackground(dark);
+    ClearBackground(BLACK);
 
     EndDrawing();
   }
