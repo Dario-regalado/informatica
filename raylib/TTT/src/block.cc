@@ -23,7 +23,11 @@ Block::Block() {}
  * 
  */
 void Block::Draw() {
+  BeginDrawing();
+  ClearBackground(BLUE);
+  DrawText("click to set you option", 10, 10, 20, DARKGRAY);
   DrawTexture(texture, posicion.GetRow()*100, posicion.GetCol()*100, BLACK);
+  EndDrawing();
 }
 
 /**

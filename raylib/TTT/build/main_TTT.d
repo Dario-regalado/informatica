@@ -8,4 +8,59 @@ build/main_TTT.o: src/main_TTT.cc \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/_mingw_mac.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/_mingw_secapi.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h \
- src/Grid.h src/block.h src/position.h
+ src/Grid.h src/block.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/map \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/requires_hosted.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/pstl/pstl_config.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_tree.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_algobase.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/functexcept.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/exception_defines.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/cpp_type_traits.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/ext/type_traits.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/ext/numeric_traits.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_pair.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/type_traits \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/move.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/utility.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_iterator_base_types.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_iterator_base_funcs.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/concept_check.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/debug/assertions.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_iterator.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/ptr_traits.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/debug/debug.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/predefined_ops.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bit \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/allocator.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/new_allocator.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/new \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/exception.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/memoryfwd.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_function.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/backward/binders.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/ext/alloc_traits.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/alloc_traits.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_construct.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/ext/aligned_buffer.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/node_handle.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_map.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/initializer_list \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/tuple \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/uses_allocator.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/invoke.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_multimap.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/range_access.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/erase_if.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/memory_resource.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/cstddef \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stddef.h \
+ C:/raylib/w64devkit/x86_64-w64-mingw32/include/stddef.h \
+ C:/raylib/w64devkit/x86_64-w64-mingw32/include/crtdefs.h \
+ C:/raylib/w64devkit/x86_64-w64-mingw32/include/corecrt.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/uses_allocator_args.h \
+ src/position.h

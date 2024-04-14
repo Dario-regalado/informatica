@@ -16,10 +16,9 @@ class Grid {
  public:  
   Grid();
   void Initialize();
-  bool grid[3][3];
+  int grid[3][3];
   void Draw();
   void Print();
-  void CelPressed(Texture2D);
 
  private:
   int numRows;

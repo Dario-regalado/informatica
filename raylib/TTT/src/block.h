@@ -1,4 +1,6 @@
 #pragma once
+
+#include <map>
 #include "position.h"
 #include "raylib.h"
 
@@ -8,6 +10,7 @@ class Block {
   Block();
   void Draw();
   void SetParameters(int, int, Texture2D);
+  
   
  private:
   Position posicion;
