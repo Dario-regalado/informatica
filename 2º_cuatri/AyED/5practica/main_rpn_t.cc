@@ -37,7 +37,7 @@ int main(void) {
     }
   }
 
-  cout << "Expresión a evaluar: ";	
+  cout << "Expresion a evaluar: ";	
   cola.write();
 
   int r = calculadora.evaluate(cola);
