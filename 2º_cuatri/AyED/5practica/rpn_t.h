@@ -67,12 +67,9 @@ template<class T> void rpn_t<T>::operate_(const char c) {
   std::cout << "   Sacamos de la pila un operando: " << a << std::endl;
 
   // poner código
-  int b{0}; 
-  if (!stack_.empty()) {
-    b = stack_.top();
-    stack_.pop();
-    std::cout << "   Sacamos de la pila otro operando: " << b << std::endl;
-  }
+  int b 0 = stack_.top();
+  stack_.pop();
+  std::cout << "   Sacamos de la pila otro operando: " << b << std::endl;
 
   int resultado;
   switch (c) {
