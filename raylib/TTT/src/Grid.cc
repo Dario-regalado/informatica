@@ -54,3 +54,14 @@ void Grid::Print() {
     std::cout << std::endl;
   }
 }
+
+bool Grid::IsFull() {
+  int casillas_lennas{0};
+  for (int row = 0; row < numRows; row++) {
+    for (int col = 0; col < numCols; col++){
+      if(grid[row][col] != 0)
+        casillas_lennas++;
+    }
+  }
+  return casillas_lennas == 9;
+}

@@ -19,6 +19,7 @@ class Grid {
   int grid[3][3];
   void Draw();
   void Print();
+  bool IsFull();
 
  private:
   int numRows;

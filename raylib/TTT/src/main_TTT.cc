@@ -12,6 +12,7 @@
 #include "Grid.h"
 #include "block.h"
 
+/*
 double lastUpdatetime = 0;
 
 bool EvenTriggered(double interval){
@@ -22,10 +23,11 @@ bool EvenTriggered(double interval){
   }
   return false;
 }
+*/
 
 int main() {
   InitWindow(300, 300, "raylib Tick Tack Toe");
-  //SetTargetFPS(20);
+  SetTargetFPS(60);
 
   Grid grid;
   grid.Print();
@@ -33,23 +35,27 @@ int main() {
   Block ci;
 
   Texture2D ekis(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/ekis.png"));
-
+  ekis.height = 90;
+  ekis.width = 90;
   Texture2D circ(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/circ.png"));
+  circ.height = 90;
+  circ.width = 90;
+
+  Vector2 pos;
+  
 
   while(!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(WHITE);
     grid.Draw();
-    if (EvenTriggered(0.2)){
+    
+    for (int i = 0; i < 9; i++){
       if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        int x = GetMouseX();
-        int y = GetMouseY();
-        ex.SetParameters(x, y, ekis);
-      }
-        ex.Draw();
+        pos = GetMousePosition();
+        ci.SetParameters(pos, circ);
+        ci.Draw();
+      }    
     }
-    
-    
     EndDrawing();
   }
   CloseWindow();

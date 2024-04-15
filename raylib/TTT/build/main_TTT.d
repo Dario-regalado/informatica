@@ -62,5 +62,4 @@ build/main_TTT.o: src/main_TTT.cc \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/stddef.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/crtdefs.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/corecrt.h \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/uses_allocator_args.h \
- src/position.h
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/uses_allocator_args.h

@@ -1,19 +1,20 @@
 #pragma once
 
 #include <map>
-#include "position.h"
 #include "raylib.h"
+#include "grid.h"
 
 class Block {
  public:
-  Block(int, int, Texture2D);
+  Block(Vector2, Texture2D);
   Block();
   void Draw();
-  void SetParameters(int, int, Texture2D);
+  void SetParameters(Vector2, Texture2D);
   
   
  private:
-  Position posicion;
+  Vector2 posicion;
   Texture2D texture;
+  void IsInside(Vector2);
 };
 
