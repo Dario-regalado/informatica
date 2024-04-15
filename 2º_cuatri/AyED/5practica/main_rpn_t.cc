@@ -43,6 +43,10 @@ int main(void) {
   int r = calculadora.evaluate(cola);
   cout << "Resultado: " << r << endl;
 
+  std::cout << std::endl;
+  std::cout << "numero de operandos de la expresion: " << calculadora.GetOperandos() << std::endl;
+  std::cout << "numero de operadores de la expresion: " << calculadora.GetOperadores() << std::endl;
+
   return 0;
 }
 

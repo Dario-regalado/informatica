@@ -28,10 +28,16 @@ template <class T> class rpn_t {
 
   // operaciones
   const int evaluate(queue_l_t<char>&);
+  // Getters
+  int GetOperandos() const {return num_operandos_;}
+  int GetOperadores() const {return num_operadores_;}
 
  private: 
   T stack_;
   void operate_(const char operador);
+  int num_operandos_{0};
+  int num_operadores_{0};
+
 };
 
 
@@ -47,11 +53,13 @@ template<class T> const int rpn_t<T>::evaluate(queue_l_t<char>& q) {
       int i = c - '0';
       // poner código
       stack_.push(i);
+      num_operandos_++; //sumamos el numero de operandos
       std::cout << " (es un digito) " << std::endl
 		<< "   Lo metemos en la pila..." << std::endl;
     } else {
       std::cout << " (es un operador)" << std::endl;
       operate_(c);
+      num_operadores_++; //sumamos el numero de operadores
     }
   }
   // poner código
@@ -67,7 +75,7 @@ template<class T> void rpn_t<T>::operate_(const char c) {
   std::cout << "   Sacamos de la pila un operando: " << a << std::endl;
 
   // poner código
-  int b 0 = stack_.top();
+  int b = stack_.top();
   stack_.pop();
   std::cout << "   Sacamos de la pila otro operando: " << b << std::endl;
 
