@@ -12,6 +12,17 @@
 #include "Grid.h"
 #include "block.h"
 
+double lastUpdatetime = 0;
+
+bool EvenTriggered(double interval){
+  double currentTime = GetTime();
+  if(currentTime - lastUpdatetime >= interval) {
+    lastUpdatetime = currentTime;
+    return true;
+  }
+  return false;
+}
+
 int main() {
   InitWindow(300, 300, "raylib Tick Tack Toe");
   //SetTargetFPS(20);
@@ -29,13 +40,14 @@ int main() {
     BeginDrawing();
     ClearBackground(WHITE);
     grid.Draw();
-
-    if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-      int x = GetMouseX();
-      int y = GetMouseY();
-      ex.SetParameters(x, y, ekis);
+    if (EvenTriggered(0.2)){
+      if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+        int x = GetMouseX();
+        int y = GetMouseY();
+        ex.SetParameters(x, y, ekis);
+      }
+        ex.Draw();
     }
-      ex.Draw();
     
     
     EndDrawing();
