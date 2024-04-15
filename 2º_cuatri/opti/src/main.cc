@@ -125,6 +125,12 @@ int main(int argc, char *argv[]) {
           G.RecorridoProfundidad();
           pressanykey();
           break;
+        case 'k':
+          if (!G.Es_dirigido()) {
+            G.Kruskal();
+            pressanykey();
+          }
+          break;
       }
       if (opcion == 'q')
         break;
