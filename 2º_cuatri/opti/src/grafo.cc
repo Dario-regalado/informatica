@@ -297,4 +297,5 @@ void GRAFO::Kruskal() {
     }
     head++;
   } while ((cont < (n - 1)) && (head < aristas.size()));
+  cout << "El peso del arbol generador de mínimo coste es " << pesoMST << endl;
 }
