@@ -22,6 +22,7 @@ int main() {
   Block ci;
 
   Texture2D ekis(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/ekis.png"));
+
   Texture2D circ(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/circ.png"));
 
   while(!WindowShouldClose()) {
@@ -33,8 +34,8 @@ int main() {
       int x = GetMouseX();
       int y = GetMouseY();
       ex.SetParameters(x, y, ekis);
-      ex.Draw();
     }
+      ex.Draw();
     
     
     EndDrawing();

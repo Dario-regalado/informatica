@@ -252,34 +252,49 @@ void GRAFO::RecorridoAmplitud() {
 }
 
 void GRAFO::Kruskal() {
-  vector <AristaPesada> Aristas;
-  /*Cargamos todas las aristas de la lista de adyacencia*/
-  Aristas.resize(m);
-  unsigned k = 0;
-
-  for (unsigned i = 0; i<n; i++) {
-    for (unsigned j=0; j<LS[i].size();j++) {
+  vector<AristaPesada> aristas;
+  aristas.resize(m);
+  unsigned k{0};
+  for (unsigned i = 0; i < n; i++) {
+    for (unsigned j = 0; j < LS[i].size(); j++) {
       if (i < LS[i][j].j) {
-        Aristas[k].extremo1 = i;
-        Aristas[k].extremo2 = LS[i][j].j;
-        Aristas[k++].peso = LS[i][j].c;
+        aristas[k].extremo1 = i;
+        aristas[k].extremo2 = LS[i][j].j;
+        aristas[k++].peso = LS[i][j].c;
       }
     }
-  };
+  }
+  unsigned head{0};
+  unsigned cont{0};
+  int pesoMST{0};
 
-  /*Inicializamos el registro de componentes conexas: cada nodo está en
-  su componente conexa*/
-  unsigned head = 0;
-  unsigned cont = 0;
-  int pesoMST = 0;
-
-  vector <unsigned> Raiz;
-  Raiz.resize(n);
+  vector<unsigned> root;
+  root.resize(n);
   for (unsigned q = 0; q < n; q++) {
-    Raiz[q]=q;
-  };
-  
-  AristaPesada AristaTemp; //la usamos para el intercambio de aristas en el vector Aristas
-  
-  
+    root[q]=q;
+  }
+
+  do {
+    for (unsigned i = head + 1; i < aristas.size(); i++) {
+      if (aristas[head].peso > aristas[i].peso) {
+        AristaPesada arista_head{aristas[head]};
+        aristas[head] = aristas[i];
+        aristas[i] = arista_head;
+      }
+    }
+    if (root[aristas[head].extremo1] != root[aristas[head].extremo2]) {
+
+      unsigned kill{root[aristas[head].extremo1]};
+      for (unsigned i{0}; i < root.size(); i++) {
+        if (root[i] == kill) {
+          root[i] = root[aristas[head].extremo2];
+        }
+      }
+      cont++;
+      cout << "Arista número " << cont << " incorporada (" << aristas[head].extremo1 + 1 << ", " << aristas[head].extremo2 + 1
+           << "), con peso " << aristas[head].peso << endl;
+      pesoMST = pesoMST + aristas[head].peso;
+    }
+    head++;
+  } while ((cont < (n - 1)) && (head < aristas.size()));
 }
