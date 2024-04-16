@@ -8,9 +8,10 @@
  * @copyright Copyright (c) 2024
  * 
  */
+
+#include <iostream>
 #include "raylib.h"
 #include "Grid.h"
-#include "block.h"
 
 /*
 double lastUpdatetime = 0;
@@ -27,45 +28,24 @@ bool EvenTriggered(double interval){
 
 int main() {
   InitWindow(300, 300, "raylib Tick Tack Toe");
-  //SetTargetFPS(60);
-
-  Grid grid;
-  grid.Print();
-
-  Texture2D ekis(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/ekis.png"));
-  ekis.height = 90;
-  ekis.width = 90;
-  Texture2D circ(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/circ.png"));
-  circ.height = 90;
-  circ.width = 90;
-
-  Block ex{ekis};
-  Block ci{circ};
+  SetTargetFPS(60);
 
   Vector2 pos;
-  
+  Grid grid;
+  grid.Print();
 
   while(!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(WHITE);
-    grid.Draw();
+    grid.GridDraw();
+    grid.DrawElement();
     
-    for (int row = 0; row < grid.GetnumRows(); row++)
-    {
-      for (int col = 0; col < grid.GetnumCols(); col++)
-      {
-        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-          pos = GetMousePosition();
-          ci.SetParameters(pos);
-          ci.Draw(); 
-        }
-      } 
-    }
-    
-    if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    if(!grid.IsFull() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
       pos = GetMousePosition();
-      ci.SetParameters(pos, circ);
-      ci.Draw(); 
+      pos.x = int(pos.x / 100);
+      pos.y = int(pos.y / 100); 
+      // std::cout << pos.x << " " << pos.y << std::endl;
+      grid.Update(pos.x, pos.y, 1);
     }
     EndDrawing();
   }

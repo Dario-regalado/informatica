@@ -44,8 +44,8 @@ Block::Block() {}
 void Block::Draw() {
     //DrawText("click to set you option", 10, 10, 20, DARKGRAY);
     IsInside(posicion);
-    std::cout << posicion.x << " " << posicion.y << std::endl;
-    DrawTexture(texture, posicion.x + 5, posicion.y + 5, WHITE);
+    // std::cout << posicion.x << " " << posicion.y << std::endl;
+    DrawTexture(texture, 0, 0, WHITE);
 }
 
 /**

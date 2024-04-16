@@ -17,15 +17,16 @@ class Grid {
   Grid();
   void Initialize();
   int grid[3][3];
-  void Draw();
   void Print();
+  void GridDraw();
+  void DrawElement();
   bool IsFull();
-  int GetnumRows() const {return numRows;}
-  int GetnumCols() const {return numCols;}
+  void Update(int, int, int);
 
- private:
+private:
   int numRows;
   int numCols;
   int celSize;
+  Texture2D x, c;
 
 };
