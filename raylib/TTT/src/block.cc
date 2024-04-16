@@ -19,10 +19,17 @@
  * @param col 
  * @param image 
  */
+
 Block::Block(Vector2 pos, Texture2D image) {
   texture = image;
   posicion = pos;
 }
+
+
+Block::Block(Texture2D image) {
+  texture = image;
+}
+
 
 /**
  * @brief Construct a new Block:: Block object
@@ -49,6 +56,11 @@ void Block::Draw() {
  */
 void Block::SetParameters(Vector2 pos, Texture2D image) {
   texture = image;
+  posicion = pos;
+}
+
+
+void Block::SetParameters(Vector2 pos) {
   posicion = pos;
 }
 

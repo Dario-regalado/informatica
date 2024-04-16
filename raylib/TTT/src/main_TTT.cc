@@ -31,8 +31,6 @@ int main() {
 
   Grid grid;
   grid.Print();
-  Block ex;
-  Block ci;
 
   Texture2D ekis(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/ekis.png"));
   ekis.height = 90;
@@ -40,6 +38,9 @@ int main() {
   Texture2D circ(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/circ.png"));
   circ.height = 90;
   circ.width = 90;
+
+  Block ex{ekis};
+  Block ci{circ};
 
   Vector2 pos;
   
@@ -55,7 +56,7 @@ int main() {
       {
         if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
           pos = GetMousePosition();
-          ci.SetParameters(pos, circ);
+          ci.SetParameters(pos);
           ci.Draw(); 
         }
       } 

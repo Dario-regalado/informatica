@@ -7,9 +7,11 @@
 class Block {
  public:
   Block(Vector2, Texture2D);
+  Block(Texture2D);
   Block();
   void Draw();
   void SetParameters(Vector2, Texture2D);
+  void SetParameters(Vector2);
   
   
  private:
