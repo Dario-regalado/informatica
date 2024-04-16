@@ -20,6 +20,8 @@ class Grid {
   void Draw();
   void Print();
   bool IsFull();
+  int GetnumRows() const {return numRows;}
+  int GetnumCols() const {return numCols;}
 
  private:
   int numRows;

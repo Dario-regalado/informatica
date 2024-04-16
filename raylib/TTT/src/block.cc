@@ -35,20 +35,16 @@ Block::Block() {}
  * 
  */
 void Block::Draw() {
-  while(!WindowShouldClose()) {
-    BeginDrawing();
     //DrawText("click to set you option", 10, 10, 20, DARKGRAY);
     IsInside(posicion);
+    std::cout << posicion.x << " " << posicion.y << std::endl;
     DrawTexture(texture, posicion.x + 5, posicion.y + 5, WHITE);
-    EndDrawing();
-  }  
 }
 
 /**
  * @brief 
  * 
- * @param row 
- * @param col 
+ * @param pos 
  * @param image 
  */
 void Block::SetParameters(Vector2 pos, Texture2D image) {

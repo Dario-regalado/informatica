@@ -27,7 +27,7 @@ bool EvenTriggered(double interval){
 
 int main() {
   InitWindow(300, 300, "raylib Tick Tack Toe");
-  SetTargetFPS(60);
+  //SetTargetFPS(60);
 
   Grid grid;
   grid.Print();
@@ -49,12 +49,22 @@ int main() {
     ClearBackground(WHITE);
     grid.Draw();
     
-    for (int i = 0; i < 9; i++){
-      if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
-        pos = GetMousePosition();
-        ci.SetParameters(pos, circ);
-        ci.Draw();
-      }    
+    for (int row = 0; row < grid.GetnumRows(); row++)
+    {
+      for (int col = 0; col < grid.GetnumCols(); col++)
+      {
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+          pos = GetMousePosition();
+          ci.SetParameters(pos, circ);
+          ci.Draw(); 
+        }
+      } 
+    }
+    
+    if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+      pos = GetMousePosition();
+      ci.SetParameters(pos, circ);
+      ci.Draw(); 
     }
     EndDrawing();
   }
