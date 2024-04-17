@@ -264,7 +264,7 @@ void GRAFO::Kruskal() {
       }
     }
   }
-  unsigned head{0};
+  unsigned head{n- 1};
   unsigned cont{0};
   int pesoMST{0};
 
@@ -275,7 +275,7 @@ void GRAFO::Kruskal() {
   }
 
   do {
-    for (unsigned i = head + 1; i < aristas.size(); i++) {
+    for (unsigned i = head ; i >= aristas.size(); i--) {
       if (aristas[head].peso > aristas[i].peso) {
         AristaPesada arista_head{aristas[head]};
         aristas[head] = aristas[i];
@@ -295,10 +295,7 @@ void GRAFO::Kruskal() {
            << "), con peso " << aristas[head].peso << endl;
       pesoMST = pesoMST + aristas[head].peso;
     }
-    head++;
+    head--;
   } while ((cont < (n - 1)) && (head < aristas.size()));
-  if (cont == n - 1)
-    cout << "El peso del arbol generador de mínimo coste es " << pesoMST << endl;
-  else
-    cout << "no existe arbol generador  ya que el grafo no es fuertemente conexo" << std::endl;
+  cout << "El peso del arbol generador de mínimo coste es " << pesoMST << endl;
 }
