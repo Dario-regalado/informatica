@@ -62,6 +62,12 @@ void Grid::Print() {
   }
 }
 
+/**
+ * @brief 
+ * 
+ * @return true 
+ * @return false 
+ */
 bool Grid::IsFull() {
   int casillas_llenas{0};
   for (int row = 0; row < numRows; row++) {
@@ -74,7 +80,13 @@ bool Grid::IsFull() {
   return casillas_llenas == 9;
 }
 
-
+/**
+ * @brief 
+ * 
+ * @param row 
+ * @param col 
+ * @param elemento 
+ */
 void Grid::Update(int row, int col, int elemento) {
   if (grid[row][col] == 0) {
     grid[row][col] = elemento;
@@ -83,8 +95,12 @@ void Grid::Update(int row, int col, int elemento) {
 
 }
 
+/**
+ * @brief 
+ * 
+ */
 void Grid::DrawElement() {
-  if (!IsFull()) {
+  if (!IsFull() && !CombinacionGanadora()) {
     for (int row = 0; row < numRows; row++)
     {
       for (int col = 0; col < numCols; col++)
@@ -97,8 +113,68 @@ void Grid::DrawElement() {
           }
         }
       }
-      
     }
-    
+  } else if (CombinacionGanadora()) {
+    ClearBackground(WHITE);
+    DrawRectangle(0, 0, 300, 300, WHITE);
+    DrawText("ganador", 50, 100, 50, BLACK);
+  } else {
+    //reiniciar el juego
   }
+}
+
+/**
+ * @brief 
+ * 
+ * @return true 
+ * @return false 
+ */
+bool Grid::CombinacionGanadora() {
+//  if (IsFull()){
+//    return false;
+//  }
+  int temp{0};
+  
+  // itera en cada fila
+  for (int row = 0; row < numRows; row++) {
+    for (int col = 0; col < numCols; col++) {
+      temp += grid[row][col];
+    }
+    if (temp == 3 || temp == 6){
+      return true;
+    }
+    temp = 0;
+  }
+
+  // intera en cada columna
+  for (int row = 0; row < numRows; row++) {
+    for (int col = 0; col < numCols; col++) {
+      temp += grid[col][row];
+    }
+    if (temp == 3 || temp == 6){
+      return true;
+    }
+    temp = 0;
+  }
+
+  //itera en diagonal principal
+  for (int diago_princ = 0; diago_princ < numRows; diago_princ++)
+  {
+    temp += grid[diago_princ][diago_princ];
+  }
+  if (temp == 3 || temp == 6) {
+    return true;
+  }
+  temp = 0;
+  
+  //itera en diagonal secundaria
+  for (int diago_secun = 0; diago_secun < numRows; diago_secun++)
+  {
+    temp += grid[diago_secun][numCols - 1 - diago_secun];
+  }
+  if (temp == 3 || temp == 6) {
+    return true;
+  }
+  
+  return false;
 }

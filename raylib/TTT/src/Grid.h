@@ -22,11 +22,11 @@ class Grid {
   void DrawElement();
   bool IsFull();
   void Update(int, int, int);
+  bool CombinacionGanadora();
 
 private:
   int numRows;
   int numCols;
   int celSize;
   Texture2D x, c;
-
 };
