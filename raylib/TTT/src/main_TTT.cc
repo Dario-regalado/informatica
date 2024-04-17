@@ -46,6 +46,12 @@ int main() {
       pos.y = int(pos.y / 100); 
        std::cout << pos.x << " " << pos.y << std::endl;
       grid.Update(pos.x, pos.y, 1);
+    } else if(!grid.IsFull() && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+      pos = GetMousePosition();
+      pos.x = int(pos.x / 100);
+      pos.y = int(pos.y / 100); 
+       std::cout << pos.x << " " << pos.y << std::endl;
+      grid.Update(pos.x, pos.y, 2);
     }
     EndDrawing();
   }

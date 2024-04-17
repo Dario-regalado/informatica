@@ -109,7 +109,7 @@ void Grid::DrawElement() {
           if (grid[row][col] == 1) {
             DrawTexture(x, row * 100 + 5, col * 100 + 5, WHITE);
           } else if (grid[row][col] == 2) {
-            DrawTexture(c, row + 5, col + 5, WHITE);
+            DrawTexture(c, row * 100 + 5, col * 100 + 5, WHITE);
           }
         }
       }
@@ -133,46 +133,62 @@ bool Grid::CombinacionGanadora() {
 //  if (IsFull()){
 //    return false;
 //  }
-  int temp{0};
+  int tempx{0}, tempc{0};
   
   // itera en cada fila
   for (int row = 0; row < numRows; row++) {
     for (int col = 0; col < numCols; col++) {
-      temp += grid[row][col];
+      if (grid[row][col] == 1)
+        tempx += grid[row][col];
+      else if (grid[row][col] == 2)
+        tempc += grid[row][col]; 
     }
-    if (temp == 3 || temp == 6){
+    if (tempx == 3 || tempc == 6){
       return true;
     }
-    temp = 0;
+    tempx = 0;
+    tempc = 0;
   }
 
   // intera en cada columna
   for (int row = 0; row < numRows; row++) {
     for (int col = 0; col < numCols; col++) {
-      temp += grid[col][row];
+      if (grid[col][row] == 1)
+        tempx += grid[col][row];
+      else if (grid[col][row] == 2)
+        tempc += grid[col][row]; 
     }
-    if (temp == 3 || temp == 6){
+    if (tempx == 3 || tempc == 6){
       return true;
     }
-    temp = 0;
+    tempx = 0;
+    tempc = 0;
   }
 
   //itera en diagonal principal
   for (int diago_princ = 0; diago_princ < numRows; diago_princ++)
   {
-    temp += grid[diago_princ][diago_princ];
+    if (grid[diago_princ][diago_princ] == 1)
+        tempx += grid[diago_princ][diago_princ];
+      else if (grid[diago_princ][diago_princ] == 2)
+        tempc += grid[diago_princ][diago_princ]; 
   }
-  if (temp == 3 || temp == 6) {
+  if (tempx == 3 || tempc == 6) {
     return true;
   }
-  temp = 0;
+  tempx = 0;
+  tempc = 0;
   
   //itera en diagonal secundaria
   for (int diago_secun = 0; diago_secun < numRows; diago_secun++)
   {
-    temp += grid[diago_secun][numCols - 1 - diago_secun];
+    //temp += grid[diago_secun][numCols - 1 - diago_secun];
+    if (grid[diago_secun][numCols - 1 - diago_secun] == 1)
+        tempx += grid[diago_secun][numCols - 1 - diago_secun];
+      else if (grid[diago_secun][numCols - 1 - diago_secun] == 2)
+        tempc += grid[diago_secun][numCols - 1 - diago_secun]; 
   }
-  if (temp == 3 || temp == 6) {
+  if (tempx == 3 || tempc == 6) {
     return true;
   }
   
