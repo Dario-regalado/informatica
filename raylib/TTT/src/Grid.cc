@@ -139,8 +139,7 @@ void Grid::DrawElement() {
 /**
  * @brief 
  * 
- * @return true 
- * @return false 
+ * @return int 
  */
 int Grid::CombinacionGanadora() {
 //  if (IsFull()){
