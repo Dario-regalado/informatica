@@ -22,7 +22,7 @@ class Grid {
   void DrawElement();
   bool IsFull();
   void Update(int, int, int);
-  bool CombinacionGanadora();
+  int CombinacionGanadora();
 
 private:
   int numRows;

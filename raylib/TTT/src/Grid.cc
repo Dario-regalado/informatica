@@ -89,9 +89,9 @@ bool Grid::IsFull() {
  */
 void Grid::Update(int row, int col, int elemento) {
   if (grid[row][col] == 0) {
-    grid[row][col] = elemento;
+    grid[row][col] = elemento + 1;
   }
-  Print();
+  // Print();
 
 }
 
@@ -100,7 +100,7 @@ void Grid::Update(int row, int col, int elemento) {
  * 
  */
 void Grid::DrawElement() {
-  if (!IsFull() && !CombinacionGanadora()) {
+  if (!IsFull() && CombinacionGanadora() == 0) {
     for (int row = 0; row < numRows; row++)
     {
       for (int col = 0; col < numCols; col++)
@@ -114,12 +114,24 @@ void Grid::DrawElement() {
         }
       }
     }
-  } else if (CombinacionGanadora()) {
+  } else if (CombinacionGanadora() == 1) {
     ClearBackground(WHITE);
     DrawRectangle(0, 0, 300, 300, WHITE);
-    DrawText("ganador", 50, 100, 50, BLACK);
+    DrawText("ganador X", 20, 100, 50, BLACK);
+    DrawText("presione click derecho\n para continuar", 10, 150, 20, BLACK);
+    if(IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+      Initialize();
+    }
+  } else if (CombinacionGanadora() == 2) {
+    ClearBackground(WHITE);
+    DrawRectangle(0, 0, 300, 300, WHITE);
+    DrawText("ganador O", 20, 100, 50, BLACK);
+    DrawText("presione click derecho\n para continuar", 10, 150, 20, BLACK);
+    if(IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
+      Initialize();
+    }
   } else {
-    //reiniciar el juego
+    Initialize();
   }
 }
 
@@ -129,7 +141,7 @@ void Grid::DrawElement() {
  * @return true 
  * @return false 
  */
-bool Grid::CombinacionGanadora() {
+int Grid::CombinacionGanadora() {
 //  if (IsFull()){
 //    return false;
 //  }
@@ -143,8 +155,10 @@ bool Grid::CombinacionGanadora() {
       else if (grid[row][col] == 2)
         tempc += grid[row][col]; 
     }
-    if (tempx == 3 || tempc == 6){
-      return true;
+    if (tempx == 3){
+      return 1;
+    } else if(tempc == 6) {
+      return 2;
     }
     tempx = 0;
     tempc = 0;
@@ -158,8 +172,10 @@ bool Grid::CombinacionGanadora() {
       else if (grid[col][row] == 2)
         tempc += grid[col][row]; 
     }
-    if (tempx == 3 || tempc == 6){
-      return true;
+    if (tempx == 3){
+      return 1;
+    } else if(tempc == 6) {
+      return 2;
     }
     tempx = 0;
     tempc = 0;
@@ -173,8 +189,10 @@ bool Grid::CombinacionGanadora() {
       else if (grid[diago_princ][diago_princ] == 2)
         tempc += grid[diago_princ][diago_princ]; 
   }
-  if (tempx == 3 || tempc == 6) {
-    return true;
+  if (tempx == 3){
+    return 1;
+  } else if(tempc == 6) {
+    return 2;
   }
   tempx = 0;
   tempc = 0;
@@ -188,9 +206,11 @@ bool Grid::CombinacionGanadora() {
       else if (grid[diago_secun][numCols - 1 - diago_secun] == 2)
         tempc += grid[diago_secun][numCols - 1 - diago_secun]; 
   }
-  if (tempx == 3 || tempc == 6) {
-    return true;
+  if (tempx == 3){
+    return 1;
+  } else if(tempc == 6) {
+    return 2;
   }
   
-  return false;
+  return 0;
 }

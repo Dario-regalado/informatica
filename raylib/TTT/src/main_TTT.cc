@@ -13,26 +13,15 @@
 #include "raylib.h"
 #include "Grid.h"
 
-/*
-double lastUpdatetime = 0;
-
-bool EvenTriggered(double interval){
-  double currentTime = GetTime();
-  if(currentTime - lastUpdatetime >= interval) {
-    lastUpdatetime = currentTime;
-    return true;
-  }
-  return false;
-}
-*/
 
 int main() {
   InitWindow(300, 300, "raylib Tick Tack Toe");
   SetTargetFPS(60);
 
+  int symbol{0};
   Vector2 pos;
   Grid grid;
-  grid.Print();
+  // grid.Print();
 
   while(!WindowShouldClose()) {
     BeginDrawing();
@@ -40,19 +29,15 @@ int main() {
     grid.GridDraw();
     grid.DrawElement();
     
-    if(!grid.IsFull() && IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
       pos = GetMousePosition();
       pos.x = int(pos.x / 100);
       pos.y = int(pos.y / 100); 
       // std::cout << pos.x << " " << pos.y << std::endl;
-      grid.Update(pos.x, pos.y, 1);
-    } else if(!grid.IsFull() && IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
-      pos = GetMousePosition();
-      pos.x = int(pos.x / 100);
-      pos.y = int(pos.y / 100); 
-      // std::cout << pos.x << " " << pos.y << std::endl;
-      grid.Update(pos.x, pos.y, 2);
+      grid.Update(pos.x, pos.y, symbol % 2);
+      symbol++;
     }
+    
     EndDrawing();
   }
   CloseWindow();
