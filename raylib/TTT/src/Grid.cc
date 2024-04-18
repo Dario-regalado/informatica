@@ -91,7 +91,7 @@ void Grid::Update(int row, int col, int elemento) {
   if (grid[row][col] == 0) {
     grid[row][col] = elemento + 1;
   }
-  // Print();
+  Print();
 
 }
 
@@ -100,7 +100,7 @@ void Grid::Update(int row, int col, int elemento) {
  * 
  */
 void Grid::DrawElement() {
-  if (!IsFull() && CombinacionGanadora() == 0) {
+  //if (!IsFull() && CombinacionGanadora() == 0) {
     for (int row = 0; row < numRows; row++)
     {
       for (int col = 0; col < numCols; col++)
@@ -114,23 +114,24 @@ void Grid::DrawElement() {
         }
       }
     }
-  } else if (CombinacionGanadora() == 1) {
+  //} else 
+  if (CombinacionGanadora() == 1) {
     ClearBackground(WHITE);
-    DrawRectangle(0, 0, 300, 300, WHITE);
-    DrawText("ganador X", 20, 100, 50, BLACK);
-    DrawText("presione click derecho\n para continuar", 10, 150, 20, BLACK);
+    //DrawRectangle(0, 0, 300, 300, WHITE);
+    DrawText("ganador X", 20, 100, 50, WHITE);
+    DrawText("presione click derecho\n para continuar", 10, 150, 20, WHITE);
     if(IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
       Initialize();
     }
   } else if (CombinacionGanadora() == 2) {
     ClearBackground(WHITE);
-    DrawRectangle(0, 0, 300, 300, WHITE);
-    DrawText("ganador O", 20, 100, 50, BLACK);
-    DrawText("presione click derecho\n para continuar", 10, 150, 20, BLACK);
+    //DrawRectangle(0, 0, 300, 300, WHITE);
+    DrawText("ganador O", 20, 100, 50, WHITE);
+    DrawText("presione click derecho\n para continuar", 10, 150, 20, WHITE);
     if(IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
       Initialize();
     }
-  } else {
+  } else if (IsFull()) {
     Initialize();
   }
 }

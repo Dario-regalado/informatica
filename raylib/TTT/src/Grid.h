@@ -10,7 +10,6 @@
  */
 #pragma once
 #include "raylib.h"
-#include "block.h"
 
 class Grid {
  public:  

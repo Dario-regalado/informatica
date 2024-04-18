@@ -144,12 +144,4 @@ build/Grid.o: src/Grid.cc \
  src/Grid.h C:/raylib/w64devkit/x86_64-w64-mingw32/include/raylib.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/stdarg.h \
- C:/raylib/w64devkit/x86_64-w64-mingw32/include/_mingw_stdarg.h \
- src/block.h \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/map \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_tree.h \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/ext/aligned_buffer.h \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/node_handle.h \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_map.h \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_multimap.h \
- C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/erase_if.h
+ C:/raylib/w64devkit/x86_64-w64-mingw32/include/_mingw_stdarg.h
