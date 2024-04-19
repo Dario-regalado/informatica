@@ -8,26 +8,36 @@
  * @copyright Copyright (c) 2024
  *  https://www.youtube.com/watch?v=wVYKG_ch4yM&list=PLwR6ZGPvjVOSRywn9VCQ3yrRVruxzzuo9
  */
+
+#include <iostream>
 #include "raylib.h"
 #include "Grid.h"
-#include "block.h"
+
 
 int main() {
   InitWindow(300, 300, "raylib Tick Tack Toe");
-  SetTargetFPS(30);
+  SetTargetFPS(60);
+
+  int symbol{0};
+  Vector2 pos;
   Grid grid;
-  grid.Print();
-  Texture2D ekis(LoadTexture("TTT/ekis.png"));
-  Texture2D circ(LoadTexture("TTT/circ.png"));
+  // grid.Print();
 
   while(!WindowShouldClose()) {
     BeginDrawing();
     ClearBackground(WHITE);
-    grid.Draw();
-    for (int i = 0; i < 9; i++)
-    {
-      grid.CelPressed('x');
-      grid.CelPressed('c');
+    grid.GridDraw();
+    grid.DrawElement();
+    
+    if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+      pos = GetMousePosition();
+      int x = int(pos.x / 100);
+      int y = int(pos.y / 100); 
+      // std::cout << pos.x << " " << pos.y << std::endl;
+      if (grid.grid[x][y] == 0) {
+        grid.Update(x, y, symbol % 2);
+        symbol++;
+      }
     }
     
     EndDrawing();

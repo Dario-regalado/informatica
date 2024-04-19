@@ -144,5 +144,4 @@ build/Grid.o: src/Grid.cc \
  src/Grid.h C:/raylib/w64devkit/x86_64-w64-mingw32/include/raylib.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/stdarg.h \
- C:/raylib/w64devkit/x86_64-w64-mingw32/include/_mingw_stdarg.h \
- src/block.h src/position.h
+ C:/raylib/w64devkit/x86_64-w64-mingw32/include/_mingw_stdarg.h
