@@ -6,7 +6,7 @@
  * @date 2024-04-14
  * 
  * @copyright Copyright (c) 2024
- * 
+ *  https://www.youtube.com/watch?v=wVYKG_ch4yM&list=PLwR6ZGPvjVOSRywn9VCQ3yrRVruxzzuo9
  */
 #include "raylib.h"
 #include "Grid.h"
