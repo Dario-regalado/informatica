@@ -118,7 +118,7 @@ void Grid::DrawElement() {
   if (CombinacionGanadora() == 1) {
     ClearBackground(WHITE);
     //DrawRectangle(0, 0, 300, 300, WHITE);
-    DrawText("ganador X", 20, 100, 50, WHITE);
+    DrawText("ganador ><", 20, 100, 50, WHITE);
     DrawText("presione click derecho\n para continuar", 10, 150, 20, WHITE);
     if(IsMouseButtonPressed(MOUSE_BUTTON_RIGHT)) {
       Initialize();

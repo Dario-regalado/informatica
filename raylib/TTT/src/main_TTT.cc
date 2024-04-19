@@ -31,11 +31,13 @@ int main() {
     
     if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
       pos = GetMousePosition();
-      pos.x = int(pos.x / 100);
-      pos.y = int(pos.y / 100); 
+      int x = int(pos.x / 100);
+      int y = int(pos.y / 100); 
       // std::cout << pos.x << " " << pos.y << std::endl;
-      grid.Update(pos.x, pos.y, symbol % 2);
-      symbol++;
+      if (grid.grid[x][y] == 0) {
+        grid.Update(x, y, symbol % 2);
+        symbol++;
+      }
     }
     
     EndDrawing();
