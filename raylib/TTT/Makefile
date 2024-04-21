@@ -1,5 +1,5 @@
 # Modify 
-CXX := g++
+CXX := g++ 
 DEBUG ?= 1
 ifeq ($(DEBUG), 1)
 	CXXFLAGS := -std=c++17 -Wall -Wextra -Werror -MD
@@ -9,7 +9,7 @@ endif
 BUILDDIR := build
 SRCDIR := src
 BIN := TTT
-LIBS := -lraylib -lgdi32 -lwinmm
+LIBS := -lraylib -lgdi32 -lwinmm 
 
 # Don't modify
 OBJS := $(shell find $(SRCDIR) -name '*.cc')
@@ -19,7 +19,7 @@ OBJS := $(patsubst $(SRCDIR)/%, $(BUILDDIR)/%, $(OBJS))
 .PHONY: clean
 
 $(BIN): $(BUILDDIR) $(OBJS)
-	$(CXX) $(OBJS) $(LIBS) -o $@
+	$(CXX) $(OBJS) $(LIBS) -mwindows -o $@
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)

@@ -34,10 +34,8 @@ int main() {
       int x = int(pos.x / 100);
       int y = int(pos.y / 100); 
       // std::cout << pos.x << " " << pos.y << std::endl;
-      if (grid.grid[x][y] == 0) {
-        grid.Update(x, y, symbol % 2);
-        symbol++;
-      }
+      grid.Update(x, y, symbol % 2);
+      symbol++;
     }
     
     EndDrawing();
