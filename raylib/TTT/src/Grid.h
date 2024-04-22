@@ -10,7 +10,6 @@
  */
 #pragma once
 #include "raylib.h"
-#include "block.h"
 
 class Grid {
  public:  
@@ -22,11 +21,11 @@ class Grid {
   void DrawElement();
   bool IsFull();
   void Update(int, int, int);
+  int CombinacionGanadora();
 
 private:
   int numRows;
   int numCols;
   int celSize;
   Texture2D x, c;
-
 };
