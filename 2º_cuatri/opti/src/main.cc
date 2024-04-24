@@ -131,6 +131,11 @@ int main(int argc, char *argv[]) {
             pressanykey();
           }
           break;
+        case 'x':
+          if (G.Es_dirigido()) {
+            G.PDM();
+            pressanykey();
+          }
       }
       if (opcion == 'q')
         break;

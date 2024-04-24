@@ -120,6 +120,13 @@ void GRAFO::Mostrar_Listas(int l) {
   }
 }
 
+void MostrarCamino(unsigned s, unsigned i, vector<unsigned> pred) {
+  if (i != s) {
+    MostrarCamino(s,pred[i],pred);
+    cout << " -> " << i+1;
+  } else
+    cout << i+1;
+}
 // void GRAFO::Mostrar_Matriz() //Muestra la matriz de adyacencia, tanto los nodos adyacentes como sus costes
 // {
 
@@ -301,4 +308,65 @@ void GRAFO::Kruskal() {
     cout << "El peso del arbol generador de mínimo coste es " << pesoMST << endl;
   else
     cout << "no existe arbol generador  ya que el grafo no es fuertemente conexo" << std::endl;
+}
+
+void GRAFO::PDM() {
+  deque<unsigned> dcola;
+  vector<int> d;
+  vector<unsigned> pred;
+  vector<bool> Encola;
+  unsigned s;
+  //Inicialmente no hay ningun nodo permanentemente etiquetado
+  Encola.resize(n,false);
+  //Inicialmente todas las etiquetas distancias son infinito
+  d.resize(n,maxint);
+  //Inicialmente el pred es null
+  pred.resize(n,UERROR);
+  // Pedimos por pantalla el nodo de partida s.
+  do {
+    cout << "El valor del nodo inicial [1-" << n << "]: ";
+    cin >> s;
+  } while (s == 0 || s > n);
+  s--;
+  //La etiqueta distancia del nodo s es 0, y es su propio pred
+  d[s]=0; pred[s]=s;
+  //añadimos s a dcola y actualizamos Encola
+  dcola.push_back(s); Encola[s] = true;
+
+  int min_cost{0};
+  while (!dcola.empty()) {
+    unsigned k = dcola.front();
+    Encola[k] = false;
+    dcola.pop_front();
+    for (const auto &arco : LS[k]) {
+      if (arco.c < min_cost) {
+        min_cost = arco.c;
+      }
+      if (d[k] < static_cast<int>((n - 1)) * min_cost) {
+        cout << "Existe al menos un circuito de coste negativo en el grafo" << endl;
+        return;
+      }
+      if (d[arco.j] > d[k] + arco.c) {
+        if (pred[arco.j] == UERROR) {
+          dcola.push_back(arco.j);
+        } else if (!Encola[arco.j]) {
+          dcola.push_front(arco.j);
+        }
+        d[arco.j] = d[k] + arco.c;
+        pred[arco.j] = k;
+      }
+    }
+  }
+  cout << "Soluciones: " << endl;
+  // En esta parte del código, mostramos los caminos mínimos para cada nodo si
+  // los hay, y siempre y cuando no haya circuitos de coste negativo.
+  for (unsigned i{0}; i < n; i++) {
+    if (d[i] != maxint) {
+      cout << "  Camino minimo para el nodo " << i + 1 << ": ";
+      MostrarCamino(s, i, pred);
+      cout << endl;
+    } else {
+      cout << "  Camino minimo para el nodo " << i + 1 << ": no existe\n";
+    }
+  }
 }
