@@ -150,35 +150,14 @@ maze_t::solve_(const int i, const int j)
   // propagarla retornando también 'true'
 
   // [poner código aquí]
-  if (i_d[i] == -1) {
-    if(is_ok_(i, j) == true) {
-      matrix_.at(i, j) = PATH_ID;
-      solve_(i - 1, j);
-      return true;
-    }
-  }
-  if (i_d[i] == 1) {
-    if(is_ok_(i, j) == true) {
-      matrix_.at(i, j) = PATH_ID;
-      solve_(i + 1, j);
-      return true;
-    }
-  }
-  if (j_d[j] == 1) {
-    if(is_ok_(i, j) == true) {
-      matrix_.at(i, j) = PATH_ID;
-      solve_(i, j - 1);
-      return true;
-    }
-  }
-  if (j_d[j] == -1) {
-    if(is_ok_(i, j) == true) {
-      matrix_.at(i, j) = PATH_ID;
-      solve_(i, j + 1);
-      return true;
-    }
-  }
-  
+ for (int k=0; k < 4; k++) {
+   const int i_desfase{i + i_d[k]};
+   const int j_desfase{k + j_d[k]};
+   if (is_ok_(i_desfase, j_desfase) && solve_(i_desfase, j_desfase)){
+     matrix_.at(i_desfase, j_desfase) = PATH_ID;
+     return true;
+   }
+ } 
 
   // desmarcamos la celda como visitada (denominado "backtracking") y
   // retornamos 'false'
