@@ -58,6 +58,7 @@ class GRAFO {
   void RecorridoAmplitud(); //Construye un recorrido en amplitud desde un nodo inicial
   void Kruskal();
   ~GRAFO(); //Destructor del objeto grafo
+  void PDM();
 };
 
 #endif
