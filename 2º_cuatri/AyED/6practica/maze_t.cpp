@@ -116,8 +116,8 @@ maze_t::is_ok_(const int i, const int j) const
   // - la celda (i, j) no puede haber sido visitada antes.
   bool is_ok{0};
   if (i > 0 && i <= matrix_.get_m() && j > 0 && j <= matrix_.get_n()) {
-    if (matrix_.at(i,j) != 1) {
-      if (visited_.at(i,j) == 0) {
+    if (matrix_.at(i,j) != WALL_ID) {
+      if (!visited_.at(i,j)) {
         is_ok = 1;
       }
     }
@@ -134,36 +134,34 @@ maze_t::solve_(const int i, const int j)
 {
   // CASO BASE:
   // retornar 'true' si 'i' y 'j' han llegado a la salida
-
-  // [poner código aquí]
-  if (matrix_.at(i,j) == END_ID)
-    return true;
+  if (i == i_end_ && j == j_end_) {
+    return true; // Se ha encontrado la salida
+  }
 
   // marcamos la celda como visitada
   visited_(i, j) = true;
-  
+
   // CASO GENERAL:
   // para cada una de las 4 posibles direcciones (N, E, S, W) ver si es posible
   // el desplazamiento (is_ok_) y, en ese caso, intentar resolver el laberinto
   // llamando recursivamente a 'solve'. 
   // Si la llamada devuelve 'true', poner en la celda el valor PATH_ID, y
   // propagarla retornando también 'true'
-
-  // [poner código aquí]
- for (int k=0; k < 4; k++) {
-   const int i_desfase{i + i_d[k]};
-   const int j_desfase{k + j_d[k]};
-   if (is_ok_(i_desfase, j_desfase) && solve_(i_desfase, j_desfase)){
-     matrix_.at(i_desfase, j_desfase) = PATH_ID;
-     return true;
-   }
- } 
+  for (int k=0; k < 4; k++) {
+    int i_desfase{i + i_d[k]};
+    int j_desfase{k + j_d[k]};
+    if (is_ok_(i_desfase, j_desfase) && solve_(i_desfase, j_desfase)){
+      matrix_.at(i_desfase, j_desfase) = PATH_ID; // Se marca la celda actual como parte del camino
+      return true;
+    }
+  }
 
   // desmarcamos la celda como visitada (denominado "backtracking") y
   // retornamos 'false'
   visited_(i, j) = false;
   return false;
 }
+
 
 
 
