@@ -149,7 +149,7 @@ maze_t::solve_(const int i, const int j)
   // propagarla retornando también 'true'
   for (int k=0; k < 4; k++) {
     int i_desfase{i + i_d[k]};
-    int j_desfase{k + j_d[k]};
+    int j_desfase{j + j_d[k]};
     if (is_ok_(i_desfase, j_desfase) && solve_(i_desfase, j_desfase)){
       matrix_.at(i_desfase, j_desfase) = PATH_ID; // Se marca la celda actual como parte del camino
       return true;
