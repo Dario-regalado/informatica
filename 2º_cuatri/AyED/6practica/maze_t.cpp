@@ -192,4 +192,5 @@ maze_t::SolveByList() {
     cout << aux->get_data() << " ";
     aux = aux->get_next();
   }
+  cout << endl;
 }
