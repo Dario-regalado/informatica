@@ -25,7 +25,7 @@ template<class T> class pair_t {
 
   // getters & setters
   T get_val(void) const;
-  int get_inx(void) const;
+  T get_inx(void) const;
   void set(T, int);
 
   // E/S
@@ -33,36 +33,36 @@ template<class T> class pair_t {
   std::ostream& write(std::ostream& os = std::cout) const;
 
  private:
-  T val_;
-  int inx_;
+  T fila_;
+  T columna_;
 };
 
 
-template<class T> pair_t<T>::pair_t() : val_(), inx_(-1) {}
+template<class T> pair_t<T>::pair_t() : fila_(), columna_(-1) {}
 
-template<class T> pair_t<T>::pair_t(T val, int inx) : val_(val), inx_(inx) {}
+template<class T> pair_t<T>::pair_t(T val, int inx) : fila_(val), columna_(inx) {}
 
 template<class T> pair_t<T>::~pair_t() {}
 
 template<class T> void pair_t<T>::set(T val, int inx) {
-  val_ = val;
-  inx_ = inx;
+ fila_ = val;
+  columna_ = inx;
 }
 
-template<class T> int pair_t<T>::get_inx() const {
-  return inx_;
+template<class T> T pair_t<T>::get_inx() const {
+  return columna_;
 }
 
 template<class T> T pair_t<T>::get_val() const {
-  return val_;
+  return fila_;
 }
 
 template<class T> std::istream& pair_t<T>::read(std::istream& is) {
-  return is >> inx_ >> val_;
+  return is >> columna_ >> fila_;
 }
 
 template<class T> std::ostream& pair_t<T>::write(std::ostream& os) const {
-  return os << "(" << inx_ << ":" << val_ << ")";
+  return os << "(" << columna_ << ":" << fila_ << ")";
 }
 
 template<class T> std::ostream& operator<<(std::ostream& os,

@@ -13,6 +13,7 @@
 #include <iostream>
 #include "matrix_t.hpp"
 #include "pair_t.h"
+#include "dll_t.h"
 #include "vector_t.hpp"
 
 #define TRACE(x) cout << (#x) << "= " << (x) << endl
@@ -50,7 +51,6 @@ const short i_d[] = { -1, 0, 1,  0};
 const short j_d[] = {  0, 1, 0, -1};
 
 typedef pair_t<short> pair_short_t;
-typedef vector_t<pair_short_t> pair_vector_t;
 
 
 class maze_t 
@@ -62,8 +62,8 @@ private:
   matrix_t_bool visited_;
   // guarda las filas y columnas de entrada (start) y salida (end)
   int i_start_, j_start_, i_end_, j_end_;
-  // vector de pares(fila, columna) que almacena la salida
-  pair_vector_t salida_;
+  // lista de pares(fila, columna) que almacena la salida
+  dll_t<pair_short_t> lista_;
 
 public:
   // constructor y destructor
@@ -75,6 +75,7 @@ public:
 
   istream& read(istream& = cin);
   ostream& write(ostream& = cout) const;
+  void SolveByList();
   
 private:
   bool is_ok_(const int, const int) const;

@@ -30,6 +30,6 @@ int main()
   }
   else
     cout << "No se ha podido encontrar la salida del laberinto..." << endl;
-  
+  M.SolveByList();
   return 1;
 }

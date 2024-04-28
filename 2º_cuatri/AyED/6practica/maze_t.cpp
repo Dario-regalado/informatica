@@ -15,7 +15,7 @@
 maze_t::maze_t():
 matrix_(),
 visited_(), 
-salida_(),
+lista_(),
 i_start_(-1),
 j_start_(-1), 
 i_end_(-1),
@@ -152,6 +152,8 @@ maze_t::solve_(const int i, const int j)
     int j_desfase{j + j_d[k]};
     if (is_ok_(i_desfase, j_desfase) && solve_(i_desfase, j_desfase)){
       matrix_.at(i_desfase, j_desfase) = PATH_ID; // Se marca la celda actual como parte del camino
+      pair_short_t pareja(i_desfase, j_desfase);
+      lista_.push_back(new dll_node_t<pair_short_t>(pareja));
       return true;
     }
   }
@@ -179,4 +181,15 @@ ostream&
 operator<<(ostream& os, const maze_t& M)
 {
   return M.write(os);
+}
+
+
+void 
+maze_t::SolveByList() {
+  dll_node_t<pair_short_t>* aux = lista_.get_head();
+  while (!lista_.empty())
+  {
+    cout << aux->get_data() << " ";
+    aux = aux->get_next();
+  }
 }
