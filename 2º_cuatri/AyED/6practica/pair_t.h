@@ -62,7 +62,7 @@ template<class T> std::istream& pair_t<T>::read(std::istream& is) {
 }
 
 template<class T> std::ostream& pair_t<T>::write(std::ostream& os) const {
-  return os << "(" << columna_ << ":" << fila_ << ")";
+  return os << "(" << columna_ << ", " << fila_ << ")";
 }
 
 template<class T> std::ostream& operator<<(std::ostream& os,
