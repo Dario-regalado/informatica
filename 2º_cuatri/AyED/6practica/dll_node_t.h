@@ -1,5 +1,5 @@
-// AUTOR: Dario Regalado Gonzalez
-// FECHA: 08 abril 2024
+// AUTOR: Dario Regalado González
+// FECHA: 29 abril 2024
 // EMAIL: alu0101640150@ull.edu.es
 // VERSION: 2.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos

@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Dario Regalado González
+// FECHA: 29 abril 2024
+// EMAIL: alu0101640150@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 6
@@ -64,6 +64,7 @@ private:
   int i_start_, j_start_, i_end_, j_end_;
   // lista de pares(fila, columna) que almacena la salida
   dll_t<pair_short_t> lista_;
+  int npath_;
 
 public:
   // constructor y destructor
@@ -76,6 +77,7 @@ public:
   istream& read(istream& = cin);
   ostream& write(ostream& = cout) const;
   void SolveByList();
+  int GetNPath() const {return npath_;} 
   
 private:
   bool is_ok_(const int, const int) const;

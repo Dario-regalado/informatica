@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Dario Regalado González
+// FECHA: 29 abril 2024
+// EMAIL: alu0101640150@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 6
@@ -19,7 +19,8 @@ lista_(),
 i_start_(-1),
 j_start_(-1), 
 i_end_(-1),
-j_end_(-1)
+j_end_(-1),
+npath_(0)
 {}
 
 
@@ -135,6 +136,7 @@ maze_t::solve_(const int i, const int j)
   // CASO BASE:
   // retornar 'true' si 'i' y 'j' han llegado a la salida
   if (i == i_end_ && j == j_end_) {
+    ++npath_;
     return true; // Se ha encontrado la salida
   }
 

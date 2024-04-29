@@ -1,6 +1,6 @@
-// AUTOR: 
-// FECHA: 
-// EMAIL: 
+// AUTOR: Dario Regalado González
+// FECHA: 29 abril 2024
+// EMAIL: alu0101640150@ull.edu.es
 // VERSION: 1.0
 // ASIGNATURA: Algoritmos y Estructuras de Datos
 // PRÁCTICA Nº: 6
@@ -30,6 +30,7 @@ int main()
   }
   else
     cout << "No se ha podido encontrar la salida del laberinto..." << endl;
-  M.SolveByList();
+  //M.SolveByList();
+  cout << "el numero de caminos es: " << M.GetNPath() << endl;
   return 1;
 }
