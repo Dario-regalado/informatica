@@ -91,7 +91,13 @@ void GRAFO::Info_Grafo() {
   cout << "Numero de arcos: " << m << '\n';
   cout << "Grafo " << (dirigido ? "dirigido" : "no dirigido") << '\n';
 }
-
+void MostrarCamino(unsigned s, unsigned i, vector<unsigned> pred) {
+  if (i != s) {
+    MostrarCamino(s,pred[i],pred);
+    cout << " -> " << i+1;
+  } else
+    cout << i+1;
+}
 void Mostrar_Lista(const vector<LA_nodo> &L) {
   for (ulong i{0}; i < L.size(); i++) {
     cout << i + 1 << ": ";
