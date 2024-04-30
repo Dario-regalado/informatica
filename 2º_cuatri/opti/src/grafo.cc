@@ -311,7 +311,7 @@ void GRAFO::Kruskal() {
 }
 
 void GRAFO::PDM() {
-  deque<unsigned> dcola;
+  deque<unsigned> cola_doble;
   vector<int> d;
   vector<unsigned> pred;
   vector<bool> Encola;
@@ -330,14 +330,16 @@ void GRAFO::PDM() {
   s--;
   //La etiqueta distancia del nodo s es 0, y es su propio pred
   d[s]=0; pred[s]=s;
-  //añadimos s a dcola y actualizamos Encola
-  dcola.push_back(s); Encola[s] = true;
+  //añadimos s a cola_doble y actualizamos Encola
+  cola_doble.push_back(s); Encola[s] = true;
 
   int min_cost{0};
-  while (!dcola.empty()) {
-    unsigned k = dcola.front();
+  while (!cola_doble.empty()) {
+    //quitamos el nodo k de la cola
+    unsigned k = cola_doble.front(); 
     Encola[k] = false;
-    dcola.pop_front();
+    cola_doble.pop_front();
+
     for (const auto &arco : LS[k]) {
       if (arco.c < min_cost) {
         min_cost = arco.c;
@@ -348,9 +350,9 @@ void GRAFO::PDM() {
       }
       if (d[arco.j] > d[k] + arco.c) {
         if (pred[arco.j] == UERROR) {
-          dcola.push_back(arco.j);
+          cola_doble.push_back(arco.j);
         } else if (!Encola[arco.j]) {
-          dcola.push_front(arco.j);
+          cola_doble.push_front(arco.j);
         }
         d[arco.j] = d[k] + arco.c;
         pred[arco.j] = k;
@@ -358,11 +360,9 @@ void GRAFO::PDM() {
     }
   }
   cout << "Soluciones: " << endl;
-  // En esta parte del código, mostramos los caminos mínimos para cada nodo si
-  // los hay, y siempre y cuando no haya circuitos de coste negativo.
   for (unsigned i{0}; i < n; i++) {
     if (d[i] != maxint) {
-      cout << "  Camino minimo para el nodo " << i + 1 << ": ";
+      cout << "  Camino minimo para el nodo " << i + 1 << " con distancia " << d[i] <<  ": ";
       MostrarCamino(s, i, pred);
       cout << endl;
     } else {
