@@ -102,8 +102,7 @@ while_ordenado:
     bge $t3, $t1, while_ordenado_fin
 if_ordenado:
 #         if (v[i+1] >= v[i]) {
-    li $t4, 1
-    add $t4, $t3, $t4
+    addi $t4, $t3, 1
     mul $t4, $t4, sizeD
     add $t4, $t4, $t0
     l.d $f4, 0($t4)
