@@ -141,12 +141,12 @@ if_separa_fin:
 	b for_separa
 for_separa_fin:
 # }
-	sw $s0, 0($sp)
-	sw $s1, 4($sp)
-	sw $s2, 8($sp)
-	s.d $f20, 12($sp)
-	s.d $f22, 20($sp)
-	sw $ra, 28($sp)
+	lw $s0, 0($sp)
+	lw $s1, 4($sp)
+	lw $s2, 8($sp)
+	l.d $f20, 12($sp)
+	l.d $f22, 20($sp)
+	lw $ra, 28($sp)
 	addi $sp, 32
 	jr $ra
 separa_fin:
