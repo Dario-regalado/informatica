@@ -12,4 +12,15 @@
   */
 
 #pragma once
+#include "Point2D.h"
+
+class Circle {
+ public:
+  Circle() = default;
+  int GetRadio() const {return radio_;}
+  Point2D GetCenter() const {return punto_;}
+ private:
+  int radio_;
+  Point2D punto_;
+};
 
