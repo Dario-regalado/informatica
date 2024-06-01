@@ -13,7 +13,7 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "dependencies.h"
+#include "complex.h"
 
 /** Shows correct usage of the program. 
   * If the program wasn't run correctly, prints the
@@ -31,6 +31,13 @@ void Usage(const int argc, char* argv[]) {
 }
 
 int main(const int argc, char *argv[]) {
-  Usage(argc, argv);
+  Complex com1(1,1);
+  Complex com2;
+  cin >> com2;
+  cout << com1 + com2 << endl;
+  cout << com1 - com2 << endl;
+  cout << com1 * com2 << endl;
+  cout << com1 / com2 << endl;
+
   return 0;
 }
