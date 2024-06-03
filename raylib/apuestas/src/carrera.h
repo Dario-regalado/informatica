@@ -18,13 +18,14 @@ class Carrera {
  public:
   Carrera(int, int, int);
   void update();
-  void print(int);
+  void print();
   int winer();
+  void reinitialize();
  private:
   int widht_screen_;
   int height_screen_;
   int pixel_;
   int n_caballos_;
-  Texture2D caballo;
+  Texture2D caballo_;
   vector<int> desplazamiento_;
 };

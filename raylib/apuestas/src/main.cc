@@ -9,48 +9,59 @@
  * 
  */
 #include <iostream>
+#include <string.h>
 #include "raylib.h"
 #include "carrera.h"
 
-int heigth = 300;
-int width = 300;
+int heigth = 600;
+int width = 600;
 #define MAX_INPUT_CHARS     9
 
 bool IsAnyKeyPressed();
 string caja();
+bool apuesta = false;
 
 
 
 int main () {
   InitWindow(width, heigth, "Apuestas ilegales");
-  SetTargetFPS(10);
-  Carrera carrera1(width, heigth, 3);
-  bool apuesta = false;
+  SetTargetFPS(20);
+  Carrera carrera1(width, heigth, 6);
   string cantidad;
 
   while(!WindowShouldClose()) {
     BeginDrawing();
-    ClearBackground(RED);
-    
-    if (!apuesta) {
-      DrawText("introduzca su apuesta",5, heigth /2 - 10, 10, BLACK);
-      //cantidad = caja();
+    ClearBackground(BLUE);
+    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
       apuesta = true;
-    } else {
+
+    if(apuesta == true) {
       if(carrera1.winer() == 0) {
+        carrera1.print();
         carrera1.update();
       } else {
-        ClearBackground(WHITE);
-        const char* ganador = "el ganador es el caballo: ";
-        ganador += carrera1.winer();
-        DrawText(ganador, 5, heigth /2 - 10, 10, BLACK);
+        //ClearBackground(BLACK);
+        carrera1.print();
+        int numeroGanador = carrera1.winer();
+        // Crear una cadena base para el mensaje
+        const char* base = "el ganador es el caballo: ";
+        // Calcular la longitud total del mensaje (longitud de la base + dígitos del número + 1 para el carácter nulo)
+        int longitudTotal = strlen(base) + snprintf(NULL, 0, "%d", numeroGanador) + 1;
+        // Crear un buffer para el mensaje final
+        char* ganador = new char[longitudTotal];
+        // Construir el mensaje final
+        sprintf(ganador, "%s%d", base, numeroGanador);
+        // Dibujar el mensaje en la pantalla
+        DrawText(ganador, width / 3 , heigth / 4 - 10, 15, WHITE);
+        // No olvides liberar la memoria después de usarla
+        delete[] ganador;
+
+        // reiniciar al carrera carrera1
+        if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+          carrera1.reinitialize();
       }
     }
     
-
-    
-
-
     EndDrawing();
   }
   CloseWindow();

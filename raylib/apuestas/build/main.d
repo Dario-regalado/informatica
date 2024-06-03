@@ -141,6 +141,8 @@ build/main.o: src/main.cc \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/ostream.tcc \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/istream \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/istream.tcc \
+ C:/raylib/w64devkit/x86_64-w64-mingw32/include/string.h \
+ C:/raylib/w64devkit/x86_64-w64-mingw32/include/sec_api/string_s.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/raylib.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/stdarg.h \
  C:/raylib/w64devkit/x86_64-w64-mingw32/include/stdarg.h \
