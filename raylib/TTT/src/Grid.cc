@@ -11,10 +11,10 @@ Grid::Grid() {
   numCols = 3;
   celSize = 100;
   Initialize();
-  Texture2D ekis(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/ekis.png"));
+  Texture2D ekis(LoadTexture("C:/raylib/ekis.png"));
   ekis.height = 90;
   ekis.width = 90;
-  Texture2D circ(LoadTexture("C:/Users/Equipo/Desktop/informatica/repositorio_mio/raylib/TTT/circ.png"));
+  Texture2D circ(LoadTexture("C:/raylib/circ.png"));
   circ.height = 90;
   circ.width = 90;
   x = ekis;
