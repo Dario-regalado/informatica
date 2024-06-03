@@ -1,0 +1,3 @@
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/build/CMakeFiles/rebuild_cache.dir
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/build/CMakeFiles/edit_cache.dir
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/build/CMakeFiles/AlternativesWords.dir

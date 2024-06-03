@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/AlternativesWords.dir/AlternativesWords.cc.o CMakeFiles/AlternativesWords.dir/dependencies.cc.o  -o AlternativesWords 

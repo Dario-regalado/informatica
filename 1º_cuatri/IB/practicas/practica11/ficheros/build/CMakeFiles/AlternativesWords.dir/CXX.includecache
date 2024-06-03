@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/AlternativesWords.cc
+cstdlib
+-
+dependencies.h
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/dependencies.h
+
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/dependencies.cc
+dependencies.h
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/dependencies.h
+
+/home/usuario/practica11/ib-2023-2024-p11-files-Dario-regalado/practica-clase/AlternativesWords/dependencies.h
+fstream
+-
+iostream
+-
+
