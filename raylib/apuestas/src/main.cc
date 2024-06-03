@@ -55,11 +55,14 @@ int main () {
         DrawText(ganador, width / 3 , heigth / 4 - 10, 15, WHITE);
         // No olvides liberar la memoria después de usarla
         delete[] ganador;
+        DrawText("click derecho para reiniciar", width / 4,heigth / 2, 20, WHITE);
 
         // reiniciar al carrera carrera1
         if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
           carrera1.reinitialize();
       }
+    } else{
+      DrawText("click izquierdo para empezar", width / 4,heigth / 2, 20, WHITE);
     }
     
     EndDrawing();
