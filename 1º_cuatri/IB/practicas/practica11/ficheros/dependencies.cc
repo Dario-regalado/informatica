@@ -28,7 +28,6 @@ void Print() {
  * @param[in] second_file The second file to combine
  * return a file with the combination
  */
-
 void ConbineWords (std::ifstream &first_file, std::ifstream &second_file) {
   std::ofstream output_file("salida.txt");
   if (!first_file.is_open() && !second_file.is_open()) {
