@@ -11,6 +11,7 @@
   * @see
   */
 
+
 #include "ClassCircle.h"
 
 double Cirlce::Area() {
@@ -20,11 +21,7 @@ double Cirlce::Preimetro() {
   return 2 * M_PI * radio_;
 }
 void Cirlce::Print() {
-<<<<<<< HEAD
   std::cout << this->Area() << " " << this->Preimetro() << " " << this->color_ << std::endl; 
-=======
-  std::cout << this->Area() << " " << this->Preimetro() << " " << this->color_ << std::endl;
->>>>>>> bccbc5d79245730db53b80ac6bece479ce29e483
 }
 
 void Cirlce::EsInterior(const Point2D &punto_a_comprobar) {

@@ -11,9 +11,9 @@
   * @see
   */
 
+#pragma once
 #include <iostream>
 #include <cmath>
-#pragma once
 
 class Point2D {
  public:

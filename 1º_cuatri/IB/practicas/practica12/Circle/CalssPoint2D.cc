@@ -11,7 +11,6 @@
   * @see
   */
 #include "CalssPoint2D.h"
-#pragma once
 
 void Point2D::Show () {
   std::cout << "coordenada x = " << x_ << std::endl;
