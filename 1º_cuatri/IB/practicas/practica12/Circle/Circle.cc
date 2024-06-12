@@ -13,7 +13,7 @@
 
 #include <iostream>
 #include <cstdlib>
-#include "dependencies.h"
+#include "ClassCircle.h"
 
 /** Shows correct usage of the program. 
   * If the program wasn't run correctly, prints the
@@ -23,7 +23,7 @@
   * @param[in] argv Array of arguments
   */
 void Usage(const int argc, char* argv[]) {
-  if (argc != 2) {
+  if (argc != 1) {
     std::cerr << "Usage: " << argv[0] << " TEXT\n";
     std::cerr << "DESCRIPTION\n";
     std::exit(EXIT_FAILURE);
@@ -32,5 +32,12 @@ void Usage(const int argc, char* argv[]) {
 
 int main(const int argc, char *argv[]) {
   Usage(argc, argv);
+  Point2D centro {2, 3};
+  Color color{negro};
+  Cirlce mi_circulo{centro, 5, color};
+
+  mi_circulo.Print();
+  Point2D punto_comprobar{5, 6};
+  mi_circulo.EsInterior(punto_comprobar);
   return 0;
 }
