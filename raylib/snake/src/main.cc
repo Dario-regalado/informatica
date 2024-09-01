@@ -16,7 +16,7 @@ int main() {
   int width{600};
   int height{600};
   InitWindow(width, height, "raylib snake");
-  SetTargetFPS(10);
+  SetTargetFPS(13);
 
   //Vector2 pos;
   Snake snake;
@@ -36,9 +36,11 @@ int main() {
         direccion = west;
       else if(IsKeyPressed(KEY_RIGHT) && direccion != west) 
         direccion = east;
-      
+
       snake.Update(direccion);
 
+    } else{
+      DrawText("GAME OVER", width / 3 - 70, height / 3 + 20, 60, WHITE);
     }
     EndDrawing();
   }

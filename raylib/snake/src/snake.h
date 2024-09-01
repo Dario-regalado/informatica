@@ -29,8 +29,8 @@ enum Direction {
 
 class Snake {
  public:
-  Snake();
-  int grid[20][20];
+  Snake() = default;
+  bool grid[40][40];
   void Update(Direction);
 
   // draw elements
@@ -47,8 +47,6 @@ class Snake {
   int ncol_;
   int nrow_;
   int cellsize_;
-  int lenght_;
   bool ingame_;
-  Direction direccion_;
   dll_t<Pair> pos;
 };

@@ -13,11 +13,9 @@
 #include "snake.h"
 
 Snake::Snake() {
-  lenght_ = 1;
-  direccion_ = north;
   ingame_ = true;
-  nrow_ = 20;
-  ncol_ = 20;
+  nrow_ = 40;
+  ncol_ = 40;
   cellsize_ = 600 / nrow_;
   for (int i = 0; i < nrow_; i++) {
     for (int j = 0; j < ncol_; j++)
@@ -25,7 +23,8 @@ Snake::Snake() {
       grid[i][j] = 0;
     }
   }
-  pos.push_front(new dll_node_t<Pair>(Pair(20/2, 20/2)));
+  grid[rand() % nrow_][rand() % ncol_] = 1;
+  pos.push_front(new dll_node_t<Pair>(Pair(nrow_/2, ncol_/2)));
 }
 
 void Snake::DrawBackground(){
@@ -35,6 +34,8 @@ void Snake::DrawBackground(){
         DrawRectangle(i * GetCellsize()+1, j * GetCellsize()+1, GetCellsize()-1, GetCellsize()-1, GREEN);
       else
         DrawRectangle(i * GetCellsize()+1, j * GetCellsize()+1, GetCellsize()-1, GetCellsize()-1, LIGHTGRAY);
+      //dibuja la manzana
+      if(grid[i][j] == 1) DrawRectangle(i*cellsize_, j*cellsize_, cellsize_, cellsize_, RED);
     }
   }
 }
@@ -67,7 +68,7 @@ void Snake::Update(Direction direccion) {
     break;
   }
   //comprobar si esta dentro de los bordes y o si colisiona consigo mismo
-  if(temp.row > nrow_ || temp.col > ncol_) ingame_ = false;
+  if(temp.row >= nrow_ || temp.col >= ncol_ || temp.row < 0 || temp.col < 0) ingame_ = false;
 
   dll_node_t<Pair>* aux = pos.get_head();
   while (aux != NULL) {
@@ -77,6 +78,12 @@ void Snake::Update(Direction direccion) {
   if(ingame_){
     pos.push_front(new dll_node_t<Pair>(Pair(temp)));
     // si no come manzana, la cola se mueve tb
-    if(grid[temp.row][temp.col] != 2) pos.pop_back();
+    if(grid[temp.row][temp.col] == 1) {
+      grid[rand() % nrow_][rand() % ncol_] = 1;
+      grid[temp.row][temp.col] = 0;
+    } 
+    else {
+      pos.pop_back();
+    }
   }
 }
