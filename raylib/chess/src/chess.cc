@@ -62,16 +62,14 @@ void Chess::initialize() {
 }
 */
 void Chess::griddraw() {
-  int temp = 0;
   for (int row = 0; row < numRows_; row++)
   {
     for (int col = 0; col < numCols_; col++)
     {
-      if (temp % 2 == 0)
+      if ((row + col) % 2 == 0)
         DrawRectangle(row * celSize_+1, col*celSize_+1, celSize_-1, celSize_-1, RED);    
       else 
         DrawRectangle(row * celSize_+1, col*celSize_+1, celSize_-1, celSize_-1, GREEN);
-      temp++;
     } 
   } 
 }
