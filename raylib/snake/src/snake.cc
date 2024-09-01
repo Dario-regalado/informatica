@@ -13,6 +13,9 @@
 #include "snake.h"
 
 Snake::Snake() {
+  lenght_ = 1;
+  direccion_ = north;
+  ingame_ = true;
   nrow_ = 20;
   ncol_ = 20;
   cellsize_ = 600 / nrow_;
@@ -22,7 +25,7 @@ Snake::Snake() {
       grid[i][j] = 0;
     }
   }
-
+  pos.push_front(new dll_node_t<Pair>(Pair(20/2, 20/2)));
 }
 
 void Snake::DrawBackground(){
@@ -36,3 +39,44 @@ void Snake::DrawBackground(){
   }
 }
 
+void Snake::DrawSnake() {
+  dll_node_t<Pair>* aux = pos.get_head();
+  while(aux != NULL) {
+    DrawRectangle(aux->get_data().row * cellsize_, aux->get_data().col * cellsize_, cellsize_, cellsize_, BLUE);
+    aux = aux->get_next();
+  }
+}
+
+void Snake::Update(Direction direccion) {
+  Pair temp = pos.get_head()->get_data();
+  switch (direccion)
+  {
+  case north:
+    temp.col--;
+    break;
+  case south:
+    temp.col++;
+    break;
+  case east:
+    temp.row++;
+    break;
+  case west:
+    temp.row--;
+    break;
+  default:
+    break;
+  }
+  //comprobar si esta dentro de los bordes y o si colisiona consigo mismo
+  if(temp.row > nrow_ || temp.col > ncol_) ingame_ = false;
+
+  dll_node_t<Pair>* aux = pos.get_head();
+  while (aux != NULL) {
+    if(temp == aux->get_data()) ingame_ = false;
+    aux = aux->get_next();
+  }
+  if(ingame_){
+    pos.push_front(new dll_node_t<Pair>(Pair(temp)));
+    // si no come manzana, la cola se mueve tb
+    if(grid[temp.row][temp.col] != 2) pos.pop_back();
+  }
+}
