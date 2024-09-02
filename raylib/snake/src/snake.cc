@@ -14,8 +14,8 @@
 
 Snake::Snake() {
   ingame_ = true;
-  nrow_ = 40;
-  ncol_ = 40;
+  nrow_ = 30;
+  ncol_ = 30;
   cellsize_ = 600 / nrow_;
   for (int i = 0; i < nrow_; i++) {
     for (int j = 0; j < ncol_; j++)
@@ -31,9 +31,9 @@ void Snake::DrawBackground(){
   for (int i = 0; i < GetNrow(); i++) {
     for (int j = 0; j < GetNcol(); j++) {
       if ((i + j)%2 == 0)
-        DrawRectangle(i * GetCellsize()+1, j * GetCellsize()+1, GetCellsize()-1, GetCellsize()-1, GREEN);
+        DrawRectangle(i * GetCellsize(), j * GetCellsize(), GetCellsize(), GetCellsize(), GRAY);
       else
-        DrawRectangle(i * GetCellsize()+1, j * GetCellsize()+1, GetCellsize()-1, GetCellsize()-1, LIGHTGRAY);
+        DrawRectangle(i * GetCellsize(), j * GetCellsize(), GetCellsize(), GetCellsize(), DARKGRAY);
       //dibuja la manzana
       if(grid[i][j] == 1) DrawRectangle(i*cellsize_, j*cellsize_, cellsize_, cellsize_, RED);
     }

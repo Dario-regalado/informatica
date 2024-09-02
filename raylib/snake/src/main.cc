@@ -16,7 +16,7 @@ int main() {
   int width{600};
   int height{600};
   InitWindow(width, height, "raylib snake");
-  SetTargetFPS(13);
+  SetTargetFPS(12);
 
   //Vector2 pos;
   Snake snake;

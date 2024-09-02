@@ -30,7 +30,7 @@ enum Direction {
 class Snake {
  public:
   Snake();
-  bool grid[40][40];
+  bool grid[30][30];
   void Update(Direction);
 
   // draw elements
