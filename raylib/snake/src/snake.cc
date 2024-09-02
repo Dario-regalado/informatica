@@ -69,17 +69,17 @@ void Snake::Update(Direction direccion) {
   }
   //comprobar si esta dentro de los bordes y o si colisiona consigo mismo
   if(temp.row >= nrow_ || temp.col >= ncol_ || temp.row < 0 || temp.col < 0) ingame_ = false;
-
   dll_node_t<Pair>* aux = pos.get_head();
   while (aux != NULL) {
     if(temp == aux->get_data()) ingame_ = false;
     aux = aux->get_next();
   }
+
   if(ingame_){
     pos.push_front(new dll_node_t<Pair>(Pair(temp)));
     // si no come manzana, la cola se mueve tb
     if(grid[temp.row][temp.col] == 1) {
-      grid[rand() % nrow_][rand() % ncol_] = 1;
+      grid[rand() % nrow_][rand() % ncol_] = 1; //genero una nueva manzana
       grid[temp.row][temp.col] = 0;
     } 
     else {
