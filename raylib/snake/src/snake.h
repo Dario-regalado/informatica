@@ -29,7 +29,7 @@ enum Direction {
 
 class Snake {
  public:
-  Snake() = default;
+  Snake();
   bool grid[40][40];
   void Update(Direction);
 
