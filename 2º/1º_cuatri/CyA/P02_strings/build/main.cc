@@ -13,8 +13,9 @@
  
 #include <iostream>
 #include <fstream>
-#include <set>
-#include "clase.h"
+#include "language.h"
+#include "alphabet.h"
+#include "word.h"
 
 /** Shows correct usage of the program. 
   * If the program wasn't run correctly, prints the
@@ -23,15 +24,9 @@
   * @param[in] argc Amount of arguments passed to the program
   * @param[in] argv Array of arguments
   */
-void Usage(const int argc, char* argv[]) {
-  if (argc != 3) {
-    std::cerr << "Usage: " << argv[0] << " param 1, param 2\n";
-    std::cerr << "Param 1: fichero de entrada de las cadenas\n";
-    std::cerr << "Param 2: fichero de salida\n";
-    std::cerr << "\n";
-    std::exit(EXIT_FAILURE);
-  }
-}
+
+void Usage(const int argc, char* argv[]);
+void ExecuteInput(std::ifstream& input_file, std::ofstream& output_file, const int opcode);
 
 int main(const int argc, char* argv[]) {
   Usage(argc, argv);
@@ -44,14 +39,51 @@ int main(const int argc, char* argv[]) {
     std::exit(EXIT_FAILURE);
   }
   
-  /////////////// arreglar y preguntar
-  /*
-  std::string iterador;
-  while(getline(input_file, iterador)) {
+}
 
+
+void ExecuteInput(std::ifstream& input_file, std::ofstream& output_file, const int opcode){
+  while (input_file.good()){
+    Alphabet alphabet;
+    Word word;
+    Language lenguaje;
+    input_file >> word >> alphabet;
+    switch (opcode) {
+    case 1:
+      output_file << alphabet << '\n';
+      std::cout << alphabet << '\n';
+      break;
+    case 2:
+      output_file << word.GetSize() << '\n';
+      std::cout << word.GetSize() << '\n';
+      break;
+    case 3:
+      output_file << word.Reverse() << '\n';
+      std::cout << word.Reverse() << '\n';
+      break;
+    case 4:
+      output_file << lenguaje.Prefijo(word) << '\n';
+      std::cout << lenguaje.Prefijo(word) << '\n';
+      break;
+      /*
+    case 5:
+      
+      break;
+      */
+
+    default:
+      break;
+    }
   }
-  */
-  Language letters("abbab", "ab");
-  std::cout << letters.Alfabeto() << std::endl;
+  
+}
 
+void Usage(const int argc, char* argv[]) {
+  if (argc != 3) {
+    std::cerr << "Usage: " << argv[0] << " param 1, param 2\n";
+    std::cerr << "Param 1: fichero de entrada de las cadenas\n";
+    std::cerr << "Param 2: fichero de salida\n";
+    std::cerr << "\n";
+    std::exit(EXIT_FAILURE);
+  }
 }

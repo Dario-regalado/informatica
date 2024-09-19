@@ -9,7 +9,7 @@ endif
 BUILDDIR := build
 SRCDIR := src
 BIN := P02_strings
-LIBS := -lraylib -lgdi32 -lwinmm 
+# LIBS := -lraylib -lgdi32 -lwinmm 
 
 # Don't modify
 OBJS := $(shell find $(SRCDIR) -name '*.cc')
@@ -19,7 +19,7 @@ OBJS := $(patsubst $(SRCDIR)/%, $(BUILDDIR)/%, $(OBJS))
 .PHONY: clean
 
 $(BIN): $(BUILDDIR) $(OBJS)
-	$(CXX) $(OBJS) $(LIBS) -mwindows -o $@
+	$(CXX) $(OBJS) $(LIBS) -o $@
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
