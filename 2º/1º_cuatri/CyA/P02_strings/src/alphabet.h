@@ -15,22 +15,23 @@
 #include <set>
 #include <string>
 #include <fstream>
+#include <iostream>
 
 class Alphabet {
  public:
+  //constructores
   Alphabet() = default;
   Alphabet(const std::string& input_alphabet);
 
+  //getters
   int GetSize() const {return size_;}
   std::set<char> GetAlphabet() const {return alphabet_;}
 
-  friend std::ifstream& operator>>(std::ifstream&, Alphabet&);
-
+  friend std::istream& operator>>(std::istream&, Alphabet&);
 
  private:
   std::set<char> alphabet_;
   int size_;
 };
 
-std::ofstream& operator<<(std::ofstream&, const Alphabet&);
 std::ostream& operator<<(std::ostream&, const Alphabet&);

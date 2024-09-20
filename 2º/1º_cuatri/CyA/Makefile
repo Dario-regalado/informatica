@@ -8,8 +8,8 @@ else
 endif
 BUILDDIR := build
 SRCDIR := src
-BIN := snake
-LIBS := -lraylib -lgdi32 -lwinmm 
+BIN := 
+LIBS :=
 
 # Don't modify
 OBJS := $(shell find $(SRCDIR) -name '*.cc')
