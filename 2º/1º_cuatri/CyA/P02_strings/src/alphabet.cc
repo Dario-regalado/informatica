@@ -1,0 +1,73 @@
+/**
+  * Universidad de La Laguna
+  * Escuela Superior de Ingeniería y Tecnología
+  * Grado en Ingeniería Informática
+  * Computabilidad y Algoritmia
+  *
+  * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
+  * @date 20/09/2024
+  * @brief 
+  * @bug There are no known bugs
+  * @file 
+  */
+
+#include "alphabet.h"
+
+/**
+ * @brief Construct a new Alphabet object
+ * 
+ * @param input_alphabet 
+ */
+Alphabet::Alphabet(const std::string &input_alphabet) {
+  for (char c : input_alphabet) {
+    alphabet_.insert(c);  // Insertamos cada carácter en el conjunto
+  }
+  size_ = alphabet_.size();  // Asignamos el tamaño real del conjunto
+}
+
+/**
+ * @brief insert a new alphabet
+ * 
+ * @param input_stream 
+ * @param new_alphabet 
+ * @return std::istream& 
+ */
+std::istream& operator>>(std::istream& input_stream, Alphabet& new_alphabet) {
+  std::string temp_alphabet;
+  input_stream >> temp_alphabet;  //introducimos en temp_alphabet la cadena de entrada
+  for (unsigned i = 0; i < temp_alphabet.size(); i++) {
+    new_alphabet.alphabet_.insert(temp_alphabet[i]); //introducimos en alphabet_ la cadena de entrada
+  }
+  return input_stream;
+}
+
+/**
+ * @brief print the alphabet
+ * 
+ * @param output_stream 
+ * @param output_alphabet 
+ * @return std::ostream& 
+ */
+std::ostream& operator<<(std::ostream& output_stream, const Alphabet& output_alphabet) {
+  output_stream << '{';
+
+  // Obtenemos el iterador del set
+  auto alphabet_set = output_alphabet.GetAlphabet();
+  auto alphabet_iterator = alphabet_set.begin();
+  auto alphabet_end = alphabet_set.end();
+
+  // Verificamos si el conjunto no está vacío
+  if (alphabet_iterator != alphabet_end) {
+    // Imprimimos el primer elemento sin coma
+    output_stream << *alphabet_iterator++;
+  }
+
+  // Imprimimos los elementos restantes con una coma antes
+  while (alphabet_iterator != alphabet_end) {
+    output_stream << ", " << *alphabet_iterator++;
+  }
+
+  // Cerramos el alfabeto
+  output_stream << '}';
+  return output_stream;
+}

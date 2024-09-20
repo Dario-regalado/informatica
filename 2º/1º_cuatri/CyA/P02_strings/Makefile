@@ -9,7 +9,7 @@ endif
 BUILDDIR := build
 SRCDIR := src
 BIN := P02_strings
-# LIBS := -lraylib -lgdi32 -lwinmm 
+LIBS :=
 
 # Don't modify
 OBJS := $(shell find $(SRCDIR) -name '*.cc')

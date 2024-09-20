@@ -13,21 +13,29 @@
 
 #pragma once
 #include <string>
+#include <iostream>
 #include <fstream>
+#include <set>
 
 class Word {
  public:
+  // constuctors
   Word() = default;
   Word(const std::string &input_word) : word_{input_word} {}
 
+  // getters
   std::string GetWord() const {return word_;}
   int GetSize() const {return word_.size();}
+
   std::string Reverse() const;
-  friend std::ifstream& operator>>(std::ifstream&, Word&);
+  std::set<std::string> Sufijo() const;
+  std::set<std::string> Prefijo() const;
+
+  friend std::istream& operator>>(std::istream&, Word&);
 
  private:
   std::string word_;
 };
 
-std::ofstream& operator<<(std::ofstream&, const Word&);
 std::ostream& operator<<(std::ostream&, const Word&);
+std::ostream& operator<<(std::ostream&, const std::set<std::string>&);

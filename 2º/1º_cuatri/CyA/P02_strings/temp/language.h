@@ -24,16 +24,15 @@ class Language {
   Language(const Word&);
 
   Language Sufijo(const Word&);
-  Language Prefijo(const Word&);
+  void Prefijo(const Word&);
 
   std::set<Word> GetLanguage() const {return language_;}
   int GetSize() const {return language_.size();}
 
-  friend std::ifstream& operator>>(std::ifstream&, Language&);
+  //friend std::istream& operator>>(std::istream&, Language&);
   
  private:
   std::set<Word> language_;
 };
 
-std::ofstream& operator<<(std::ofstream&, const Language&);
 std::ostream& operator<<(std::ostream&, const Language&);
