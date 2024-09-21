@@ -14,8 +14,8 @@
 #pragma once
 #include <set>
 #include <string>
-#include <fstream>
 #include <iostream>
+#include "symbol.h"
 
 class Alphabet {
  public:
@@ -24,14 +24,13 @@ class Alphabet {
   Alphabet(const std::string& input_alphabet);
 
   //getters
-  int GetSize() const {return size_;}
-  std::set<char> GetAlphabet() const {return alphabet_;}
+  int GetSize() const {return alphabet_.size();}
+  std::set<Symbol> GetAlphabet() const {return alphabet_;}
 
   friend std::istream& operator>>(std::istream&, Alphabet&);
 
  private:
-  std::set<char> alphabet_;
-  int size_;
+  std::set<Symbol> alphabet_;
 };
 
 std::ostream& operator<<(std::ostream&, const Alphabet&);

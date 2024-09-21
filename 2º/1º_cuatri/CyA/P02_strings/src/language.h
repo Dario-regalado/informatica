@@ -16,19 +16,17 @@
 #include <fstream>
 #include <set>
 #include "word.h"
-#include "alphabet.h"
 
 class Language {
  public:
   Language() = default;
   Language(const Word&);
 
-  Language Sufijo(const Word&);
-  void Prefijo(const Word&);
-
   std::set<Word> GetLanguage() const {return language_;}
   int GetSize() const {return language_.size();}
 
+  void Insert(const Word&);
+  void Insert(const std::string&);
   //friend std::istream& operator>>(std::istream&, Language&);
   
  private:

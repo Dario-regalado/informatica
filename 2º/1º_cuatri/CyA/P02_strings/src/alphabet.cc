@@ -19,10 +19,9 @@
  * @param input_alphabet 
  */
 Alphabet::Alphabet(const std::string &input_alphabet) {
-  for (char c : input_alphabet) {
+  for (const char &c : input_alphabet) {
     alphabet_.insert(c);  // Insertamos cada carácter en el conjunto
   }
-  size_ = alphabet_.size();  // Asignamos el tamaño real del conjunto
 }
 
 /**

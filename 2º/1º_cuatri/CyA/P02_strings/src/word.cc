@@ -12,6 +12,13 @@
   */
 
 #include "word.h"
+#include "language.h"
+
+
+Word::Word(const std::string &input_word){
+  if(input_word != "&") word_ = input_word;
+}
+
 
 /**
  * @brief operator>> overloaded as a friend funcion
@@ -22,6 +29,7 @@
  */
 std::istream& operator>>(std::istream& input_stream, Word& input_word) {
   input_stream >> input_word.word_;
+  if(input_word.word_ == "&") input_word.word_.clear();
   return input_stream;
 }
 
@@ -37,36 +45,6 @@ std::ostream& operator<<(std::ostream& stream_out, const Word& word_out){
   return stream_out;
 }
 
-/**
- * @brief print Sufijo and Prefijo
- * 
- * @param output_stream 
- * @param output_set 
- * @return std::ostream& 
- */
-std::ostream& operator<<(std::ostream& output_stream, const std::set<std::string>& output_set){
-  output_stream << '{';
-
-  // Obtenemos el iterador del set
-  auto alphabet_set = output_set;
-  auto alphabet_iterator = alphabet_set.begin();
-  auto alphabet_end = alphabet_set.end();
-
-  // Verificamos si el conjunto no está vacío
-  if (alphabet_iterator != alphabet_end) {
-    // Imprimimos el primer elemento sin coma
-    output_stream << *alphabet_iterator++;
-  }
-
-  // Imprimimos los elementos restantes con una coma antes
-  while (alphabet_iterator != alphabet_end) {
-    output_stream << ", " << *alphabet_iterator++;
-  }
-
-  // Cerramos el alfabeto
-  output_stream << '}';
-  return output_stream;
-}
 
 /**
  * @brief invierte la cadena
@@ -87,16 +65,15 @@ std::string Word::Reverse() const {
  * 
  * @return std::set<std::string> 
  */
-std::set<std::string> Word::Prefijo() const {
-  std::set<std::string> set_return;
-  set_return.insert("&"); //insertamos la cadena vacia
-  std::string insert_string;
+Language Word::Prefijo(){
+  Language lenguaje_return; 
+  lenguaje_return.Insert(Word("&"));  //insertamos la cadena vacia 
 
-  for (unsigned i = 0; i < word_.size(); i++) {
-    insert_string += word_[i]; //acumulamos en insert_string los prefijos hasta la cadena
-    set_return.insert(insert_string);
+  for (unsigned i = 1; i <= word_.size(); i++) {
+    std::string insert_string = word_.substr(0, i); //substraemos desde la pos 0 hasta i
+    lenguaje_return.Insert(insert_string);
   }
-  return set_return;
+  return lenguaje_return;
 }
 
 /**
@@ -104,14 +81,23 @@ std::set<std::string> Word::Prefijo() const {
  * 
  * @return std::set<std::string> 
  */
-std::set<std::string> Word::Sufijo() const {
-  std::set<std::string> set_return;
-  set_return.insert("&"); //insertamos la cadena vacia
-  std::string insert_string;
-
-  for (std::string::size_type i = 0; i < word_.size(); i++) {
-    std::string insert_string = word_.substr(i);  // Extraemos el sufijo desde la posición i
-    set_return.insert(insert_string);  // Insertamos el sufijo en el conjunto
+Language Word::Sufijo(){
+  Language lenguaje_return;
+  lenguaje_return.Insert(Word("&"));  //insertamos la cadena vacia 
+  for (size_t i = 0; i < word_.size(); i++) {
+    std::string insert_string = word_.substr(i);  // Extraemos el sufijo desde la posición i hasta el final de la cadena
+    lenguaje_return.Insert(insert_string);  // Insertamos el sufijo en el conjunto
   }
-  return set_return;
+  return lenguaje_return;
 }
+
+
+
+bool operator<(const Word& word_compare1, const Word& word_compare2) {
+  if(word_compare1.GetSize() < word_compare2.GetSize()) return true; //si el tamaño de word1 es menor, retorna true
+  else if(word_compare1.GetSize() == word_compare2.GetSize()) {
+    return word_compare1.GetWord() < word_compare2.GetWord(); // si son igual tamaño, retorna si word1 es menor segun estipulado por std::string
+  }
+  return false;
+}
+

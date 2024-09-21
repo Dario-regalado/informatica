@@ -17,19 +17,21 @@
 #include <fstream>
 #include <set>
 
+class Language;
+
 class Word {
  public:
   // constuctors
   Word() = default;
-  Word(const std::string &input_word) : word_{input_word} {}
+  Word(const std::string&);
 
   // getters
   std::string GetWord() const {return word_;}
   int GetSize() const {return word_.size();}
 
   std::string Reverse() const;
-  std::set<std::string> Sufijo() const;
-  std::set<std::string> Prefijo() const;
+  Language Sufijo();
+  Language Prefijo();
 
   friend std::istream& operator>>(std::istream&, Word&);
 
@@ -38,4 +40,4 @@ class Word {
 };
 
 std::ostream& operator<<(std::ostream&, const Word&);
-std::ostream& operator<<(std::ostream&, const std::set<std::string>&);
+bool operator<(const Word&, const Word&);

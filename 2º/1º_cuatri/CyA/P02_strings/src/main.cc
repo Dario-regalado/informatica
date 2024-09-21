@@ -15,6 +15,8 @@
 #include <fstream>
 #include "alphabet.h"
 #include "word.h"
+#include "language.h"
+#include "symbol.h"
 
 void Usage(const int argc, char* argv[]);
 void ExecuteInput(std::ifstream& input_file, std::ofstream& output_file, const int accion);
