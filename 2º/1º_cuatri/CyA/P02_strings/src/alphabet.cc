@@ -6,9 +6,11 @@
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date 20/09/2024
-  * @brief 
+  * @brief contiene la implementacion de la clase Alphabet,
+  *        con la condicion de que un alfabeto no puede estar vacio
+  * @Practica 2: Cadenas y lenguajes
   * @bug There are no known bugs
-  * @file 
+  * @file cya-P02-alphabet.cc
   */
 
 #include "alphabet.h"
@@ -19,9 +21,10 @@
  * @param input_alphabet 
  */
 Alphabet::Alphabet(const std::string &input_alphabet) {
-  for (const char &c : input_alphabet) {
-    alphabet_.insert(c);  // Insertamos cada carácter en el conjunto
-  }
+  if(input_alphabet != "")
+    for (const char &c : input_alphabet) {
+      alphabet_.insert(c);  // Insertamos cada carácter en el conjunto
+    }
 }
 
 /**
@@ -34,9 +37,10 @@ Alphabet::Alphabet(const std::string &input_alphabet) {
 std::istream& operator>>(std::istream& input_stream, Alphabet& new_alphabet) {
   std::string temp_alphabet;
   input_stream >> temp_alphabet;  //introducimos en temp_alphabet la cadena de entrada
-  for (unsigned i = 0; i < temp_alphabet.size(); i++) {
-    new_alphabet.alphabet_.insert(temp_alphabet[i]); //introducimos en alphabet_ la cadena de entrada
-  }
+  if (temp_alphabet != "")
+    for (unsigned i = 0; i < temp_alphabet.size(); i++) {
+      new_alphabet.alphabet_.insert(temp_alphabet[i]); //introducimos en alphabet_ la cadena de entrada
+    }
   return input_stream;
 }
 
@@ -57,11 +61,11 @@ std::ostream& operator<<(std::ostream& output_stream, const Alphabet& output_alp
 
   // Verificamos si el conjunto no está vacío
   if (alphabet_iterator != alphabet_end) {
-    // Imprimimos el primer elemento sin coma
+    // Imprimimos el primer elemento sin ", "
     output_stream << *alphabet_iterator++;
   }
 
-  // Imprimimos los elementos restantes con una coma antes
+  // Imprimimos los elementos restantes con una ", " antes
   while (alphabet_iterator != alphabet_end) {
     output_stream << ", " << *alphabet_iterator++;
   }

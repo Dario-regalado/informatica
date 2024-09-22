@@ -1,4 +1,4 @@
-build/language.o: src/language.cc src/language.h \
+build/P02_string.o: src/P02_string.cc \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/iostream \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/requires_hosted.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -141,6 +141,12 @@ build/language.o: src/language.cc src/language.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/ostream.tcc \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/istream \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/istream.tcc \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/fstream \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/codecvt.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
+ C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/fstream.tcc \
+ src/alphabet.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/set \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_tree.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/ext/aligned_buffer.h \
@@ -148,4 +154,4 @@ build/language.o: src/language.cc src/language.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_set.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/stl_multiset.h \
  C:/raylib/w64devkit/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/bits/erase_if.h \
- src/word.h
+ src/symbol.h src/word.h src/language.h

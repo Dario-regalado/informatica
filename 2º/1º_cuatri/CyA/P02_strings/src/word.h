@@ -6,15 +6,16 @@
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date 20/09/2024
-  * @brief 
+  * @brief contiene la definicion de la calse word(cadena)
+  *        mas la sobrecarga de operadores necesaria
+  * @Practica 2: Cadenas y lenguajes
   * @bug There are no known bugs
-  * @file 
+  * @file cya-P02-word.h 
   */
 
 #pragma once
 #include <string>
 #include <iostream>
-#include <fstream>
 #include <set>
 
 class Language;
@@ -27,9 +28,9 @@ class Word {
 
   // getters
   std::string GetWord() const {return word_;}
-  int GetSize() const {return word_.size();}
+  int GetLenght() const {return word_.size();}
 
-  std::string Reverse() const;
+  Word Reverse() const;
   Language Sufijo();
   Language Prefijo();
 

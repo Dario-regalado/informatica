@@ -5,18 +5,45 @@
   * Computabilidad y Algoritmia
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
-  * @date 20/09/2024 
-  * @brief 
+  * @date 20/09/2024
+  * @brief contiene la implementacion de la clase Language
+  * @Practica 2: Cadenas y lenguajes
   * @bug There are no known bugs
-  * @file 
+  * @file cya-P02-language.cc
   */
 
 #include "language.h"
 
+/**
+ * @brief Construct a new Language object
+ * 
+ * @param new_word 
+ */
 Language::Language(const Word& new_word){
   language_.insert(new_word);
 }
 
+/**
+ * @brief operator>> to insert a new language
+ * 
+ * @param input_stream 
+ * @param language_new 
+ * @return std::istream& 
+ */
+std::istream& operator>>(std::istream& input_stream, Language& language_new) {
+  Word temp_word;
+  while(input_stream >> temp_word)
+    language_new.Insert(temp_word);
+  return input_stream;
+}
+
+/**
+ * @brief operator << to print a language
+ * 
+ * @param out_stream 
+ * @param language_out 
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& out_stream, const Language& language_out){
   out_stream << '{';
 
@@ -41,10 +68,20 @@ std::ostream& operator<<(std::ostream& out_stream, const Language& language_out)
   return out_stream;
 }
 
+/**
+ * @brief inserta una cadena tipo Word
+ * 
+ * @param insert_word 
+ */
 void Language::Insert(const Word& insert_word) {
   language_.insert(insert_word);
 }
 
+/**
+ * @brief inserta una cadena tipo string
+ * 
+ * @param insert_word 
+ */
 void Language::Insert(const std::string& insert_word) {
-  language_.insert(insert_word);
+  language_.insert(Word(insert_word));
 }

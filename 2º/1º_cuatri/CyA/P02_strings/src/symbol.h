@@ -6,9 +6,11 @@
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date 20/09/2024
-  * @brief 
+  * @brief contiene la definicion de la calse Language
+  *        mas la sobrecarga de operadores necesaria.
+  * @Practica 2: Cadenas y lenguajes
   * @bug There are no known bugs
-  * @file 
+  * @file cya-P02-symbol.h
   */
 
 #pragma once
@@ -21,6 +23,7 @@ class Symbol {
 
   friend std::istream& operator>>(std::istream&, Symbol&);
 
+  //getter
   char GetSymbol() const {return symbol_;}
  private:
   char symbol_;

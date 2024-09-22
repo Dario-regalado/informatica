@@ -6,9 +6,12 @@
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
   * @date 20/09/2024
-  * @brief 
+  * @brief contiene la definicion de la calse Alphabet
+  *        mas la sobrecarga de operadores necesaria.
+  *        Utiliza un set de Symbol para almacenar el alfabeto
+  * @Practica 2: Cadenas y lenguajes
   * @bug There are no known bugs
-  * @file 
+  * @file cya-P02-alphabet.h
   */
 
 #pragma once
