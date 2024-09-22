@@ -99,11 +99,10 @@ void Usage(const int argc, char* argv[]) {
     std::cerr << "Param 2: fichero de salida\n";
     std::cerr << "Param 3: numero entero para realizar accion:\n";
     std::cerr << "1 Alfabeto, 2 Longitud, 3 Inversa, 4 Prefijo, 5 Sufijo.\n";
-    std::cerr << "\n";
     std::exit(EXIT_FAILURE);
   } else if(argc != 4){
-    std::cerr << "Modo de empleo: " << argv[1] << "filein.txt fileout.txt opcode\n";
-    std::cerr << "Pruebe " << argv[1] << "--help para mas informacion.\n";
+    std::cerr << "Modo de empleo: " << argv[0] << " filein.txt fileout.txt opcode\n";
+    std::cerr << "Pruebe " << argv[0] << "--help para mas informacion.\n";
     std::exit(EXIT_FAILURE);
   }
 }
