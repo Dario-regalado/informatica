@@ -202,15 +202,15 @@ void CreateMain(char* argv[], const string& directory) {
   * @param[in] argv Array of arguments
   */
 void Usage(const int argc, char* argv[]) {
-  if (argc == 2 && std::string(argv[1]) == "--help") {
-    std::cerr << "Usage: " << argv[0] << " nombre, clases(opcional), directorio\n";
-    std::cerr << "nombre: nombre del proyecto\n";
-    std::cerr << "clases: nombre de las clases necesarias\n";
-    std::cerr << "directorio: ruta donde se aloja el proyecto\n";
-    std::exit(EXIT_FAILURE);
+  if (argc == 2 && string(argv[1]) == "--help") {
+    cerr << "Usage: " << argv[0] << " nombre, clases(opcional), directorio\n";
+    cerr << "nombre: nombre del proyecto\n";
+    cerr << "clases: nombre de las clases necesarias\n";
+    cerr << "directorio: ruta donde se aloja el proyecto\n";
+    exit(EXIT_FAILURE);
   } else if(argc < 2){
-    std::cerr << "Modo de empleo: " << argv[0] << " nombre_proyecto, (nombre de las clases), directorio final\n";
-    std::cerr << "Pruebe " << argv[0] << "--help para mas informacion.\n";
-    std::exit(EXIT_FAILURE);
+    cerr << "Modo de empleo: " << argv[0] << " nombre_proyecto, (nombre de las clases), directorio final\n";
+    cerr << "Pruebe " << argv[0] << "--help para mas informacion.\n";
+    exit(EXIT_FAILURE);
   }
 }
