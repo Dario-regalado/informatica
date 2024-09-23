@@ -1,4 +1,4 @@
-a.exe
-a.out
+*.exe
+*.out
 /build
 /temp
