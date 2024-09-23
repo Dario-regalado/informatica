@@ -21,10 +21,10 @@
  * @param input_alphabet 
  */
 Alphabet::Alphabet(const std::string &input_alphabet) {
-  if(input_alphabet != "")
-    for (const char &c : input_alphabet) {
-      alphabet_.insert(c);  // Insertamos cada carácter en el conjunto
-    }
+  //if(input_alphabet != "")
+  for (const char &c : input_alphabet) {
+    alphabet_.insert(c);  // Insertamos cada carácter en el conjunto
+  }
 }
 
 /**
