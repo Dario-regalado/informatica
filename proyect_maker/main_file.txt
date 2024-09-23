@@ -1,0 +1,46 @@
+/**
+  * Universidad de La Laguna
+  * Escuela Superior de Ingeniería y Tecnología
+  * Grado en Ingeniería Informática
+  * Computabilidad y Algoritmia
+  *
+  * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
+  * @date 
+  * @brief 
+  * @Practica 
+  * @bug There are no known bugs
+  * @file cya P02 {reemplace}
+  */
+
+#include <iostream>
+#include <string>
+
+void Usage(const int argc, char* argv[]);
+
+int main(const int argc, char* argv[]) {
+  Usage(argc, argv);
+
+  return 0;
+}
+
+
+/** @brief Shows correct usage of the program. 
+  *        If the program wasn't run correctly, prints the
+  *        help message.
+  *
+  * @param[in] argc Amount of arguments passed to the program
+  * @param[in] argv Array of arguments
+  */
+void Usage(const int argc, char* argv[]) {
+  if (argc == 2 && std::string(argv[1]) == "--help") {
+    std::cerr << "Usage: " << argv[0] << " param 1, param 2, param 3\n";
+    std::cerr << "Param 1: \n";
+    std::cerr << "Param 2: \n";
+    std::cerr << "Param 3: :\n";
+    std::exit(EXIT_FAILURE);
+  } else if(argc != ){
+    std::cerr << "Modo de empleo: " << argv[0] << " filein.txt fileout.txt opcode\n";
+    std::cerr << "Pruebe " << argv[0] << "--help para mas informacion.\n";
+    std::exit(EXIT_FAILURE);
+  }
+}
