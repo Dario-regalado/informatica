@@ -16,6 +16,8 @@
  
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <sstream>
 #include "alphabet.h"
 #include "word.h"
 #include "language.h"
@@ -44,6 +46,7 @@ int main(const int argc, char* argv[]) {
   return 0;
 }
 
+
 /**
  * @brief lee del fichero de entrada la cadena y el alfabeto, y dependiendo 
  *        de lo elegido por el usuario, escribe en el fichero de salida
@@ -54,32 +57,41 @@ int main(const int argc, char* argv[]) {
  */
 void ExecuteInput(std::ifstream& input_file, std::ofstream& output_file, const int accion){
   while (input_file.good()){
-    Alphabet alphabet;
-    Word word;
-    input_file >> word >> alphabet;
-    switch (accion) {
-    case 1:
-      output_file << alphabet << '\n';
-      std::cout << alphabet << '\n';
-      break;
-    case 2:
-      output_file << word.GetLenght() << '\n';
-      std::cout << word.GetLenght() << '\n';
-      break;
-    case 3:
-      output_file << word.Reverse() << '\n';
-      std::cout << word.Reverse() << '\n';
-      break;
-    case 4:
-      output_file << word.Prefijo() << '\n';
-      std::cout << word.Prefijo() << '\n';
-      break;
-    case 5:
-      output_file << word.Sufijo() << '\n';
-      std::cout << word.Sufijo() << '\n';
-      break;
-    default:
-      break;
+    std::string line;
+    while (std::getline(input_file, line)) {  
+      std::istringstream line_input(line);
+      Alphabet alphabet;
+      Word word;
+      line_input >> word >> alphabet;
+      if (alphabet.GetSize() == 0) continue;
+      if (!alphabet.IsInAlphabet(word) && word.GetLenght() != 0) {
+        std::cerr << "La cadena no pertenece al alfabeto\n";
+        continue; 
+      }
+      switch (accion) {
+      case 1:
+        output_file << alphabet << '\n';
+        std::cout << alphabet << '\n';
+        break;
+      case 2:
+        output_file << word.GetLenght() << '\n';
+        std::cout << word.GetLenght() << '\n';
+        break;
+      case 3:
+        output_file << word.Reverse() << '\n';
+        std::cout << word.Reverse() << '\n';
+        break;
+      case 4:
+        output_file << word.Prefijo() << '\n';
+        std::cout << word.Prefijo() << '\n';
+        break;
+      case 5:
+        output_file << word.Sufijo() << '\n';
+        std::cout << word.Sufijo() << '\n';
+        break;
+      default:
+        break;
+      }
     }
   }
   

@@ -28,6 +28,24 @@ Alphabet::Alphabet(const std::string &input_alphabet) {
 }
 
 /**
+ * @brief compureba si una cadena pertenece al alfabeto
+ * 
+ * @param word_in_alphabet 
+ * @return true 
+ * @return false 
+ */
+bool Alphabet::IsInAlphabet(const Word& word_in_alphabet) {
+  for (int i = 0; i < word_in_alphabet.GetLenght(); i++) {
+    auto final_alphabet = alphabet_.end();
+    if (alphabet_.find(word_in_alphabet.GetWord().at(i)) == final_alphabet) { // si llega al final y no lo ha encontrado, no esta en el alfabeto
+      return false;
+    }
+  }
+  return true;
+}
+
+
+/**
  * @brief insert a new alphabet
  * 
  * @param input_stream 
@@ -41,6 +59,10 @@ std::istream& operator>>(std::istream& input_stream, Alphabet& new_alphabet) {
     for (unsigned i = 0; i < temp_alphabet.size(); i++) {
       new_alphabet.alphabet_.insert(temp_alphabet[i]); //introducimos en alphabet_ la cadena de entrada
     }
+  else {
+    std::cerr << "Un alfabeto no puede estar vacio\n";
+    new_alphabet.alphabet_.clear();
+  }
   return input_stream;
 }
 
@@ -52,6 +74,8 @@ std::istream& operator>>(std::istream& input_stream, Alphabet& new_alphabet) {
  * @return std::ostream& 
  */
 std::ostream& operator<<(std::ostream& output_stream, const Alphabet& output_alphabet) {
+  if (output_alphabet.GetSize() == 0) return output_stream;
+
   output_stream << '{';
 
   // Obtenemos el iterador del set

@@ -19,6 +19,7 @@
 #include <string>
 #include <iostream>
 #include "symbol.h"
+#include "word.h"
 
 class Alphabet {
  public:
@@ -30,6 +31,7 @@ class Alphabet {
   int GetSize() const {return alphabet_.size();}
   std::set<Symbol> GetAlphabet() const {return alphabet_;}
 
+  bool IsInAlphabet(const Word&);
   friend std::istream& operator>>(std::istream&, Alphabet&);
 
  private:

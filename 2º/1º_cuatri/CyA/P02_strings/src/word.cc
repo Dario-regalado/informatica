@@ -23,8 +23,8 @@
  * @param input_word 
  */
 Word::Word(const std::string &input_word){
-  // if(input_word == "&")
   word_ = input_word;
+  //if(word_ == "&") word_.clear();
 }
 
 
@@ -37,7 +37,7 @@ Word::Word(const std::string &input_word){
  */
 std::istream& operator>>(std::istream& input_stream, Word& input_word) {
   input_stream >> input_word.word_;
-  // if(input_word.word_ == "&") input_word.word_.clear();
+  if(input_word.word_ == "&") input_word.word_.clear();
   return input_stream;
 }
 
