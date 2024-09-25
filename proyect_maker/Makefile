@@ -19,7 +19,7 @@ OBJS := $(patsubst $(SRCDIR)/%, $(BUILDDIR)/%, $(OBJS))
 .PHONY: clean
 
 $(BIN): $(BUILDDIR) $(OBJS)
-	$(CXX) $(OBJS) $(LIBS) -mwindows -o $@
+	$(CXX) $(OBJS) $(LIBS) -o $@
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
