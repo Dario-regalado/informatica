@@ -25,23 +25,23 @@ begin
 
    // Vector de test
   for (test_c = 0; test_c <= 1; test_c = test_c + 1) 
-  begin // Iterar sobre test_c
-    // Test con test_a y test_b combinando con test_c
-    test_a = 1'b0;
-    test_b = 1'b0; 
-    #20;
+    begin // Iterar sobre test_c
+      // Test con test_a y test_b combinando con test_c
+      test_a = 1'b0;
+      test_b = 1'b0; 
+      #20;
 
-    test_a = 1'b0;
-    test_b = 1'b1; 
-    #20;
+      test_a = 1'b0;
+      test_b = 1'b1; 
+      #20;
 
-    test_a = 1'b1;
-    test_b = 1'b0; 
-    #20;
+      test_a = 1'b1;
+      test_b = 1'b0; 
+      #20;
 
-    test_a = 1'b1;
-    test_b = 1'b1; 
-    #20;
+      test_a = 1'b1;
+      test_b = 1'b1; 
+      #20;
   end//vector de test 0
   
   $finish;  //fin simulacion
