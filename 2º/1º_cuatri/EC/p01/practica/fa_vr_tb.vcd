@@ -1,0 +1,392 @@
+$date
+	Mon Sep 30 09:02:07 2024
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module fa_vr_tb $end
+$var wire 1 ! test_sum $end
+$var wire 1 " test_carry $end
+$var reg 1 # test_a $end
+$var reg 1 $ test_b $end
+$var reg 1 % test_c $end
+$scope module far1 $end
+$var wire 1 # a $end
+$var wire 1 $ b $end
+$var wire 1 % c_in $end
+$var wire 1 " c_out $end
+$var wire 1 & sum1 $end
+$var wire 1 ! sum $end
+$var wire 1 ' carry2 $end
+$var wire 1 ( carry1 $end
+$scope module har1 $end
+$var wire 1 # a $end
+$var wire 1 $ b $end
+$var wire 1 ( carry $end
+$var wire 1 & sum $end
+$upscope $end
+$scope module har2 $end
+$var wire 1 % a $end
+$var wire 1 & b $end
+$var wire 1 ' carry $end
+$var wire 1 ! sum $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module sum4_tb $end
+$var wire 1 ) test_C_out $end
+$var wire 1 * test_c_out $end
+$var wire 4 + test_S [3:0] $end
+$var reg 4 , test_A [3:0] $end
+$var reg 4 - test_B [3:0] $end
+$var reg 1 . test_c_in $end
+$scope module sum $end
+$var wire 4 / A [3:0] $end
+$var wire 4 0 B [3:0] $end
+$var wire 1 1 C1 $end
+$var wire 1 2 C3 $end
+$var wire 1 . c_in $end
+$var wire 1 * c_out $end
+$var wire 4 3 S [3:0] $end
+$var wire 1 4 C2 $end
+$scope module far1 $end
+$var wire 1 5 a $end
+$var wire 1 6 b $end
+$var wire 1 . c_in $end
+$var wire 1 4 c_out $end
+$var wire 1 7 sum1 $end
+$var wire 1 8 sum $end
+$var wire 1 9 carry2 $end
+$var wire 1 : carry1 $end
+$scope module har1 $end
+$var wire 1 5 a $end
+$var wire 1 6 b $end
+$var wire 1 : carry $end
+$var wire 1 7 sum $end
+$upscope $end
+$scope module har2 $end
+$var wire 1 . a $end
+$var wire 1 7 b $end
+$var wire 1 9 carry $end
+$var wire 1 8 sum $end
+$upscope $end
+$upscope $end
+$scope module far2 $end
+$var wire 1 ; a $end
+$var wire 1 < b $end
+$var wire 1 1 c_in $end
+$var wire 1 2 c_out $end
+$var wire 1 = sum1 $end
+$var wire 1 > sum $end
+$var wire 1 ? carry2 $end
+$var wire 1 @ carry1 $end
+$scope module har1 $end
+$var wire 1 ; a $end
+$var wire 1 < b $end
+$var wire 1 @ carry $end
+$var wire 1 = sum $end
+$upscope $end
+$scope module har2 $end
+$var wire 1 1 a $end
+$var wire 1 = b $end
+$var wire 1 ? carry $end
+$var wire 1 > sum $end
+$upscope $end
+$upscope $end
+$scope module far3 $end
+$var wire 1 A a $end
+$var wire 1 B b $end
+$var wire 1 4 c_in $end
+$var wire 1 2 c_out $end
+$var wire 1 C sum1 $end
+$var wire 1 D sum $end
+$var wire 1 E carry2 $end
+$var wire 1 F carry1 $end
+$scope module har1 $end
+$var wire 1 A a $end
+$var wire 1 B b $end
+$var wire 1 F carry $end
+$var wire 1 C sum $end
+$upscope $end
+$scope module har2 $end
+$var wire 1 4 a $end
+$var wire 1 C b $end
+$var wire 1 E carry $end
+$var wire 1 D sum $end
+$upscope $end
+$upscope $end
+$scope module far4 $end
+$var wire 1 G a $end
+$var wire 1 H b $end
+$var wire 1 2 c_in $end
+$var wire 1 * c_out $end
+$var wire 1 I sum1 $end
+$var wire 1 J sum $end
+$var wire 1 K carry2 $end
+$var wire 1 L carry1 $end
+$scope module har1 $end
+$var wire 1 G a $end
+$var wire 1 H b $end
+$var wire 1 L carry $end
+$var wire 1 I sum $end
+$upscope $end
+$scope module har2 $end
+$var wire 1 2 a $end
+$var wire 1 I b $end
+$var wire 1 K carry $end
+$var wire 1 J sum $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module fa_vr_tb $end
+$scope module far1 $end
+$scope module har1 $end
+$upscope $end
+$scope module har2 $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope module sum4_tb $end
+$scope module sum $end
+$scope module far1 $end
+$scope module har1 $end
+$upscope $end
+$scope module har2 $end
+$upscope $end
+$upscope $end
+$scope module far2 $end
+$scope module har1 $end
+$upscope $end
+$scope module har2 $end
+$upscope $end
+$upscope $end
+$scope module far3 $end
+$scope module har1 $end
+$upscope $end
+$scope module har2 $end
+$upscope $end
+$upscope $end
+$scope module far4 $end
+$scope module har1 $end
+$upscope $end
+$scope module har2 $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+xL
+xK
+xJ
+xI
+0H
+0G
+xF
+xE
+xD
+xC
+0B
+0A
+x@
+x?
+x>
+x=
+0<
+0;
+x:
+x9
+x8
+x7
+06
+05
+x4
+bx 3
+x2
+z1
+b0 0
+b0 /
+1.
+b0 -
+b0 ,
+bx +
+x*
+z)
+x(
+x'
+x&
+0%
+0$
+0#
+x"
+x!
+$end
+#100
+0"
+07
+0:
+0=
+0@
+0C
+0F
+0I
+0L
+0'
+0(
+0&
+#200
+04
+02
+0*
+bx1 +
+bx1 3
+18
+09
+0?
+0E
+0K
+0!
+#300
+0D
+b0x1 +
+b0x1 3
+0J
+#2000
+16
+15
+1;
+1A
+1G
+b1 -
+b1 0
+b1111 ,
+b1111 /
+0.
+1$
+#2100
+14
+1:
+1=
+1C
+1I
+b0x0 +
+b0x0 3
+08
+1&
+#2200
+x2
+1E
+x?
+b10x0 +
+b10x0 3
+1J
+1!
+#2300
+x*
+bx0x0 +
+bx0x0 3
+xJ
+xK
+#4000
+1<
+1B
+1H
+b1111 -
+b1111 0
+1.
+0$
+1#
+#4100
+12
+1*
+0=
+1@
+0C
+1F
+0I
+1L
+bx0x1 +
+bx0x1 3
+18
+#4200
+1J
+0?
+b11x1 +
+b11x1 3
+1D
+0E
+0K
+#6000
+05
+0;
+0A
+0G
+b0 ,
+b0 /
+1$
+#6100
+04
+02
+0*
+1"
+17
+0:
+1=
+0@
+1C
+0F
+1I
+0L
+0&
+1(
+#6200
+14
+x2
+b11x0 +
+b11x0 3
+08
+19
+x?
+0!
+#6300
+x*
+0D
+1E
+bx0x0 +
+bx0x0 3
+xJ
+xK
+#8000
+06
+0B
+15
+1A
+b1010 -
+b1010 0
+b101 ,
+b101 /
+0.
+0$
+0#
+1%
+#8100
+04
+0"
+bx0x1 +
+bx0x1 3
+18
+09
+0(
+1!
+#8200
+bx1x1 +
+bx1x1 3
+1D
+0E
+#10000
+1$
