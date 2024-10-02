@@ -1,25 +1,12 @@
-#include <array>
-#include <vector>
 #include <iostream>
-#include <fstream>
-class Racional {
-    Racional() = default;
-    friend std::ifstream& operator>>(std::ifstream& is, Racional& racional);
-    private:
-    int numerador_, denominador_;
-};
-std::ifstream& operator>>(std::ifstream& is, Racional& racional) {
-    auto temp{0};
-    bool count{false};
-    while(is >> temp) {
-        if(isdigit(temp)){
-            if(count == false){
-                racional.numerador_ = temp;
-                count = true;
-            } else {
-                racional.denominador_ = temp;
-                break;
-            }
-        }
-    }
+#include <regex>
+#include <string>
+
+int main() {
+    std::regex expresion = std::regex(("\\s+(int|double).*?\\;"));
+    std::string prueba("    int factorial = 1;");
+    std::smatch matches;
+    std::regex_search(prueba, matches, expresion);
+    for (auto element : matches)
+        std::cout << element << std::endl;
 }

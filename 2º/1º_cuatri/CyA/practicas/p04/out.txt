@@ -1,0 +1,3 @@
+VARIABLES:
+[Line 21] INT: factorial = 1
+[Line 31] INT: limit
