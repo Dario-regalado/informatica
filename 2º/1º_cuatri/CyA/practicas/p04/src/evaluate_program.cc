@@ -16,6 +16,8 @@
 #include <fstream>
 #include <string>
 #include "variables.h"
+#include "statements.h"
+#include "comments.h"
 
 void Usage(const int argc, char* argv[]);
 void EvaluateProgram(std::ifstream&, std::ofstream&);
@@ -35,7 +37,7 @@ int main(const int argc, char* argv[]) {
 
 
 void EvaluateProgram(std::ifstream& input_stream, std::ofstream& output_stream){
-  Variables var;
+  Comments var;
   var.EvaluateFile(input_stream);
   output_stream << var;
   std::cout << var << std::endl;
