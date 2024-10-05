@@ -28,29 +28,24 @@ Variables::Variables(const std::regex& input_expression){
 }
 
 
-void Variables::EvaluateFile(std::ifstream& file_input) {
-  std::string line;
-  std::smatch matches;
-  int line_match{0};
-  
-  while(getline(file_input, line)) {
-    line_match++;
+void Variables::EvaluateFile(const std::string& file_input) {
+  for (std::sregex_iterator it{file_input.begin(), file_input.end(), expression_}; it != std::sregex_iterator(); ++it) {
+    std::smatch match = *it;
 
-    // Comprobamos si la línea tiene una coincidencia con la expresión regular
-    if (std::regex_search(line, expression_)){
-      lines_.emplace_back(line_match);
+    //calculamos la linea de coincidencia
+    auto match_pos = file_input.begin() + match.position();
+    int line = std::count(file_input.begin(), match_pos, '\n') + 1;
+    lines_.emplace_back(line);
 
-      //verificamos si es int o double
-      if(std::regex_search(line, std::regex("int")))
+    //verificamos si es int o double
+    if(std::regex_search(match.str(), std::regex("int")))
         types_.emplace_back("INT");
-      else
+    else
         types_.emplace_back("DOUBLE");
-
-      // Reemplazamos lo que coincide con la expresión regular
-      std::string result = std::regex_replace(line, std::regex("(\\s+(int|double)\\s)"), "");
-      result.erase(result.size()-2);
-      variable_names_.emplace_back(result);
-    }
+    // Reemplazamos lo que coincide con la expresión regular
+    std::string result = std::regex_replace(match.str(), std::regex("(\\s+(int|double)\\s)"), "");
+    result.erase(result.size()-1);
+    variable_names_.emplace_back(result);
   }
 }
 

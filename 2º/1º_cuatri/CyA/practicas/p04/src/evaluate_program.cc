@@ -21,8 +21,8 @@
 #include "statements.h"
 #include "comments.h"
 
-
-void WriteDescricion(std::ifstream&, std::ofstream&);
+void IsMain(const std::string&, std::ofstream&);
+void WriteDescription(const std::string&, std::ofstream&);
 void Usage(const int argc, char* argv[]);
 void EvaluateProgram(std::ifstream&, std::ofstream&, char* argv[]);
 
@@ -33,7 +33,7 @@ int main(const int argc, char* argv[]) {
   input_file.open(argv[1], std::ios::in);
   output_file.open(argv[2], std::ios::out); 
   if(!input_file.is_open() || !output_file.is_open())
-    std::cout <<"no se abrieron los archivos\n";
+    output_file <<"no se abrieron los archivos\n";
   
   EvaluateProgram(input_file, output_file, argv);
   return 0;
@@ -41,35 +41,39 @@ int main(const int argc, char* argv[]) {
 
 
 void EvaluateProgram(std::ifstream& input_stream, std::ofstream& output_stream, char* argv[]){
+  std::stringstream buffer_in;
+  buffer_in << input_stream.rdbuf();
+  std::string program = buffer_in.str();
+
   Variables var;
-  var.EvaluateFile(input_stream);
+  var.EvaluateFile(program);
   Comments comments;
-  comments.EvaluateFile(input_stream);
-  //ºStatements estatutos;
-  //ºestatutos.EvaluateFile(input_stream);
+  comments.EvaluateFile(program);
+  Statements estatutos;
+  estatutos.EvaluateFile(program);
 
   output_stream << "PROGRAM: " << argv[1] << std::endl;
-  WriteDescricion(input_stream, output_stream);
+  WriteDescription(program, output_stream);
+  output_stream << std::endl;
   output_stream << var << std::endl;
-  //output_stream << estatutos << std::endl;
+  output_stream << estatutos << std::endl;
+  IsMain(program, output_stream);
+  output_stream << std::endl;
   output_stream << comments << std::endl;
 }
 
 // ^(\/\*)[\s\S]*?(\*\/)$ para el comentario en bloque del inicio
-void WriteDescricion(std::ifstream& file_input, std::ofstream& output_stream) {
-  //carga el archivo en un string
-  std::stringstream buffer_in;
-  buffer_in << file_input.rdbuf();
-  std::string file_content = buffer_in.str();
-
-  std::regex description_comment(R"(\/\*\*[\s\S]*?\*\/)", std::regex::ECMAScript);
+void WriteDescription(const std::string& file_input, std::ofstream& output_stream) {
+  std::regex description_comment{R"((\/\*\*)[\s\S]*?(Universidad)[\s\S]*?(\*\/))", std::regex::ECMAScript | std::regex::multiline};
   std::smatch matches;
-  std::string description;
-  if(std::regex_search(file_content, matches, description_comment, std::regex_constants::match_continuous)) {
-    std::cout << "match";
-    description = matches.str();
-  }
-  output_stream << "DESCRIPTION:\n" << description;
+  std::regex_search(file_input, matches, description_comment, std::regex_constants::match_continuous);
+  output_stream << "DESCRIPTION:\n" << matches.str() << std::endl;
+}
+
+void IsMain(const std::string& input_file, std::ofstream& output_file){
+  std::regex is_main(R"(int main)", std::regex::ECMAScript|std::regex::multiline);
+  output_file << "MAIN:\n";
+  std::regex_search(input_file, is_main) ? output_file << "True\n" : output_file << "False\n";
 }
 
 

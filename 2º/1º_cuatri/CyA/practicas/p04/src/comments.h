@@ -15,27 +15,26 @@
 #pragma once
 #include <iostream>
 #include <regex>
-#include <fstream>
 #include <vector>
 #include <utility>
 #include <queue>
 
 class Comments {
  public:
-  Comments() : block_expression_{R"(^(\/\*)|^[\s]*(\*\/))"}, inline_expression_{R"(^(\/\/))"} {}
+  Comments() : block_expression_{R"((\/\*\*)[\s\S]*?(\*\/))", std::regex::ECMAScript | std::regex::multiline}, inline_expression_{R"(^(\/\/).*)", std::regex::ECMAScript | std::regex::multiline} {}
 
   //getter
   int GetNumVar() const {return lines_.size();}
-  std::vector<std::pair<int, bool>> GetLines() const {return lines_;}
+  std::queue<std::pair<int, int>> GetLines() const {return lines_;}
   std::queue<std::string> GetInlineTypes() const {return inline_types_;}
   std::queue<std::string> GetBlockTypes() const {return block_types_;}
 
-  void EvaluateFile(std::ifstream&);
+  void EvaluateFile(const std::string&);
 
  private:
   std::regex block_expression_;
   std::regex inline_expression_;
-  std::vector<std::pair<int, bool>> lines_;
+  std::queue<std::pair<int, int>> lines_;
   std::queue<std::string> block_types_;
   std::queue<std::string> inline_types_;
 };

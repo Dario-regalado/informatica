@@ -21,8 +21,7 @@
 
 class Statements {
  public:
-  Statements() : expression_{R"(\b(for|while)\b)"} {}
-  Statements(const std::regex&);
+  Statements() : expression_{R"(\b(for|while)\b)", std::regex::ECMAScript|std::regex::multiline} {}
 
   //getter
   int GetNumVar() const {return std::min(lines_.size(), std::min(variable_names_.size(), types_.size()));}
@@ -30,7 +29,7 @@ class Statements {
   std::vector<std::string> GetTypes() const {return types_;}
   std::vector<std::string> GetVarName() const {return variable_names_;}
 
-  void EvaluateFile(std::ifstream&);
+  void EvaluateFile(const std::string&);
 
  private:
   std::regex expression_;

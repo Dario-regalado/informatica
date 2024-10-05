@@ -15,42 +15,29 @@
 #include "Statements.h"
 
 
-/**
- * @brief Construct a new Statements object
- * 
- * @param  
- */
-Statements::Statements(const std::regex& input_expresion) {
-  expression_ = input_expresion;
-  lines_.resize(0);
-  types_.resize(0);
-  variable_names_.resize(0);
-}
+void Statements::EvaluateFile(const std::string& file_input) {
+  for (std::sregex_iterator it{file_input.begin(), file_input.end(), expression_}; it != std::sregex_iterator(); ++it) {
+    std::smatch match = *it;
 
-/* revisar por los tipos de statements
-void Statements::EvaluateFile(std::ifstream& input_file) {
-  std::string line;
-  std::smatch matches;
-  int line_match{0};
-  
-  while(getline(input_file, line)) {
-    line_match++;
+    //calculamos la linea de coincidencia
+    auto match_pos = file_input.begin() + match.position();
+    int line = std::count(file_input.begin(), match_pos, '\n') + 1;
+    lines_.emplace_back(line);
 
-    if(std::regex_search(line, expression_)) {
-      lines_.emplace_back(line_match);
-
-      if(std::regex_search(line, std::regex("for")))
-        types_.emplace_back("FOR");
-      else  
-        types_.emplace_back("WHILE");
-      
-      std::string var_result = std::regex_replace(line, std::regex(R"(\b(?!for\b|while\b)\w+\b)"), "");
-      var_result.erase(var_result.size()-2);
-      variable_names_.emplace_back(var_result);
+    //verificamos si es for o while
+    if(std::regex_search(match.str(), std::regex("for|while"))) {
+      types_.emplace_back("LOOP");
+      // añadimos si es for o while
+      if(std::regex_search(match.str(), std::regex("for")))
+        variable_names_.emplace_back("for");
+      else
+        variable_names_.emplace_back("while");
     }
+    else
+      types_.emplace_back("otra cosa");
   }
 }
-*/
+
 
 std::ostream& operator<<(std::ostream& output, const Statements& variable_salida) {
   output << "STATEMENTS:\n";

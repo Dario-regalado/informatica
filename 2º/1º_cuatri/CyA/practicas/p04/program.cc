@@ -25,7 +25,11 @@ int Factorial (int number ) {
       return factorial ;
   }
 }
-
+/**
+ * @brief 
+ * 
+ * @return int 
+ */
 int main () {
   std::cout << " Introduzca el numero de factoriales a calcular : ";
   int limit;

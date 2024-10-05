@@ -20,7 +20,7 @@
 
 class Variables {
  public:
-  Variables() : expression_{R"(\s+(int|double).*?\;)"} {}
+  Variables() : expression_{R"(\s+(int|double).*?\;)", std::regex::ECMAScript | std::regex::multiline} {}
   Variables(const std::regex&);
 
   //getter
@@ -29,7 +29,7 @@ class Variables {
   std::vector<std::string> GetTypes() const {return types_;}
   std::vector<std::string> GetVarName() const {return variable_names_;}
 
-  void EvaluateFile(std::ifstream&);
+  void EvaluateFile(const std::string&);
 
  private:
   std::regex expression_;
