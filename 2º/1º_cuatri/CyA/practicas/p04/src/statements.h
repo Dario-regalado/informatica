@@ -22,6 +22,7 @@
 class Statements {
  public:
   Statements() : expression_{R"(\b(for|while)\b)", std::regex::ECMAScript|std::regex::multiline} {}
+  Statements(const std::regex&);
 
   //getter
   int GetNumVar() const {return std::min(lines_.size(), std::min(variable_names_.size(), types_.size()));}

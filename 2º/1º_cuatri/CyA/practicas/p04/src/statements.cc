@@ -14,7 +14,25 @@
 
 #include "Statements.h"
 
+/**
+ * @brief Construct a new Statements object
+ * 
+ * @param input_expre 
+ */
+Statements::Statements(const std::regex& input_expre) : expression_{R"(\b(for|while)\b)", std::regex::ECMAScript|std::regex::multiline} {
+  if(input_expre.mark_count() != 0)
+    expression_ = input_expre;
+  lines_.resize(0);
+  variable_names_.resize(0);
+  types_.resize(0);
+}
 
+
+/**
+ * @brief evalua el programa en busca de statements
+ * 
+ * @param file_input 
+ */
 void Statements::EvaluateFile(const std::string& file_input) {
   for (std::sregex_iterator it{file_input.begin(), file_input.end(), expression_}; it != std::sregex_iterator(); ++it) {
     std::smatch match = *it;
@@ -38,7 +56,13 @@ void Statements::EvaluateFile(const std::string& file_input) {
   }
 }
 
-
+/**
+ * @brief imprime un Statement
+ * 
+ * @param output 
+ * @param variable_salida 
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& output, const Statements& variable_salida) {
   output << "STATEMENTS:\n";
   for (int i = 0; i < variable_salida.GetNumVar(); i++){

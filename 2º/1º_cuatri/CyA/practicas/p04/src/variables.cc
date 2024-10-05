@@ -18,16 +18,21 @@
 /**
  * @brief Construct a new Variables object
  * 
- * @param  
+ * @param input_expression 
  */
-Variables::Variables(const std::regex& input_expression){
-  expression_ = input_expression;
+Variables::Variables(const std::regex& input_expression) : expression_{R"(\s+(int|double).*?\;)", std::regex::ECMAScript | std::regex::multiline} {
+  if(input_expression.mark_count() != 0)
+    expression_ = input_expression;
   lines_.resize(0);
   types_.resize(0);
   variable_names_.resize(0);
 }
 
-
+/**
+ * @brief evalua el programa en busca de Variables
+ * 
+ * @param file_input 
+ */
 void Variables::EvaluateFile(const std::string& file_input) {
   for (std::sregex_iterator it{file_input.begin(), file_input.end(), expression_}; it != std::sregex_iterator(); ++it) {
     std::smatch match = *it;
@@ -49,7 +54,13 @@ void Variables::EvaluateFile(const std::string& file_input) {
   }
 }
 
-
+/**
+ * @brief imprime una Variable
+ * 
+ * @param output 
+ * @param variable_salida 
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& output, const Variables& variable_salida) {
   output << "VARIABLES:\n";
   for (int i = 0; i < variable_salida.GetNumVar(); i++){

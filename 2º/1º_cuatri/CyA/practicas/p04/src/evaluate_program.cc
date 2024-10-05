@@ -59,7 +59,7 @@ void EvaluateProgram(std::ifstream& input_stream, std::ofstream& output_stream, 
   output_stream << estatutos << std::endl;
   IsMain(program, output_stream);
   output_stream << std::endl;
-  output_stream << comments << std::endl;
+  output_stream << comments;
 }
 
 // ^(\/\*)[\s\S]*?(\*\/)$ para el comentario en bloque del inicio

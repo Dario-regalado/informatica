@@ -22,6 +22,7 @@
 class Comments {
  public:
   Comments() : block_expression_{R"((\/\*\*)[\s\S]*?(\*\/))", std::regex::ECMAScript | std::regex::multiline}, inline_expression_{R"(^(\/\/).*)", std::regex::ECMAScript | std::regex::multiline} {}
+  Comments(const std::regex&, const std::regex&);
 
   //getter
   int GetNumVar() const {return lines_.size();}

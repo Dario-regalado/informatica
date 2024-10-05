@@ -14,7 +14,25 @@
 
 #include "Comments.h"
 
+/**
+ * @brief Construct a new Comments object
+ * 
+ * @param expresion_bloque 
+ * @param expresion_linea 
+ */
+Comments::Comments(const std::regex& expresion_bloque, const std::regex& expresion_linea)  : block_expression_{R"((\/\*\*)[\s\S]*?(\*\/))", std::regex::ECMAScript | std::regex::multiline}, inline_expression_{R"(^(\/\/).*)", std::regex::ECMAScript | std::regex::multiline}  {
+  if(expresion_bloque.mark_count() != 0)
+    block_expression_ = expresion_bloque;
+  if(!expresion_linea.mark_count() != 0)
+    inline_expression_ = expresion_linea;
+}
 
+
+/**
+ * @brief evalua el programa en busca de Comments
+ * 
+ * @param file_input 
+ */
 void Comments::EvaluateFile(const std::string& file_input) {
   // busca comentarios en bloque
   for (std::sregex_iterator it{file_input.begin(), file_input.end(), block_expression_}; it != std::sregex_iterator(); ++it) {
@@ -51,7 +69,13 @@ void Comments::EvaluateFile(const std::string& file_input) {
   }
 }
 
-
+/**
+ * @brief imprime un Comment
+ * 
+ * @param output 
+ * @param variable_salida 
+ * @return std::ostream& 
+ */
 std::ostream& operator<<(std::ostream& output, const Comments& variable_salida) {
   output << "COMMENTS:\n";
   std::queue<std::string> block(variable_salida.GetBlockTypes());
@@ -66,7 +90,7 @@ std::ostream& operator<<(std::ostream& output, const Comments& variable_salida) 
     output  << "] " << block.front() << std::endl;
     block.pop();
   }
-  // imprimo los comentarios en linea
+  // imprime los comentarios en linea
   for (unsigned i = 0; i < variable_salida.GetInlineTypes().size(); i++) {
     output << "[Line ";
     output << lines.front().first;
@@ -76,47 +100,3 @@ std::ostream& operator<<(std::ostream& output, const Comments& variable_salida) 
   }
   return output;
 }
-
-/*
-
-for (int i = 0; i < variable_salida.GetNumVar(); i++){
-    output << "[Line ";
-    if(lines.at(i).second) {
-      output << lines.at(i).first << "-" << lines.at(i+1).first;
-      i++;
-      output  << "] " << block.front() << std::endl;
-      block.pop();
-    } else {
-      output << lines.at(i).first;
-      output << "] " << line.front() << std::endl;
-      line.pop();
-    }
-  }
-
-
-for (unsigned i = 0; i < file_input.size(); i++){
-    if(file_input[i] == '\n')
-      n_lineas++;
-  }
-  
-  if(std::regex_search(file_input, match_block, block_expression_)) {
-    for(const auto& element : match_block) {
-      block_types_.push(element.str());
-      int n_lines{0};
-      for (unsigned i = 0; i < element.str().size(); i++){
-        if(element.str().at(i) == '\n'){
-          n_lines++;
-        }
-      }
-      if(lines_.size() == 0)
-        lines_.emplace_back(0, 0);
-      lines_.emplace_back(n_lineas - n_lines, true);
-    }
-  }
-  if(std::regex_search(file_input, match_line, inline_expression_)) {
-
-    for(const auto& element : match_line) {
-      inline_types_.push(element);
-    }
-  } 
-  */
