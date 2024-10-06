@@ -12,21 +12,24 @@ DESCRIPTION:
  */
 
 VARIABLES:
-[Line 20] INT: factorial = 1
-[Line 34] INT: limit
+[Line 12] INT: Factorial(int number)
+[Line 20] INT: limit
+[Line 37] INT: factorial = 1
+[Line 42] DOUBLE: u = 3.44
 
 STATEMENTS:
-[Line 22] LOOP: for
-[Line 37] LOOP: for
+[Line 23] LOOP: for
+[Line 26] LOOP: while
+[Line 39] LOOP: for
 
 MAIN:
 True
 
 COMMENTS:
 [Line 1-10] DESCRIPTION
-[Line 28-32] /**
+[Line 14-18] /**
  * @brief 
  * 
  * @return int 
  */
-[Line 14] // Returns the factorial of the argument
+[Line 31] // Returns the factorial of the argument
