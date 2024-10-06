@@ -20,7 +20,7 @@
  * 
  * @param input_expression 
  */
-Variables::Variables(const std::regex& input_expression) : expression_{R"(\s+(int|double).*?\;)", std::regex::ECMAScript | std::regex::multiline} {
+Variables::Variables(const std::regex& input_expression) : expression_{R"(^\s*(int|double).*?\;$)", std::regex::ECMAScript | std::regex::multiline} {
   if(input_expression.mark_count() != 0)
     expression_ = input_expression;
   lines_.resize(0);
