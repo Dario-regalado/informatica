@@ -20,7 +20,7 @@
 
 class Variables {
  public:
-  Variables() : expression_{R"(\s+(int|double).*?\;)", std::regex::ECMAScript | std::regex::multiline} {}
+  Variables() : expression_{R"(^\s+(int|double)\s+([a-zA-Z_]\w+)([^a-zA-Z]*)\;$)", std::regex::ECMAScript | std::regex::multiline} {}
   Variables(const std::regex&);
 
   //getter

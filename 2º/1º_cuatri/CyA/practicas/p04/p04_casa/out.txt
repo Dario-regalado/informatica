@@ -12,10 +12,9 @@ DESCRIPTION:
  */
 
 VARIABLES:
-[Line 12] INT: Factorial(int number)
-[Line 20] INT: limit
-[Line 37] INT: factorial = 1
-[Line 42] DOUBLE: u = 3.44
+[Line 21] INT: limit
+[Line 38] INT: factorial = 1
+[Line 43] DOUBLE: um{3.44}
 
 STATEMENTS:
 [Line 23] LOOP: for

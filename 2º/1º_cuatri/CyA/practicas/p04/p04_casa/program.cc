@@ -40,6 +40,6 @@ int Factorial (int number ) {
         factorial *= i ;
       }
       return factorial ;
-      double u = 3.44;
+      double um{3.44};
   }
 }
