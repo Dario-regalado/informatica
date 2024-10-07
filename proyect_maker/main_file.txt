@@ -37,10 +37,9 @@ void Usage(const int argc, char* argv[]) {
     std::cerr << "Param 1: \n";
     std::cerr << "Param 2: \n";
     std::cerr << "Param 3: :\n";
-    std::exit(EXIT_FAILURE);
   } else if(argc != ){
     std::cerr << "Modo de empleo: " << argv[0] << " filein.txt fileout.txt opcode\n";
     std::cerr << "Pruebe " << argv[0] << "--help para mas informacion.\n";
-    std::exit(EXIT_FAILURE);
   }
+  std::exit(EXIT_FAILURE);
 }
