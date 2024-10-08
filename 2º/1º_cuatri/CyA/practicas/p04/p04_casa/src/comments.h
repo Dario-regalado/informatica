@@ -5,9 +5,9 @@
   * Computabilidad y Algoritmia
   *
   * @author  Dario Regalado Gonzalez alu0101640150@ull.edu.es
-  * @date 
-  * @brief 
-  * @Practica 
+  * @date 08/10/2024
+  * @brief definition of the Comments class
+  * @Practica 04_regex
   * @bug There are no known bugs
   * @file cya P02 main
   */
