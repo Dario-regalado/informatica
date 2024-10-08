@@ -35,7 +35,7 @@ class Program {
   std::string GetName() const {return name_program_;}
 
   void EvaluateProgram(std::ifstream& input_stream, const std::string&);
-  std::ostream& WriteDescription(std::ostream&) const;
+  void WriteDescription(std::ostream&) const;
   void IsMain(std::ostream&) const;
 
  private:
