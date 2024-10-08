@@ -12,9 +12,9 @@ DESCRIPTION:
  */
 
 VARIABLES:
-[Line 21] INT: limit
-[Line 38] INT: factorial = 1
-[Line 43] DOUBLE: um{3.44}
+[Line 22] INT: limit
+[Line 39] INT: factorial = 1
+[Line 44] DOUBLE: um{3.44}
 numero de variables: 3
 
 STATEMENTS:
