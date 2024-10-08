@@ -12,7 +12,7 @@
   * @file cya P02 main
   */
 
-#include "Statements.h"
+#include "statements.h"
 
 /**
  * @brief Construct a new Statements object

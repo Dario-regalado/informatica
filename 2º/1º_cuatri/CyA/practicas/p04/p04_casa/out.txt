@@ -15,6 +15,7 @@ VARIABLES:
 [Line 21] INT: limit
 [Line 38] INT: factorial = 1
 [Line 43] DOUBLE: um{3.44}
+numero de variables: 3
 
 STATEMENTS:
 [Line 23] LOOP: for

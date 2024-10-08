@@ -47,12 +47,11 @@ void Program::EvaluateProgram(std::ifstream& input_stream, const std::string& na
  * @param out 
  * @return std::ostream& 
  */
-std::ostream& Program::WriteDescription(std::ostream& out) const {
+void Program::WriteDescription(std::ostream& out) const {
   std::regex description_comment{R"((\/\*\*)[\s\S]*?(Universidad)[\s\S]*?(\*\/))", std::regex::ECMAScript | std::regex::multiline};
   std::smatch matches;
   std::regex_search(program_, matches, description_comment, std::regex_constants::match_continuous);
   out << "DESCRIPTION:\n" << matches.str() << std::endl;
-  return out;
 }
 
 /**

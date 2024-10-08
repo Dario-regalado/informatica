@@ -49,9 +49,10 @@ void Usage(const int argc, char* argv[]) {
     std::cerr << "Usage: " << argv[0] << " program_in.cc file_out.txt\n";
     std::cerr << "program_in.cc: the program to be analized\n";
     std::cerr << "file_out.txt: the file were the output will be written\n";
+    std::exit(EXIT_FAILURE);
   } else if(argc != 3){
     std::cerr << "Modo de empleo: " << argv[0] << " program_in.cc file_out.txt\n";
     std::cerr << "Pruebe " << argv[0] << " --help para mas informacion.\n";
+    std::exit(EXIT_FAILURE);
   }
-  std::exit(EXIT_FAILURE);
 }
