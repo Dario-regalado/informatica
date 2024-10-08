@@ -81,7 +81,7 @@ std::ostream& operator<<(std::ostream& output, const Comments& variable_salida) 
   std::queue<std::string> block(variable_salida.GetBlockTypes());
   std::queue<std::string> line(variable_salida.GetInlineTypes());
   std::queue<std::pair<int, int>> lines(variable_salida.GetLines());
-  
+  int single_lines{0}, blocks{0};
   // primero imprimo los comentarios en bloque
   for (unsigned i = 0; i < variable_salida.GetBlockTypes().size(); i++) {
     output << "[Line ";
@@ -89,6 +89,7 @@ std::ostream& operator<<(std::ostream& output, const Comments& variable_salida) 
     lines.pop();
     output  << "] " << block.front() << std::endl;
     block.pop();
+    blocks++;
   }
   // imprime los comentarios en linea
   for (unsigned i = 0; i < variable_salida.GetInlineTypes().size(); i++) {
@@ -97,6 +98,11 @@ std::ostream& operator<<(std::ostream& output, const Comments& variable_salida) 
     lines.pop();
     output  << "] " << line.front() << std::endl;
     line.pop();
+    single_lines++;
   }
+  output << "numero de comentarios: \n";
+  output << "lines: " << single_lines << std::endl;
+  output << "blocks: " << blocks << std::endl;
+
   return output;
 }

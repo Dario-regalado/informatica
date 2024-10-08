@@ -69,5 +69,16 @@ std::ostream& operator<<(std::ostream& output, const Statements& variable_salida
     output << "[Line " << variable_salida.GetLines().at(i)  << "] " << variable_salida.GetTypes().at(i) 
     << ": " << variable_salida.GetVarName().at(i) << std::endl;
   }
+  int fors{0}, whiles{0}; 
+  for (auto element : variable_salida.GetVarName()){
+    if (element == "for")
+      fors++;
+    else
+      whiles++;
+  }
+  output << "numero de statements: \n";
+  output << "for: " << fors << std::endl;
+  output << "while: " << whiles << std::endl;
+  
   return output;
 }

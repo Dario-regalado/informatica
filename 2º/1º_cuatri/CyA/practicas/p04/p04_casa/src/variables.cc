@@ -69,6 +69,15 @@ std::ostream& operator<<(std::ostream& output, const Variables& variable_salida)
     output << "[Line " << variable_salida.GetLines().at(i)  << "] " << variable_salida.GetTypes().at(i) 
     << ": " << variable_salida.GetVarName().at(i) << std::endl;
   }
-  output << "numero de variables: " << variable_salida.GetNumVar() << std::endl;
+  int ints{0}, doubles{0}; 
+  for (auto element : variable_salida.GetTypes()){
+    if (element == "INT")
+      ints++;
+    else
+      doubles++;
+  }
+  output << "numero de variables: \n" ;
+  output << "int: " << ints << std::endl;
+  output << "double: " << doubles << std::endl;
   return output;
 }
