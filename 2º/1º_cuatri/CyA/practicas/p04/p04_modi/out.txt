@@ -1,0 +1,46 @@
+PROGRAM: programa.cc
+DESCRIPTION:
+/**
+2 * Universidad de La Laguna
+3 * Escuela Superior de Ingenieria y Tecnologia
+4 * Informatica Basica
+5 *
+6 * @brief Ejercicios de programacion
+7 * Version 1: Funcion factorial
+8 *
+9 * @see https :// github .com/IB -2023 -2024/ IB -class -code - examples /
+ */
+
+VARIABLES:
+[Line 22] INT: limit
+[Line 48] INT: factorial = 1
+[Line 53] DOUBLE: um{3.44}
+numero de variables: 
+int: 2
+double: 1
+
+STATEMENTS:
+[Line 23] LOOP: for
+[Line 26] LOOP: while
+[Line 29] CONDITIONAL: switch: limit
+[Line 42] CONDITIONAL: switch: number 
+[Line 48] LOOP: for
+numero de statements: 
+for: 2
+while: 1
+conditionals: 2
+
+MAIN:
+True
+
+COMMENTS:
+[Line 1-10] DESCRIPTION
+[Line 14-18] /**
+ * @brief 
+ * 
+ * @return int 
+ */
+[Line 40] // Returns the factorial of the argument
+numero de comentarios: 
+lines: 1
+blocks: 2
