@@ -1,9 +1,9 @@
 import random
-from random import randrange
+import mouse
+from time import sleep
 
-print("primera hoja:")
-print(random.randint(1,14))
-#print("segunda hoja")
-#print(random.randint(1, 15))
-#print("tercera hoja")
-#print(random.randint(1, 30))
+adivina = random.randint(0, 100);
+if(adivina <= 50):
+    sleep(3)
+    mouse.click('left')
+    print(adivina)
