@@ -14,7 +14,7 @@ assign a = Op[2];
 assign b = Op[1];
 assign c = Op[0];
 
-  assign add1 = c | a;
+  assign add1 = c;
   assign op1_A = ((a) | (b & ~c));
   assign op2_B = ((a) | (b & ~c));
   assign cpl = (~a & ~b & c);
