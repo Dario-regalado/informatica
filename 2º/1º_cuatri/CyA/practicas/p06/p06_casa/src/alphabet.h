@@ -31,6 +31,7 @@ class Alphabet {
   std::set<Symbol> GetAlphabet() const {return alphabet_;}
 
   bool IsInAlphabet(const std::string&);
+  void Insert(const Symbol&);
   friend std::istream& operator>>(std::istream&, Alphabet&);
 
  private:

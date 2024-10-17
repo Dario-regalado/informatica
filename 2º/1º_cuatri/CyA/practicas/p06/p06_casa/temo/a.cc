@@ -1,22 +1,27 @@
 #include <iostream>
 #include "QEstados.h"
 #include "FEstados.h"
+#include "funcion_t.h"
 
 int main() {
-  QEstados conjunto(0);
-  conjunto.Insert(1);
-  conjunto.Insert(2);
-  conjunto.Insert(3);
-  conjunto.Insert(4);
-  conjunto.Insert(5);
-  std::cout << conjunto << std::endl;
+    // Crear estados y el autómata
+    QEstados estados;
+    estados.Insert(Estado(0));
+    estados.Insert(Estado(1));
+    estados.Insert(Estado(2));
 
-  FEstados conjunto2;
-  conjunto2.Insert(1);
-  conjunto2.Insert(2);
-  conjunto2.Insert(3);
-  conjunto2.Insert(4);
-  conjunto2.Insert(6);
-  std::cout << conjunto2 << std::endl;
-  conjunto2.FPerteneceQ(conjunto) ? std::cout << "F esta en Q\n" : std::cout << "F no esta en Q\n";
+    FEstados finales = {Estado(2)};
+
+    FuncionT ft(estados, finales);
+    ft.AgregarTransicion(Estado(0), 'a', Estado(1));
+    ft.AgregarTransicion(Estado(1), 'b', Estado(2));
+    ft.AgregarTransicion(Estado(1), '&', Estado(2)); // Ejemplo de transición epsilon
+
+    // Probar con una cadena de entrada
+    std::string input = "ab";
+    ft.FuncTrans(input);
+    std::cout << input << " --- "; 
+    ft.StringAccepted()? std::cout << "Accepted\n" : std::cout << "Rejected\n";
+
+    return 0;
 }

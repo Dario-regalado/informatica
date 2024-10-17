@@ -14,7 +14,9 @@
 
 #pragma once
 #include <iostream>
-#include <tuple>
+#include <fstream>
+#include <string>
+#include <sstream>
 #include "alphabet.h"
 #include "QEstados.h"
 #include "FEstados.h"
@@ -24,10 +26,18 @@
 class Automata {
  public:
   Automata() = default;
-  Automata();
+  Automata(std::ifstream&);
 
+  void AnalizeAutomata(std::ifstream&);
+  bool AnalizeWords(const std::string&);
   //getter
 
  private:
-  std::tuple<Alphabet, QEstados, Estado, FEstados, FuncionT> automata_;
+  Alphabet alfabeto_;
+  QEstados q_estados_;
+  FEstados f_esstados_;
+  Estado inicial_estado;
+  FuncionT funcion_transicion_;
+  int n_estados_;
+  bool is_dfa_;
 };

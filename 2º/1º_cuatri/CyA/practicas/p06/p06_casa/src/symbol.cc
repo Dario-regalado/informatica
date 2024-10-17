@@ -49,3 +49,8 @@ std::istream& operator>>(std::istream& stream_in, Symbol& symbol_in) {
 bool operator<(const Symbol& simbolo1, const Symbol& simbolo2){
   return (simbolo1.GetSymbol() < simbolo2.GetSymbol());
 }
+
+
+bool operator==(const Symbol& simbolo1, const Symbol& simbolo2){
+  return simbolo1.GetSymbol() == simbolo2.GetSymbol();
+}

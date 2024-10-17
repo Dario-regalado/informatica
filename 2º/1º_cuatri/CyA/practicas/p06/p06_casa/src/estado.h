@@ -31,4 +31,5 @@ class Estado {
 };
 
 bool operator<(const Estado&, const Estado&);
+bool operator==(const Estado&, const Estado&);
 std::ostream& operator<<(std::ostream&, const Estado&);

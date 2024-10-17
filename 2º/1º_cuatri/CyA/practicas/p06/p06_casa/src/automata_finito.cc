@@ -13,13 +13,22 @@
   */
 
 #include <iostream>
+#include <fstream>
 #include <string>
+#include "Automata.h"
 
 void Usage(const int argc, char* argv[]);
+void AnalizeWords(std::ifstream&, std::ifstream&);
 
 int main(const int argc, char* argv[]) {
   Usage(argc, argv);
-
+  std::ifstream automata_file;
+  automata_file.open(argv[1], std::ios::in);
+  std::ifstream words_file;
+  words_file.open(argv[2], std::ios::in);
+  if(!automata_file.is_open() || !words_file.is_open())
+    std::cerr << "archivos no abiertos\n";
+  AnalizeWords(automata_file, words_file);
   return 0;
 }
 
@@ -33,13 +42,24 @@ int main(const int argc, char* argv[]) {
   */
 void Usage(const int argc, char* argv[]) {
   if (argc == 2 && std::string(argv[1]) == "--help") {
-    std::cerr << "Usage: " << argv[0] << " param 1, param 2, param 3\n";
-    std::cerr << "Param 1: \n";
-    std::cerr << "Param 2: \n";
-    std::cerr << "Param 3: :\n";
+    std::cerr << "Usage: " << argv[0] << " file_automata.fa, file_words.txt,\n";
+    std::cerr << "file_automata.fa: file with the definition of the automata\n";
+    std::cerr << "file_words.txt: file with the words to check\n";
+    std::exit(EXIT_FAILURE);
   } else if(argc != 3){
-    std::cerr << "Modo de empleo: " << argv[0] << " filein.txt fileout.txt opcode\n";
+    std::cerr << "Modo de empleo: " << argv[0] << " file_automata.fa file_words.txt\n";
     std::cerr << "Pruebe " << argv[0] << "--help para mas informacion.\n";
+    std::exit(EXIT_FAILURE);
   }
-  std::exit(EXIT_FAILURE);
+}
+
+void AnalizeWords(std::ifstream& automata_file, std::ifstream& words_file) {
+  Automata automata;
+  automata.AnalizeAutomata(automata_file);
+  std::string line;
+
+  while(std::getline(words_file, line)) {
+    std::cout << line << " --- ";
+    automata.AnalizeWords(line) ? std::cout << "Accepted\n" : std::cout << "Rejected\n";
+  }
 }

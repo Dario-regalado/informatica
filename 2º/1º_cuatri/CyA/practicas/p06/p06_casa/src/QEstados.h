@@ -14,10 +14,10 @@
 
 #pragma once
 #include <iostream>
-#include <map>
+#include <set>
 #include "estado.h"
 
-typedef std::map<int, Estado> q_estados;
+typedef std::set<Estado> q_estados;
 
 class QEstados {
  public:
@@ -28,6 +28,7 @@ class QEstados {
   void Clear();
   //getter
   q_estados GetQEstado() const {return conjunto_estados_;}
+  Estado GetInicial() const;
 
  private:
   q_estados conjunto_estados_;

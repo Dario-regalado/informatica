@@ -8,7 +8,7 @@ else
 endif
 BUILDDIR := build
 SRCDIR := src
-BIN := finit_automata.out
+BIN := finito
 LIBS :=
 
 # Don't modify

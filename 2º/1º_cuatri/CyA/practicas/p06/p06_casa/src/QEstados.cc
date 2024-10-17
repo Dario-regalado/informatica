@@ -24,9 +24,13 @@ QEstados::QEstados(const Estado& initial_state) {
   Insert(initial_state);
 }
 
+Estado QEstados::GetInicial() const {
+  return *conjunto_estados_.begin();
+}
+
 
 void QEstados::Insert(const Estado& nuevo_estado) {
-  conjunto_estados_.insert(std::make_pair(nuevo_estado.GetState(), nuevo_estado));
+  conjunto_estados_.insert(nuevo_estado);
 }
 
 
@@ -39,7 +43,7 @@ std::ostream& operator<<(std::ostream& output, const QEstados& conjunto_salida) 
   output << "{";
   const auto& estados = conjunto_salida.GetQEstado();
   for (auto it = estados.begin(); it != estados.end(); it++){
-    output << it->second;
+    output << it->GetState();
     if(std::next(it) != estados.end()) {
       output << ", ";
     }

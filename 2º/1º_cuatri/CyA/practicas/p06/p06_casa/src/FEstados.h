@@ -14,11 +14,11 @@
 
 #pragma once
 #include <iostream>
-#include <map>
+#include <set>
 #include "estado.h"
 #include "QEstados.h"
 
-typedef std::map<int, Estado> f_estados;
+typedef std::set<Estado> f_estados;
 
 class FEstados {
  public:

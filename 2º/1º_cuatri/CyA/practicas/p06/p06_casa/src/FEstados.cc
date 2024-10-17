@@ -27,7 +27,7 @@ FEstados::FEstados(const Estado& inicial) {
 }
 
 void FEstados::Insert(const Estado& estado) {
-  conjunto_estados_finales_.insert(std::make_pair(estado.GetState(), estado));
+  conjunto_estados_finales_.insert(estado);
 }
 
 
@@ -38,7 +38,7 @@ conjunto_estados_finales_.clear();
 bool FEstados::FPerteneceQ(const QEstados& estados_q) {
   const auto& estados_q_map = estados_q.GetQEstado();
   for (const auto& pair : conjunto_estados_finales_) {
-    int id_estado = pair.first; // id del estado de FEstados
+    int id_estado = pair.GetState(); // id del estado de FEstados
     if (estados_q_map.find(id_estado) == estados_q_map.end()) {
       return false; //si no encontró un estado de FEstados en QEstados, retorna false
     }
@@ -52,7 +52,7 @@ std::ostream& operator<<(std::ostream& output, const FEstados& conjunto_salida) 
   output << "{";
   const auto& estados = conjunto_salida.GetFEstados();
   for (auto it = estados.begin(); it != estados.end(); it++){
-    output << it->second;
+    output << it->GetState();
     if(std::next(it) != estados.end()) {
       output << ", ";
     }

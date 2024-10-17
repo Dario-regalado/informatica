@@ -44,6 +44,10 @@ bool Alphabet::IsInAlphabet(const std::string& word_in_alphabet) {
   return true;
 }
 
+void Alphabet::Insert(const Symbol& simbolo) {
+  alphabet_.insert(simbolo);
+}
+
 
 /**
  * @brief insert a new alphabet

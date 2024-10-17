@@ -31,3 +31,4 @@ class Symbol {
 
 std::ostream& operator<< (std::ostream&, const Symbol&);
 bool operator<(const Symbol&, const Symbol&);
+bool operator==(const Symbol&, const Symbol&);

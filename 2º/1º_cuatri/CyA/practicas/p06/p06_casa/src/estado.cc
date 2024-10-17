@@ -24,6 +24,9 @@ Estado::Estado(const int state) {
 }
  */
 
+bool operator== (const Estado& first_st, const Estado& second_st) {
+  return first_st.GetState() == second_st.GetState();
+}
 bool operator< (const Estado& first_st, const Estado& second_st) {
   return first_st.GetState() < second_st.GetState();
 }
