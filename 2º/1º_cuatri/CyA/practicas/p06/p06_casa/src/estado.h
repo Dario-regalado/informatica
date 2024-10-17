@@ -21,7 +21,7 @@ class Estado {
   Estado() = default;
   Estado(const int state) : state_{state} {}
 
-  friend std::istream& operator>> (std::istream&, const Estado&);
+  friend std::istream& operator>> (std::istream&, Estado&);
 
   //getter
   int GetState() const {return state_;}

@@ -17,26 +17,25 @@
 #include <map>
 #include <set>
 #include <vector>
+#include <stack>
 #include "estado.h"
 #include "QEstados.h"
 #include "FEstados.h"
 #include "symbol.h"
 
-
+typedef std::map<Estado, std::multimap<Symbol, Estado>> f_tran;
 class FuncionT {
  public:
   FuncionT() = default;
-  FuncionT(const QEstados& estados, const FEstados& finales)
-        : conjunto_estados_(estados), conjunto_estados_finales_(finales) {}
 
-  bool FuncTrans(const std::string& input);
+  bool FuncTrans(const std::string& input, const QEstados&, const FEstados&, const bool);
   void AgregarTransicion(const Estado& origen, const Symbol& simbolo, const Estado& destino);
   
   //getter
+  f_tran GetFunc() const {return transicion_;}
 
  private:
-  bool HayInterseccionConAceptacion(const std::set<Estado>& estados_actuales) const;
-  std::multimap<std::pair<Estado, Symbol>, Estado> transicion_;
-  QEstados conjunto_estados_;
-  FEstados conjunto_estados_finales_;
+  bool DFATransition(const std::string& input, const QEstados&, const FEstados&);
+  bool NFATransition(const std::string& input, const QEstados&, const FEstados&);
+  f_tran transicion_;
 };

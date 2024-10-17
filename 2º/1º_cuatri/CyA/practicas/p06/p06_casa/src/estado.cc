@@ -31,7 +31,7 @@ bool operator< (const Estado& first_st, const Estado& second_st) {
   return first_st.GetState() < second_st.GetState();
 }
 
-std::istream& operator>> (std::istream& input, const Estado& nuevo_estado) {
+std::istream& operator>> (std::istream& input, Estado& nuevo_estado) {
   input >> nuevo_estado.state_;
   return input;
 }

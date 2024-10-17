@@ -14,21 +14,24 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm> // Necesario para std::all_of
 #include <string>
 #include "Automata.h"
 
 void Usage(const int argc, char* argv[]);
-void AnalizeWords(std::ifstream&, std::ifstream&);
+void AnalizeWords(Automata&, std::ifstream&);
 
 int main(const int argc, char* argv[]) {
   Usage(argc, argv);
   std::ifstream automata_file;
-  automata_file.open(argv[1], std::ios::in);
   std::ifstream words_file;
-  words_file.open(argv[2], std::ios::in);
+  automata_file.open(argv[1]);
+  words_file.open(argv[2]);
   if(!automata_file.is_open() || !words_file.is_open())
     std::cerr << "archivos no abiertos\n";
-  AnalizeWords(automata_file, words_file);
+    
+  Automata automata(automata_file);
+  AnalizeWords(automata, words_file);
   return 0;
 }
 
@@ -53,12 +56,10 @@ void Usage(const int argc, char* argv[]) {
   }
 }
 
-void AnalizeWords(std::ifstream& automata_file, std::ifstream& words_file) {
-  Automata automata;
-  automata.AnalizeAutomata(automata_file);
+void AnalizeWords(Automata& automata, std::ifstream& words_file) {
   std::string line;
-
-  while(std::getline(words_file, line)) {
+  while (words_file >> line) {
+    // Verificar si la línea leída no está vacía o no contiene solo espacios
     std::cout << line << " --- ";
     automata.AnalizeWords(line) ? std::cout << "Accepted\n" : std::cout << "Rejected\n";
   }
